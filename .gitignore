@@ -1,2 +1,14 @@
 .env
 .env.local
+.jpg
+.jpeg
+.png
+.svg
+.gif
+.webp
+.vscode/
+*.code-workspace
+.DS_Store
+.mp4
+.mov
+.avi
