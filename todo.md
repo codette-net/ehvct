@@ -68,7 +68,7 @@
 - [ ] Tour: title, slug, description, highlights, meeting_point, is_active
 - [ ] TourVariant: tour_id, label (e.g. "2 hours"), duration_minutes, price_per_person_cents, currency
 - [ ] Media: file_path, title (opt), alt (required), caption (opt), credits (opt)
-- [ ] Mediables pivot (polymorcd phic):
+- [ ] Mediables pivot (polymorphic):
   - [ ] media_id, mediable_type, mediable_id
   - [ ] role (cover|gallery|site_gallery), sort_order
 

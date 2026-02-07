@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Tour;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'pages.home')->name('home');
+
+Route::get('/tours', function () {
+    $tours = Tour::query()->where('is_active', true)->latest()->get();
+    return view('pages.tours.index', compact('tours'));
+})->name('tours.index');
+
+Route::get('/tours/{tour:slug}', function (Tour $tour) {
+    $tour->load(['variants', 'media']);
+    return view('pages.tours.show', compact('tour'));
+})->name('tours.show');
+
+Route::view('/impressions', 'pages.impressions')->name('impressions');
+Route::view('/contact', 'pages.contact')->name('contact');
