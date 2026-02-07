@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Eindhoven Cycling Tours – Brand Preview</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* ==============================
+   BRAND COLOR VARIABLES
+   ============================== */
+
+:root {
+  /* Core Brand Colors */
+  --color-primary: #2F4F3E; /* Forest Green */
+  --color-accent: #C46A2F;  /* Autumn Orange */
+  --color-bg: #E8D8B5;      /* Sand Beige */
+  --color-text: #1F1F1F;    /* Charcoal */
+
+  /* Secondary Nature Palette */
+  --color-moss: #6F8F5B;
+  --color-brown: #8A5A3B;
+
+  /* Cozy Brabant Accents */
+  --color-brick: #A43F2A;
+  --color-honey: #F2C94C;
+
+  /* UI Neutrals */
+  --color-offwhite: #F7F5F2;
+  --color-border: rgba(0,0,0,0.1);
+
+  /* Typography */
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Source Sans 3", sans-serif;
+
+    /* ==============================
+     GRADIENTS
+     ============================== */
+
+  /* Forest to Moss (hero, headers) */
+  --gradient-forest: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-moss)
+  );
+
+  /* Sand to Honey (backgrounds, sections) */
+  --gradient-sand: linear-gradient(
+    180deg,
+    var(--color-bg),
+    var(--color-honey)
+  );
+
+  /* Autumn Warm CTA */
+  --gradient-autumn: linear-gradient(
+    135deg,
+    var(--color-accent),
+    var(--color-brick)
+  );
+
+  /* Cozy Brabant Brown (footer, overlays) */
+  --gradient-brown: linear-gradient(
+    180deg,
+    var(--color-brown),
+    var(--color-primary)
+  );
+
+  /* Subtle Paper UI */
+  --gradient-paper: linear-gradient(
+    180deg,
+    var(--color-offwhite),
+    var(--color-bg)
+  );
+
+}
+
+/* ==============================
+   BASE STYLES
+   ============================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+}
+
+/* Layout */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 2rem;
+}
+
+/* ==============================
+   HERO SECTION
+   ============================== */
+
+.hero {
+  background: var(--gradient-autumn);
+  color: var(--color-offwhite);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.hero h1 {
+  color: var(--color-offwhite);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  letter-spacing: 1px;
+}
+
+.hero h2 {
+  font-weight: 400;
+  margin-top: 0.5rem;
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  color: var(--color-offwhite);
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 1rem auto 2rem;
+  font-size: 1.2rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.4rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--color-moss);
+}
+
+.btn-outline {
+  border: 2px solid var(--color-accent);
+  color: var(--color-offwhite);
+}
+
+.btn-outline:hover {
+  background: var(--color-accent);
+}
+
+/* ==============================
+   CARDS
+   ============================== */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.card {
+  padding: 1.5rem;
+  border-radius: 12px;
+
+  background: var(--gradient-paper);
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  corner-shape: squircle;
+}
+
+.card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.tag {
+  display: inline-block;
+  background: var(--color-honey);
+  color: #000;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* ==============================
+   FOOTER
+   ============================== */
+
+footer {
+  margin-top: 3rem;
+ background: var(--gradient-forest);
+  color: var(--color-offwhite);
+  padding: 5.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+.img-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;  
+}
+
+img {
+  max-width: 600px;
+  margin-bottom: 1rem;
+}
+
+.section-soft {
+  background: var(--gradient-sand);
+  padding: 4rem ;
+}
+p {
+  margin-block: 1rem;
+
+}
+
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+  <div class="img-wrap"><img src="./ehvct_logo.png" alt="logo"></div>
+  <h1>Eindhoven Cycling Tours</h1>
+  <h2>Guided Cycling Tours Through Eindhoven & Brabant</h2>
+  <p>lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  <p>
+  Discover Eindhoven and the Brabant countryside on guided cycling tours that blend nature, culture, and gezelligheid.
+  </p>
+
+  <a href="#" class="btn btn-primary">Book a Tour</a>
+  <a href="#" class="btn btn-outline">View Routes</a>
+</section>
+
+<main class="container">
+  <h2>Popular Tours</h2>
+
+  <div class="cards">
+    <div class="card">
+      <span class="tag">Nature</span>
+      <h3>Strabrechtse Heide Tour</h3>
+      <p>Relaxed ride through heathland, forests and sandy paths.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag">City</span>
+      <h3>Philips & Industrial Heritage</h3>
+      <p>Explore Eindhoven’s industrial past and modern design culture.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag">Local</span>
+      <h3>Brabant Countryside & Café Stops</h3>
+      <p>Slow cycling, local stories, coffee and gezelligheid.</p>
+    </div>
+  </div>
+
+</main>
+
+
+
+<footer>
+  <div class="img-wrap"><img src="./ehvct_logo.png" alt="logo"></div>
+
+  © Eindhoven Cycling Tours — ehvct.nl
+</footer>
+
+</body>
+</html>
