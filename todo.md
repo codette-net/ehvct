@@ -6,9 +6,9 @@
 - [x] Add basic error logging + env separation (local/staging/prod)
 
 ## 1) Stack overview (for README)
-- [ ] Laravel (PHP 8.2+)
-- [ ] DB: MySQL/MariaDB
-- [ ] Frontend: Blade + Tailwind (or simple CSS)
+- [x] Laravel (PHP 8.2+)
+- [x] DB: MySQL/MariaDB
+- [x] Frontend: Blade + Tailwind (or simple CSS)
 - [ ] Admin: Filament Panel
 - [ ] Payments: Stripe Checkout + Webhooks
 - [ ] Mail: SMTP (simple provider)
@@ -65,9 +65,9 @@
 
 ## 3) Data model (minimal)
 ### Content
-- [ ] Tour: title, slug, description, highlights, meeting_point, is_active
-- [ ] TourVariant: tour_id, label (e.g. "2 hours"), duration_minutes, price_per_person_cents, currency
-- [ ] Media: file_path, title (opt), alt (required), caption (opt), credits (opt)
+- [x] Tour: title, slug, description, highlights, meeting_point, is_active
+- [x] TourVariant: tour_id, label (e.g. "2 hours"), duration_minutes, price_per_person_cents, currency
+- [x] Media: file_path, title (opt), alt (required), caption (opt), credits (opt)
 - [ ] Mediables pivot (polymorphic):
   - [ ] media_id, mediable_type, mediable_id
   - [ ] role (cover|gallery|site_gallery), sort_order

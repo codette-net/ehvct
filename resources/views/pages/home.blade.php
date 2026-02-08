@@ -1,14 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="space-y-6">
-        <h1 class="text-3xl font-bold">Explore Eindhoven by bike</h1>
-        <p class="text-slate-700 max-w-2xl">
-            Guided cycling tours for expats and tourists. Pick a date, reserve your spot, and pay securely online.
-        </p>
-        <a class="inline-flex items-center rounded bg-slate-900 px-4 py-2 text-white"
-           href="{{ route('tours.index') }}">
-            View tours
-        </a>
-    </div>
+    <section
+        class="hero min-h-screen"
+        style="background-image: url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp);"
+    >
+        <div class="hero-overlay"></div>
+        <div class="hero-content text-neutral-content text-center">
+            <div class="max-w-md">
+                <h1 class="mb-5 text-5xl font-bold">Hello there</h1>
+                <p class="mb-5">
+                    Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+                    quasi. In deleniti eaque aut repudiandae et a id nisi.
+                </p>
+                <button class="btn btn-primary">Get Started</button>
+            </div>
+        </div>
+    </section>
 @endsection

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('mediables', function (Blueprint $table) {
             $table->id();
             $table->foreignId('media_id')->constrained('media')->cascadeOnDelete();
-            $table->morphs('mediable'); // mediable_type, mediaable_id
+            $table->morphs('mediable'); // mediable_type, mediable_id
             $table->string('role')->default('gallery'); // cover|gallery|site_gallery
             $table->integer('sort_order')->default(0);
             $table->timestamps();
