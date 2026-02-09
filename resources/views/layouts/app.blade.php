@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ config('app.name', 'Eindhoven Cycling Tours') }}</title>
-@vite(['resources/css/app.css', 'resources/js/app.js'])
+
+@vite(['resources/css/app.css','resources/css/rj-styles.css' , 'resources/js/app.js'])
 </head>
 <body class="min-h-screen">
 
@@ -64,7 +65,7 @@
     </div>
 </nav>
 
-<main class="mx-auto max-w-6xl">
+<main class="mx-auto rj-gradient-sand">
     @yield('content')
 </main>
 <footer class="footer sm:footer-horizontal bg-accent text-accent-content p-10 mt-4">

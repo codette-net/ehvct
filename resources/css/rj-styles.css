@@ -1,0 +1,56 @@
+:root {
+    /* Core Brand Colors */
+    --color-primary: #2F4F3E; /* Forest Green */
+    --color-accent: #C46A2F; /* Autumn Orange */
+    --color-bg: #E8D8B5; /* Sand Beige */
+    --color-text: #1F1F1F; /* Charcoal */
+
+    /* Secondary Nature Palette */
+    --color-moss: #6F8F5B;
+    --color-brown: #8A5A3B;
+
+    /* Cozy Brabant Accents */
+    --color-brick: #A43F2A;
+    --color-honey: #F2C94C;
+
+    /* UI Neutrals */
+    --color-offwhite: #F7F5F2;
+    --color-border: rgba(0, 0, 0, 0.1);
+
+    /* Typography */
+    --font-heading: "Playfair Display", serif;
+    --font-body: "Source Sans 3", sans-serif;
+
+    /* ==============================
+     GRADIENTS
+     ============================== */
+
+    /* Forest to Moss (hero, headers) */
+    --gradient-forest: linear-gradient(
+        135deg,
+        var(--color-primary),
+        var(--color-moss)
+    );
+
+    /* Sand to Honey (backgrounds, sections) */
+    --gradient-sand: linear-gradient(
+        180deg,
+        var(--color-bg),
+        var(--color-honey)
+    );
+
+    /* Autumn Warm CTA */
+    --gradient-autumn: linear-gradient(
+        135deg,
+        var(--color-accent),
+        var(--color-brick)
+    );
+}
+
+.rj-gradient-autumn {
+    background: var(--gradient-autumn);
+}
+
+.rj-gradient-sand {
+    background: var(--gradient-sand);
+}
