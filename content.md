@@ -78,7 +78,7 @@ ECT is all about connection: making connections between various groups of people
 to discover the area of Eindhoven by bike. ECT connects inhabitants with a broad spectrum
 of natural and cultural diversity, expats with locals, companies with students and so on.
 Are you curious about what ECT has to offer to you? Just visit
-www.eindhovencyclingtours.com and discover which connection you can make!
+www.eindhovencyclingtours.com and discover whichconnection you can make!
 
 - ED.nl article 
 https://www.ed.nl/eindhoven/taxichauffeur-maurice-tourt-al-fietsend-met-expats-door-de-regio~a6f93277/
@@ -110,7 +110,7 @@ These tours are designed to be flexible and inclusive:Come when it suits you: No
 Build confidence on the bike: Especially great for expats or anyone for whom cycling in the Netherlands still feels a bit new. The group setting, gentle pace, and experienced local guide help you get comfortable with Dutch cycling culture – traffic rules, bike paths, group riding – in a supportive, non-judgmental environment. Many participants notice they quickly gain more self-confidence and start exploring independently too.
 The benefits go beyond the scenery:Fresh air and light exercise boost your mood and energy.
 Social connection: meet friendly locals and internationals over coffee stops or post-ride chats.
-Discover "beyond Eindhoven" – the green, varied Brabant landscape that makes the region so special.
+Discover "beyond Eindhoven" – the gree  n, varied Brabant landscape that makes the region so special.
 Whether you're an expat settling in, a longtime resident wanting new routes, or just someone who loves being outdoors on two wheels – Eindhoven Cycling Tours offers a fun, healthy, and social way to experience more of this beautiful part of the Netherlands.No pressure, no fixed schedule – just good rides, good company, and great discoveries.Fancy joining? Check the upcoming rides and hop on when it fits your life. Your bike (or rental) and a smile are all you need!
 
 ## why go cycling?

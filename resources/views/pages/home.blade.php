@@ -42,7 +42,7 @@
                 </div>
                 <figure>
                     <img
-                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                        src="/images/ehvct_logo.png"
                         alt="Shoes" />
                 </figure>
             </div>
@@ -53,8 +53,8 @@
                 </div>
                 <figure>
                     <img
-                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Shoes" />
+                        src="/images/EHVCT-bike-sunset.jpg"
+                        alt="Bike with sun setting in the background" />
                 </figure>
             </div>
             <div class="card bg-base-100 shadow-sm">
@@ -64,8 +64,8 @@
                 </div>
                 <figure>
                     <img
-                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Shoes" />
+                        src="/images/EHVCT-mill-oerle.jpg"
+                        alt="View of the Mill Oerle" />
                 </figure>
             </div>
             <div class="card bg-base-100 shadow-sm">
@@ -75,8 +75,8 @@
                 </div>
                 <figure>
                     <img
-                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Shoes" />
+                        src="/images/EHVCT-people-cartoon.jpg"
+                        alt="people on the border of the Netherlands and Belgium" />
                 </figure>
             </div>
         </div>
@@ -95,7 +95,7 @@
         <div class="grid md:grid-cols-3 gap-6">
             {{-- Replace with @foreach later --}}
             <div class="card bg-base-100 shadow-sm">
-                <figure><img src="/images/tours/forest.jpg" alt="Forest & Apple Pie Tour"></figure>
+                <figure><img src="/images/EHVCT_14.jpg" alt="Forest & Apple Pie Tour"></figure>
                 <div class="card-body">
                     <h3 class="card-title">Forest & Apple Pie Tour</h3>
                     <p class="text-sm opacity-80">Green paths, calm roads, and a well-earned sweet stop.</p>
@@ -107,7 +107,7 @@
             </div>
 
             <div class="card bg-base-100 shadow-sm">
-                <figure><img src="/images/tours/oirschot.jpg" alt="Strawberry Farm & Oirschot Tour"></figure>
+                <figure><img src="/images/EHVCT_26.jpeg" alt="Strawberry Farm & Oirschot Tour"></figure>
                 <div class="card-body">
                     <h3 class="card-title">Strawberry Farm & Oirschot Tour</h3>
                     <p class="text-sm opacity-80">Ride to Oirschot, fuel up at a strawberry farm, and explore the historic centre.</p>
@@ -119,7 +119,7 @@
             </div>
 
             <div class="card bg-base-100 shadow-sm">
-                <figure><img src="/images/tours/sunset.jpg" alt="Sunset Tour & Van Gogh Bike Path"></figure>
+                <figure><img src="/images/EHVCT-van-gogh-path.jpg" alt="Sunset Tour & Van Gogh Bike Path"></figure>
                 <div class="card-body">
                     <h3 class="card-title">Sunset Tour & Van Gogh Bike Path</h3>
                     <p class="text-sm opacity-80">Golden-hour ride, then the glowing Van Gogh-Roosegaarde path.</p>
@@ -148,15 +148,15 @@
                 <div class="card bg-base-100 shadow-sm">
                     <div class="card-body">
                         <div class="text-2xl font-bold">2</div>
-                        <h3 class="font-semibold">Select a date</h3>
-                        <p class="text-sm opacity-80">See availability and spots instantly.</p>
+                        <h3 class="font-semibold">Select a date & group size</h3>
+                        <p class="text-sm opacity-80">See available spots instantly.</p>
                     </div>
                 </div>
                 <div class="card bg-base-100 shadow-sm">
                     <div class="card-body">
                         <div class="text-2xl font-bold">3</div>
                         <h3 class="font-semibold">Pay online</h3>
-                        <p class="text-sm opacity-80">Receive confirmation right away.</p>
+                        <p class="text-sm opacity-80">You’ll receive a confirmation email right away.</p>
                     </div>
                 </div>
             </div>
@@ -173,7 +173,7 @@
                     Today ECT brings people together on easy-going rides through nature, villages, and hidden highlights.
                 </p>
                 <div class="mt-6 flex gap-3">
-                    <a class="btn btn-outline" href="#">About Maurice</a>
+                    <a class="btn btn-outline" href="#">Read more</a>
                     <a class="btn btn-accent" href="{{ route('tours.index') }}">Book a tour</a>
                 </div>
             </div>
@@ -181,7 +181,7 @@
                 <div class="card-body">
                     <h3 class="font-semibold">Also available</h3>
                     <p class="text-sm opacity-80">Private tours, company outings, and teambuilding rides.</p>
-                    <a class="btn btn-ghost justify-start px-0" href="{{ route('contact') }}">Request a private tour →</a>
+                    <a class="btn btn-outline" href="{{ route('contact') }}">Request a private tour</a>
                 </div>
             </div>
         </div>
@@ -200,4 +200,67 @@
             </div>
         </div>
     </section>
+    {{-- FAQ --}}
+    <section class="bg-base-200">
+        <div class="max-w-4xl mx-auto px-4 py-14">
+            <h2 class="text-3xl font-bold mb-8 text-center">Frequently asked questions</h2>
+
+            <div class="space-y-3">
+
+                <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+                    <input type="radio" name="faq-accordion" checked="checked"/>
+                    <div class="collapse-title font-semibold">
+                        Do I need to bring my own bike?
+                    </div>
+                    <div class="collapse-content text-sm opacity-80">
+                        You can bring your own bike or rent one nearby. We can recommend local rental partners in Eindhoven.
+                    </div>
+                </div>
+
+                <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+                    <input type="radio" name="faq-accordion"/>
+                    <div class="collapse-title font-semibold">
+                        How difficult are the tours?
+                    </div>
+                    <div class="collapse-content text-sm opacity-80">
+                        The rides are relaxed and beginner-friendly. We keep a comfortable pace and take regular breaks.
+                        You do not need to be sporty to join.
+                    </div>
+                </div>
+
+                <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+                    <input type="radio" name="faq-accordion"/>
+                    <div class="collapse-title font-semibold">
+                        What happens if the weather is bad?
+                    </div>
+                    <div class="collapse-content text-sm opacity-80">
+                        Light rain is usually fine. If conditions are unsafe we reschedule or refund the tour.
+                    </div>
+                </div>
+
+                <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+                    <input type="radio" name="faq-accordion"/>
+                    <div class="collapse-title font-semibold">
+                        Can I cancel my booking?
+                    </div>
+                    <div class="collapse-content text-sm opacity-80">
+                        You can cancel up to the allowed cutoff time before the tour. After that the booking is final
+                        because the spot has been reserved.
+                    </div>
+                </div>
+
+                <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+                    <input type="radio" name="faq-accordion"/>
+                    <div class="collapse-title font-semibold">
+                        Is the tour in English or Dutch?
+                    </div>
+                    <div class="collapse-content text-sm opacity-80">
+                        Both. Maurice speaks English and Dutch, so everyone can follow along comfortably.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
 @endsection

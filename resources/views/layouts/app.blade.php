@@ -70,18 +70,17 @@
 </main>
 <footer class="footer sm:footer-horizontal bg-accent text-accent-content p-10 mt-4">
     <nav>
-        <h6 class="footer-title">Services</h6>
-        <a class="link link-hover">Branding</a>
-        <a class="link link-hover">Design</a>
-        <a class="link link-hover">Marketing</a>
-        <a class="link link-hover">Advertisement</a>
+        <h6 class="footer-title">Eindhoven Cycling Tours</h6>
+        <a href="{{ route('tours.index') }}" class="link link-hover">All tours</a>
+        <a href="{{ route('impressions') }}" class="link link-hover">Impressions</a>
+        <a href="{{ route('contact') }}" class="link link-hover">Contact</a>
     </nav>
     <nav>
-        <h6 class="footer-title">Company</h6>
-        <a class="link link-hover">About us</a>
-        <a class="link link-hover">Contact</a>
-        <a class="link link-hover">Jobs</a>
-        <a class="link link-hover">Press kit</a>
+        <h6 class="footer-title">Partners</h6>
+        <a class="link link-hover" href="https://velorent.nl" target="_blank">Velorent (bike rental)</a>
+        <a class="link link-hover" href="https://citytourseindhoven.com/" target="_blank">City Tours Eindhoven</a>
+        <a class="link link-hover" href="https://xlcreations.n" target="_blank">XL Creations (drone and visuals)</a>
+
     </nav>
     <nav>
         <h6 class="footer-title">Legal</h6>
