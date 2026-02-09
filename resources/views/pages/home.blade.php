@@ -167,7 +167,12 @@
     <section class="max-w-6xl mx-auto px-4 py-14">
         <div class="grid lg:grid-cols-2 gap-10 items-center">
             <div>
-                <h2 class="text-3xl font-bold">Meet your guide</h2>
+                <h2 class="text-3xl font-bold mb-4">Meet your guide</h2>
+                <div class="avatar" style="float: left; margin-right: 1.5rem; shape-outside: circle();">
+                    <div class="ring-accent ring-offset-base-100 w-24 rounded-full ring-2 ring-offset-2">
+                        <img src="/images/EHVCT_Maurice_avatar.jpg" />
+                    </div>
+                </div>
                 <p class="mt-4 opacity-85">
                     Eindhoven Cycling Tours was founded by Maurice Meijer, born and raised in Eindhoven.
                     Today ECT brings people together on easy-going rides through nature, villages, and hidden highlights.

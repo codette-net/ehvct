@@ -26,5 +26,6 @@ Route::get('/tours/{tour:slug}', function (Tour $tour) {
     return view('pages.tours.show', compact('tour'));
 })->name('tours.show');
 
+Route::view('/about', 'pages.about')->name('about');
 Route::view('/impressions', 'pages.impressions')->name('impressions');
 Route::view('/contact', 'pages.contact')->name('contact');

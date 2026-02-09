@@ -18,7 +18,6 @@
             <ul
                 tabindex="-1"
                 class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                <li><a>About</a></li>
                 <li>
                     <details>
                         <summary>Tours</summary>
@@ -29,6 +28,10 @@
                         </ul>
                     </details>
                 </li>
+                <li>
+                    <a href="{{ route('about') }}">About</a>
+                </li>
+
                 <li>
                     <a href="{{ route('impressions') }}">Impressions</a>
                 </li>
@@ -42,7 +45,6 @@
     </div>
     <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
-            <li><a>About</a></li>
             <li>
                 <details>
                     <summary>Tours</summary>
@@ -52,6 +54,10 @@
                     </ul>
                 </details>
             </li>
+            <li>
+                <a href="{{ route('about') }}">About</a>
+            </li>
+
             <li>
                 <a href="{{ route('impressions') }}">Impressions</a>
             </li>
