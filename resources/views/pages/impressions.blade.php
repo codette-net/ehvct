@@ -11,25 +11,25 @@
                             <!-- Column #1 -->
                             <div class="grid gap-4">
                                 <div>
-                                    <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-01.jpg" width="232" height="290" alt="Image 01" />
+                                    <img class="w-full rounded-xl shadow" src="/images/EHVCT_8.jpg" width="232" height="290" alt="Image 01" />
                                 </div>
                                 <div>
-                                    <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-02.jpg" width="232" height="290" alt="Image 02" />
+                                    <img class="w-full rounded-xl shadow" src="/images/EHVCT_21.jpg" width="232" height="290" alt="Image 02" />
                                 </div>
                                 <div>
-                                    <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-03.jpg" width="232" height="174" alt="Image 03" />
+                                    <img class="w-full rounded-xl shadow" src="/images/EHVCT-heide-path.jpg" width="232" height="174" alt="Image 03" />
                                 </div>
                             </div>
                             <!-- Column #2 -->
                             <div class="grid gap-4">
                                 <div>
-                                    <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-04.jpg" width="232" height="155" alt="Image 04" />
+                                    <img class="w-full rounded-xl shadow" src="/images/EHVCT_16.jpg" width="232" height="155" alt="Image 04" />
                                 </div>
                                 <div>
-                                    <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-05.jpg" width="232" height="349" alt="Image 05" />
+                                    <img class="w-full rounded-xl shadow" src="/images/EHVCT-shroom-wheel.jpg" width="232" height="349" alt="Image 05" />
                                 </div>
                                 <div>
-                                    <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-06.jpg" width="232" height="250" alt="Image 06" />
+                                    <img class="w-full rounded-xl shadow" src="/images/EHVCT_18.jpg" width="232" height="250" alt="Image 06" />
                                 </div>
                             </div>
                             <!-- Column #3 -->
