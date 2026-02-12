@@ -1,117 +1,217 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="relative font-inter antialiased">
+    {{-- HERO --}}
+    <section class="hero min-h-[70vh]"
+             style="background-image: url('/images/EHVCT_Maurice_cover_cropped.jpg'); background-position: center;">
+        <div class="hero-overlay bg-neutral/60"></div>
 
-    <main class="relative min-h-screen flex flex-col justify-center bg-slate-50 overflow-hidden">
-        <div class="w-full max-w-5xl mx-auto px-4 md:px-6 py-24">
+        <div class="hero-content text-neutral-content w-full">
+            <div class="max-w-3xl text-center px-4">
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight">
+                    Meet Maurice
+                </h1>
+                <p class="mt-5 text-lg md:text-xl opacity-90">
+                    Born and raised in Eindhoven, guiding relaxed cycling tours that connect people with the city,
+                    its countryside, and each other.
+                </p>
 
-            <div class="space-y-20">
+                <div class="mt-8 flex flex-wrap justify-center gap-3">
+                    <a href="{{ route('tours.index') }}" class="btn btn-accent">Book a tour</a>
+                    <a href="{{ route('impressions') }}" class="btn btn-outline text-neutral-content border-neutral-content">
+                        See impressions
+                    </a>
+                    <a href="https://wa.link/uk5101" target="_blank" class="btn btn-ghost text-neutral-content">
+                        Ask on WhatsApp
+                    </a>
+                </div>
 
-                <div>
-                    <h2 class="font-bold text-lg mb-4">With CSS Grid</h2>
-                    <!-- With grid -->
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <!-- Column #1 -->
-                        <div class="grid gap-4">
-                            <div>
-                                <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-01.jpg" width="232" height="290" alt="Image 01" />
-                            </div>
-                            <div>
-                                <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-02.jpg" width="232" height="290" alt="Image 02" />
-                            </div>
-                            <div>
-                                <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-03.jpg" width="232" height="174" alt="Image 03" />
-                            </div>
-                        </div>
-                        <!-- Column #2 -->
-                        <div class="grid gap-4">
-                            <div>
-                                <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-04.jpg" width="232" height="155" alt="Image 04" />
-                            </div>
-                            <div>
-                                <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-05.jpg" width="232" height="349" alt="Image 05" />
-                            </div>
-                            <div>
-                                <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-06.jpg" width="232" height="250" alt="Image 06" />
-                            </div>
-                        </div>
-                        <!-- Column #3 -->
-                        <div class="grid gap-4">
-                            <div>
-                                <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-07.jpg" width="232" height="349" alt="Image 07" />
-                            </div>
-                            <div>
-                                <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-08.jpg" width="232" height="155" alt="Image 08" />
-                            </div>
-                            <div>
-                                <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-09.jpg" width="232" height="250" alt="Image 09" />
-                            </div>
-                        </div>
-                        <!-- Column #4 -->
-                        <div class="grid gap-4">
-                            <div>
-                                <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-10.jpg" width="232" height="290" alt="Image 10" />
-                            </div>
-                            <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-11.jpg" width="232" height="155" alt="Image 11" />
-                            <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-12.jpg" width="232" height="309" alt="Image 12" />
+                <div class="mt-6 flex flex-wrap justify-center gap-2 text-sm opacity-90">
+                    <span class="badge badge-outline">English + Dutch</span>
+                    <span class="badge badge-outline">Beginner-friendly</span>
+                    <span class="badge badge-outline">Small groups</span>
+                    <span class="badge badge-outline">Nature + culture</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- INTRO --}}
+    <section class="max-w-5xl mx-auto px-4 md:px-6 py-14">
+        <div class="prose max-w-none">
+            <h2>What Eindhoven Cycling Tours is about</h2>
+            <p>
+                Eindhoven Cycling Tours is a relaxed, community-focused way to discover Eindhoven and its surroundings by bike.
+                These are not rushed tourist trips or training rides. We take it easy, enjoy the route, and make good stops along the way.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 mt-10">
+            <div class="card bg-base-100 shadow-sm border border-base-200">
+                <div class="card-body">
+                    <h3 class="font-semibold">Ride with a local</h3>
+                    <p class="text-sm opacity-80">
+                        Maurice knows the quiet paths, viewpoints, and places people often miss.
+                    </p>
+                </div>
+            </div>
+            <div class="card bg-base-100 shadow-sm border border-base-200">
+                <div class="card-body">
+                    <h3 class="font-semibold">No stress navigation</h3>
+                    <p class="text-sm opacity-80">
+                        You just ride, enjoy the scenery, and follow the group.
+                    </p>
+                </div>
+            </div>
+            <div class="card bg-base-100 shadow-sm border border-base-200">
+                <div class="card-body">
+                    <h3 class="font-semibold">Connection</h3>
+                    <p class="text-sm opacity-80">
+                        Locals and expats, students and visitors. Everyone is welcome.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- STORY --}}
+    <section class="bg-base-200">
+        <div class="max-w-5xl mx-auto px-4 md:px-6 py-14">
+            <div class="grid lg:grid-cols-2 gap-10 items-start">
+                <div class="prose max-w-none">
+                    <h2>The story</h2>
+                    <p>
+                        Maurice Meijer was born and raised in Eindhoven. After a knee injury, cycling started as a way to recover.
+                        A short ride became longer trips, and eventually cycling adventures all the way to Oxford and Cambridge.
+                    </p>
+                    <p>
+                        In 2016 he founded Eindhoven Cycling Tours to share the hidden highlights of Eindhoven and Brabant by bike.
+                    </p>
+                </div>
+
+                <div class="card bg-base-100 shadow-sm border border-base-200">
+                    <div class="card-body">
+                        <h3 class="card-title">What to expect</h3>
+                        <ul class="text-sm opacity-80 space-y-2">
+                            <li>Relaxed pace and friendly group vibe</li>
+                            <li>Nature reserves, villages, and quiet cycling paths</li>
+                            <li>Stops for photos, stories, and a coffee or snack</li>
+                            <li>English and Dutch tours available</li>
+                        </ul>
+
+                        <div class="mt-4">
+                            <a href="{{ route('tours.index') }}" class="btn btn-accent btn-sm">Choose a tour</a>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <div>
-                    <h2 class="font-bold text-lg mb-4">With CSS Columns</h2>
-                    <!-- With columns -->
-                    <div class="columns-2 md:columns-4 gap-4 space-y-4">
-                        <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-01.jpg" width="232" height="290" alt="Image 01" />
-                        <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-02.jpg" width="232" height="290" alt="Image 02" />
-                        <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-03.jpg" width="232" height="174" alt="Image 03" />
-                        <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-04.jpg" width="232" height="155" alt="Image 04" />
-                        <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-05.jpg" width="232" height="349" alt="Image 05" />
-                        <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-06.jpg" width="232" height="250" alt="Image 06" />
-                        <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-07.jpg" width="232" height="349" alt="Image 07" />
-                        <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-08.jpg" width="232" height="155" alt="Image 08" />
-                        <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-09.jpg" width="232" height="250" alt="Image 09" />
-                        <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-10.jpg" width="232" height="290" alt="Image 10" />
-                        <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-11.jpg" width="232" height="155" alt="Image 11" />
-                        <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-12.jpg" width="232" height="309" alt="Image 12" />
-                    </div>
+    {{-- FOR WHO --}}
+    <section class="max-w-5xl mx-auto px-4 md:px-6 py-14">
+        <div class="prose max-w-none">
+            <h2>Who is it for?</h2>
+            <p>
+                Eindhoven Cycling Tours is for anyone who likes being outside and wants to explore beyond the city centre.
+                Many riders are expats who want to feel more confident cycling in the Netherlands, but locals are just as welcome.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mt-8">
+            <div class="card bg-base-100 shadow-sm border border-base-200">
+                <div class="card-body">
+                    <h3 class="font-semibold">Expats</h3>
+                    <p class="text-sm opacity-80">
+                        Get comfortable with Dutch cycling culture in a supportive group. The pace is gentle and the route is taken care of.
+                    </p>
+                </div>
+            </div>
+            <div class="card bg-base-100 shadow-sm border border-base-200">
+                <div class="card-body">
+                    <h3 class="font-semibold">Locals & visitors</h3>
+                    <p class="text-sm opacity-80">
+                        Discover new routes, hidden nature areas, and the best places just outside Eindhoven.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- PRIVATE / TEAM --}}
+    <section class="bg-base-200">
+        <div class="max-w-5xl mx-auto px-4 md:px-6 py-14">
+            <div class="grid lg:grid-cols-2 gap-10 items-center">
+                <div class="prose max-w-none">
+                    <h2>Private tours & team rides</h2>
+                    <p>
+                        It is also possible to book a private tour, a company outing, or a teambuilding ride.
+                        We can tailor the route, pace, distance, and stops to your group.
+                    </p>
                 </div>
 
+                <div class="card bg-base-100 shadow-sm border border-base-200">
+                    <div class="card-body">
+                        <h3 class="card-title">Interested?</h3>
+                        <p class="text-sm opacity-80">
+                            Send a message and tell us your group size, preferred date, and what kind of ride you want.
+                        </p>
+
+                        <div class="flex flex-wrap gap-3 mt-4">
+                            <a href="{{ route('contact') }}" class="btn btn-accent">Contact</a>
+                            <a href="https://wa.link/uk5101" target="_blank" class="btn btn-outline">WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </div>
-    </main>
+    </section>
 
-    <!-- Page footer -->
-    <footer class="absolute left-6 right-6 md:left-12 md:right-auto bottom-4 md:bottom-8 text-center md:text-left">
-        <a class="text-xs text-slate-500 hover:underline" href="https://cruip.com">&copy;Cruip - Tailwind CSS templates</a>
-    </footer>
+    {{-- PRESS / LINKS --}}
+    <section class="max-w-5xl mx-auto px-4 md:px-6 py-14">
+        <div class="prose max-w-none">
+            <h2>Press</h2>
+            <p>
+                Want to read more about Eindhoven Cycling Tours?
+            </p>
+        </div>
 
-    <!-- Banner with links -->
-    <div class="fixed bottom-0 right-0 w-full md:bottom-6 md:right-12 md:w-auto z-50" :class="bannerOpen ? '' : 'hidden'" x-data="{ bannerOpen: true }">
-        <div class="bg-slate-800 text-sm p-3 md:rounded shadow flex justify-between">
-            <div class="text-slate-500 inline-flex">
-                <a class="font-medium hover:underline text-slate-300" href="https://cruip.com/masonry-layouts-with-tailwind-css/" target="_blank">
-                    Read Tutorial
-                </a>
-                <span class="italic px-1.5">or</span>
-                <a class="font-medium hover:underline text-indigo-500 flex items-center" href="https://github.com/cruip/cruip-tutorials/blob/main/masonry/index.html" target="_blank" rel="noreferrer">
-                    <span>Download</span>
-                    <svg class="fill-indigo-400 ml-1" xmlns="http://www.w3.org/2000/svg" width="9" height="9">
-                        <path d="m1.649 8.514-.91-.915 5.514-5.523H2.027l.01-1.258h6.388v6.394H7.158l.01-4.226z" />
-                    </svg>
+        <div class="grid md:grid-cols-2 gap-6 mt-8">
+            <a href="https://archive.ph/c6V3g" target="_blank" class="card bg-base-100 shadow-sm border border-base-200 hover:shadow-md transition">
+                <div class="card-body">
+                    <h3 class="card-title">ED.nl article</h3>
+                    <p class="text-sm opacity-80">
+                        A feature about Maurice and the tours (archived link).
+                    </p>
+                    <div class="text-sm font-semibold mt-2">Read the article →</div>
+                </div>
+            </a>
+
+            <a href="{{ route('tours.index') }}" class="card bg-base-100 shadow-sm border border-base-200 hover:shadow-md transition">
+                <div class="card-body">
+                    <h3 class="card-title">Explore the tours</h3>
+                    <p class="text-sm opacity-80">
+                        See all routes, prices, and available dates.
+                    </p>
+                    <div class="text-sm font-semibold mt-2">View tours →</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    {{-- FINAL CTA --}}
+    <section class="bg-accent text-accent-content">
+        <div class="max-w-6xl mx-auto px-4 md:px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <h2 class="text-3xl font-bold">Ready to ride?</h2>
+                <p class="opacity-90 mt-1">Pick a tour, choose a date, and join the group.</p>
+            </div>
+            <div class="flex gap-3">
+                <a href="{{ route('tours.index') }}" class="btn btn-neutral">Book a tour</a>
+                <a href="{{ route('contact') }}" class="btn btn-outline border-accent-content text-accent-content">
+                    Ask a question
                 </a>
             </div>
-            <button class="text-slate-500 hover:text-slate-400 pl-2 ml-3 border-l border-slate-700" @click="bannerOpen = false">
-                <span class="sr-only">Close</span>
-                <svg class="w-4 h-4 shrink-0 fill-current" viewBox="0 0 16 16">
-                    <path d="M12.72 3.293a1 1 0 00-1.415 0L8.012 6.586 4.72 3.293a1 1 0 00-1.414 1.414L6.598 8l-3.293 3.293a1 1 0 101.414 1.414l3.293-3.293 3.293 3.293a1 1 0 001.414-1.414L9.426 8l3.293-3.293a1 1 0 000-1.414z" />
-                </svg>
-            </button>
         </div>
-    </div>
-
-</div>
-
+    </section>
 @endsection

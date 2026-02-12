@@ -1,92 +1,139 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="relative font-inter antialiased">
+    <section class="relative">
 
-            <div class="w-full max-w-5xl mx-auto px-4 md:px-6 py-24">
+        <div class="w-full max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-20">
 
-                <div>
+            {{-- Header --}}
+            <div class="text-center max-w-2xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-bold">Impressions</h1>
+                <p class="mt-4 text-base md:text-lg opacity-80">
+                    A small look at the rides, the people, and the scenery around Eindhoven.
+                    Easy-going cycling, great stops, good company.
+                </p>
 
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <!-- Column #1 -->
-                            <div class="grid gap-4">
-                                <div>
-                                    <img class="w-full rounded-xl shadow" src="/images/EHVCT_8.jpg" width="232" height="290" alt="Image 01" />
-                                </div>
-                                <div>
-                                    <img class="w-full rounded-xl shadow" src="/images/EHVCT_21.jpg" width="232" height="290" alt="Image 02" />
-                                </div>
-                                <div>
-                                    <img class="w-full rounded-xl shadow" src="/images/EHVCT-heide-path.jpg" width="232" height="174" alt="Image 03" />
-                                </div>
-                            </div>
-                            <!-- Column #2 -->
-                            <div class="grid gap-4">
-                                <div>
-                                    <img class="w-full rounded-xl shadow" src="/images/EHVCT_16.jpg" width="232" height="155" alt="Image 04" />
-                                </div>
-                                <div>
-                                    <img class="w-full rounded-xl shadow" src="/images/EHVCT-shroom-wheel.jpg" width="232" height="349" alt="Image 05" />
-                                </div>
-                                <div>
-                                    <img class="w-full rounded-xl shadow" src="/images/EHVCT_18.jpg" width="232" height="250" alt="Image 06" />
-                                </div>
-                            </div>
-                            <!-- Column #3 -->
-                            <div class="grid gap-4">
-                                <div>
-                                    <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-07.jpg" width="232" height="349" alt="Image 07" />
-                                </div>
-                                <div>
-                                    <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-08.jpg" width="232" height="155" alt="Image 08" />
-                                </div>
-                                <div>
-                                    <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-09.jpg" width="232" height="250" alt="Image 09" />
-                                </div>
-                            </div>
-                            <!-- Column #4 -->
-                            <div class="grid gap-4">
-                                <div>
-                                    <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-10.jpg" width="232" height="290" alt="Image 10" />
-                                </div>
-                                <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-11.jpg" width="232" height="155" alt="Image 11" />
-                                <img class="w-full rounded-xl shadow" src="https://cruip-tutorials.vercel.app/masonry/masonry-12.jpg" width="232" height="309" alt="Image 12" />
-                            </div>
-                        </div>
+                <div class="mt-6 flex flex-wrap justify-center gap-3">
+                    <a href="{{ route('tours.index') }}" class="btn btn-accent">Book a tour</a>
+                    <a href="{{ route('tours.index') }}" class="btn btn-outline">See all tours</a>
+                    <a href="https://wa.link/uk5101" target="_blank" class="btn btn-ghost">Ask on WhatsApp</a>
                 </div>
-
             </div>
-        </main>
 
-        <!-- Page footer -->
-        <footer class="absolute left-6 right-6 md:left-12 md:right-auto bottom-4 md:bottom-8 text-center md:text-left">
-            <a class="text-xs text-slate-500 hover:underline" href="https://cruip.com">&copy;Cruip - Tailwind CSS templates</a>
-        </footer>
-
-        <!-- Banner with links -->
-        <div class="fixed bottom-0 right-0 w-full md:bottom-6 md:right-12 md:w-auto z-50" :class="bannerOpen ? '' : 'hidden'" x-data="{ bannerOpen: true }">
-            <div class="bg-slate-800 text-sm p-3 md:rounded shadow flex justify-between">
-                <div class="text-slate-500 inline-flex">
-                    <a class="font-medium hover:underline text-slate-300" href="https://cruip.com/masonry-layouts-with-tailwind-css/" target="_blank">
-                        Read Tutorial
-                    </a>
-                    <span class="italic px-1.5">or</span>
-                    <a class="font-medium hover:underline text-indigo-500 flex items-center" href="https://github.com/cruip/cruip-tutorials/blob/main/masonry/index.html" target="_blank" rel="noreferrer">
-                        <span>Download</span>
-                        <svg class="fill-indigo-400 ml-1" xmlns="http://www.w3.org/2000/svg" width="9" height="9">
-                            <path d="m1.649 8.514-.91-.915 5.514-5.523H2.027l.01-1.258h6.388v6.394H7.158l.01-4.226z" />
-                        </svg>
-                    </a>
+            {{-- Quick highlights --}}
+            <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                <div class="card bg-base-100 border border-base-200">
+                    <div class="card-body p-4">
+                        <div class="text-sm font-semibold">Relaxed pace</div>
+                        <div class="text-xs opacity-70">Beginner-friendly rides</div>
+                    </div>
                 </div>
-                <button class="text-slate-500 hover:text-slate-400 pl-2 ml-3 border-l border-slate-700" @click="bannerOpen = false">
-                    <span class="sr-only">Close</span>
-                    <svg class="w-4 h-4 shrink-0 fill-current" viewBox="0 0 16 16">
-                        <path d="M12.72 3.293a1 1 0 00-1.415 0L8.012 6.586 4.72 3.293a1 1 0 00-1.414 1.414L6.598 8l-3.293 3.293a1 1 0 101.414 1.414l3.293-3.293 3.293 3.293a1 1 0 001.414-1.414L9.426 8l3.293-3.293a1 1 0 000-1.414z" />
-                    </svg>
-                </button>
+                <div class="card bg-base-100 border border-base-200">
+                    <div class="card-body p-4">
+                        <div class="text-sm font-semibold">Nature & villages</div>
+                        <div class="text-xs opacity-70">Brabant highlights</div>
+                    </div>
+                </div>
+                <div class="card bg-base-100 border border-base-200">
+                    <div class="card-body p-4">
+                        <div class="text-sm font-semibold">Small groups</div>
+                        <div class="text-xs opacity-70">Social, not crowded</div>
+                    </div>
+                </div>
+                <div class="card bg-base-100 border border-base-200">
+                    <div class="card-body p-4">
+                        <div class="text-sm font-semibold">Local guide</div>
+                        <div class="text-xs opacity-70">English + Dutch</div>
+                    </div>
+                </div>
             </div>
+
+            {{-- Masonry grid (with optional lightbox) --}}
+            <div class="mt-12">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+
+                    {{-- Column 1 --}}
+                    <div class="grid auto-rows-max gap-4">
+                        @foreach ([
+                            ['/images/EHVCT_8.jpg', 'Group ride near Eindhoven'],
+                            ['/images/EHVCT_21.jpg', 'Brabant countryside'],
+                            ['/images/EHVCT-heide-path.jpg', 'Heide path']
+                        ] as [$src, $alt])
+                            <label for="img-modal" class="cursor-pointer">
+                                <img class="w-full rounded-xl shadow hover:shadow-md transition" src="{{ $src }}" alt="{{ $alt }}"
+                                     onclick="window.__EHVCT_IMG='{{ $src }}'; window.__EHVCT_ALT='{{ $alt }}'; document.getElementById('modal-img').src=window.__EHVCT_IMG; document.getElementById('modal-img').alt=window.__EHVCT_ALT;" />
+                            </label>
+                        @endforeach
+                    </div>
+
+                    {{-- Column 2 --}}
+                    <div class="grid auto-rows-max gap-4">
+                        @foreach ([
+                            ['/images/EHVCT_16.jpg', 'Cycling together'],
+                            ['/images/EHVCT-shroom-wheel.jpg', 'Small details on the ride'],
+                            ['/images/EHVCT_18.jpg', 'Tour moment']
+                        ] as [$src, $alt])
+                            <label for="img-modal" class="cursor-pointer">
+                                <img class="w-full rounded-xl shadow hover:shadow-md transition" src="{{ $src }}" alt="{{ $alt }}"
+                                     onclick="window.__EHVCT_IMG='{{ $src }}'; window.__EHVCT_ALT='{{ $alt }}'; document.getElementById('modal-img').src=window.__EHVCT_IMG; document.getElementById('modal-img').alt=window.__EHVCT_ALT;" />
+                            </label>
+                        @endforeach
+                    </div>
+
+                    {{-- Column 3 --}}
+                    <div class="grid auto-rows-max gap-4">
+                        @foreach ([
+                            ['/images/EHVCT_2.jpg', 'Nature stop'],
+                            ['/images/EHVCT_0.jpg', 'Cycling path'],
+                            ['/images/EHVCT_9.jpg', 'Brabant scenery']
+                        ] as [$src, $alt])
+                            <label for="img-modal" class="cursor-pointer">
+                                <img class="w-full rounded-xl shadow hover:shadow-md transition" src="{{ $src }}" alt="{{ $alt }}"
+                                     onclick="window.__EHVCT_IMG='{{ $src }}'; window.__EHVCT_ALT='{{ $alt }}'; document.getElementById('modal-img').src=window.__EHVCT_IMG; document.getElementById('modal-img').alt=window.__EHVCT_ALT;" />
+                            </label>
+                        @endforeach
+                    </div>
+
+                    {{-- Column 4 (replace external images with local ones) --}}
+                    <div class="grid auto-rows-max gap-4">
+                        @foreach ([
+                            ['/images/EHVCT-van-gogh-path.jpg', 'Van Gogh bike path'],
+                            ['/images/EHVCT-cover-img.jpg', 'EHVCT ride impression'],
+                            ['/images/EHVCT_5.jpg', 'Tour moment']  {{-- change if you have a better local image --}}
+                        ] as [$src, $alt])
+                            <label for="img-modal" class="cursor-pointer">
+                                <img class="w-full rounded-xl shadow hover:shadow-md transition" src="{{ $src }}" alt="{{ $alt }}"
+                                     onclick="window.__EHVCT_IMG='{{ $src }}'; window.__EHVCT_ALT='{{ $alt }}'; document.getElementById('modal-img').src=window.__EHVCT_IMG; document.getElementById('modal-img').alt=window.__EHVCT_ALT;" />
+                            </label>
+                        @endforeach
+                    </div>
+
+                </div>
+            </div>
+
+            {{-- Bottom CTA --}}
+            <div class="mt-14 text-center">
+                <h2 class="text-2xl md:text-3xl font-bold">Want to be in the next photo?</h2>
+                <p class="mt-3 opacity-80">Pick a tour, choose a date, and join the ride.</p>
+                <div class="mt-6 flex justify-center gap-3">
+                    <a href="{{ route('tours.index') }}" class="btn btn-accent">Book a tour</a>
+                    <a href="{{ route('contact') }}" class="btn btn-outline">Contact</a>
+                </div>
+            </div>
+
+        </div>
+
+        {{-- DaisyUI Modal (lightbox) --}}
+        <input type="checkbox" id="img-modal" class="modal-toggle" />
+        <div class="modal" role="dialog">
+            <div class="modal-box max-w-4xl p-2">
+                <img id="modal-img" src="" alt="" class="w-full rounded-lg" />
+                <div class="modal-action">
+                    <label for="img-modal" class="btn btn-sm">Close</label>
+                </div>
+            </div>
+            <label class="modal-backdrop" for="img-modal">Close</label>
         </div>
 
     </section>
-
 @endsection
