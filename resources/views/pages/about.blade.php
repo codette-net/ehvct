@@ -137,6 +137,23 @@
             </div>
         </div>
     </section>
+    {{-- BIKE RENTAL --}}
+    <section class="max-w-5xl mx-auto px-4 md:px-6 pb-14">
+        <div class="card bg-base-100 shadow-sm border border-base-200">
+            <div class="card-body">
+                <h3 class="card-title">Need a bike?</h3>
+                <p class="text-sm opacity-80">
+                    No problem. You can bring your own bike, or rent one in Eindhoven.
+                    We often recommend our rental partner Velorent.
+                </p>
+
+                <div class="mt-4 flex flex-wrap gap-3 items-center">
+                    <a href="https://velorent.nl/" target="_blank" class="btn btn-outline btn-sm">Velorent (bike rental)</a>
+                    <a href="{{ route('contact') }}" class="btn btn-accent btn-sm">Ask about rentals</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     {{-- PRIVATE / TEAM --}}
     <section class="bg-base-200">
