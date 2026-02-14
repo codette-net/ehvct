@@ -3,7 +3,9 @@
 @section('content')
     {{-- HERO --}}
     <section class="hero min-h-[70vh]"
-             style="background-image: url('/images/EHVCT_Maurice_cover_cropped.jpg'); background-position: center;">
+             style="background-image: url(/images/EHVCT_Maurice_cover_cropped.jpg);background-position: 15% 49%;
+    background-repeat: no-repeat;
+">
         <div class="hero-overlay bg-neutral/60"></div>
 
         <div class="hero-content text-neutral-content w-full">
