@@ -87,7 +87,7 @@
                         A short ride became longer trips, and eventually cycling adventures all the way to Oxford and Cambridge.
                     </p>
                     <p>
-                        In 2016 he founded Eindhoven Cycling Tours to share the hidden highlights of Eindhoven and Brabant by bike.
+                        In 2015 he founded Eindhoven Cycling Tours to share the hidden highlights of Eindhoven and Brabant by bike.
                     </p>
                 </div>
 

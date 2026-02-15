@@ -32,56 +32,61 @@
         </div>
     </section>
 
-    {{-- HIGHLIGHTS --}}
-    <section class="max-w-6xl mx-auto px-4 py-14">
-        <div class="grid md:grid-cols-4 gap-6">
-            <div class="card bg-base-100 shadow-sm">
-                <div class="card-body">
-                    <h2 class="card-title">Local guide</h2>
-                    <p class="text-sm opacity-80">Maurice was born and raised in Eindhoven.</p>
-                </div>
-                <figure>
-                    <img
-                        src="/images/ehvct_logo.png"
-                        alt="Shoes" />
-                </figure>
-            </div>
-            <div class="card bg-base-100 shadow-sm">
-                <div class="card-body">
-                    <h2 class="card-title">Relaxed pace</h2>
-                    <p class="text-sm opacity-80">Not a race. Just a good ride together.</p>
-                </div>
-                <figure>
-                    <img
-                        src="/images/EHVCT-bike-sunset.jpg"
-                        alt="Bike with sun setting in the background" />
-                </figure>
-            </div>
-            <div class="card bg-base-100 shadow-sm">
-                <div class="card-body">
-                    <h2 class="card-title">Great stops</h2>
-                    <p class="text-sm opacity-80">Coffee, views, and local favorites along the way.</p>
-                </div>
-                <figure>
-                    <img
-                        src="/images/EHVCT-mill-oerle.jpg"
-                        alt="View of the Mill Oerle" />
-                </figure>
-            </div>
-            <div class="card bg-base-100 shadow-sm">
-                <div class="card-body">
-                    <h2 class="card-title">Meet people</h2>
-                    <p class="text-sm opacity-80">A friendly mix of expats and locals.</p>
-                </div>
-                <figure>
-                    <img
-                        src="/images/EHVCT-people-cartoon.jpg"
-                        alt="people on the border of the Netherlands and Belgium" />
-                </figure>
-            </div>
-        </div>
-    </section>
 
+    {{-- HIGHLIGHTS --}}
+    <div class="mask-container">
+
+    <div class="mask-box">
+        <section class="max-w-6xl mx-auto px-4 py-14">
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body">
+                        <h2 class="card-title">Local guide</h2>
+                        <p class="text-sm opacity-80">Maurice was born and raised in Eindhoven.</p>
+                    </div>
+                    <figure>
+                        <img
+                            src="/images/ehvct_logo.png"
+                            alt="Shoes" />
+                    </figure>
+                </div>
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body">
+                        <h2 class="card-title">Relaxed pace</h2>
+                        <p class="text-sm opacity-80">Not a race. Just a good ride together.</p>
+                    </div>
+                    <figure>
+                        <img
+                            src="/images/EHVCT-bike-sunset.jpg"
+                            alt="Bike with sun setting in the background" />
+                    </figure>
+                </div>
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body">
+                        <h2 class="card-title">Great stops</h2>
+                        <p class="text-sm opacity-80">Coffee, views, and local favorites along the way.</p>
+                    </div>
+                    <figure>
+                        <img
+                            src="/images/EHVCT-mill-oerle.jpg"
+                            alt="View of the Mill Oerle" />
+                    </figure>
+                </div>
+                <div class="card bg-base-100 shadow-sm">
+                    <div class="card-body">
+                        <h2 class="card-title">Meet people</h2>
+                        <p class="text-sm opacity-80">A friendly mix of expats and locals.</p>
+                    </div>
+                    <figure>
+                        <img
+                            src="/images/EHVCT-people-cartoon.jpg"
+                            alt="people on the border of the Netherlands and Belgium" />
+                    </figure>
+                </div>
+            </div>
+        </section>
+    </div>
+    </div>
     {{-- FEATURED TOURS --}}
     <section class="max-w-6xl mx-auto px-4 pb-14">
         <div class="flex items-end justify-between gap-4 mb-6">

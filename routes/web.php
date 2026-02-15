@@ -14,7 +14,10 @@ use App\Models\Tour;
 |
 */
 
+
 Route::view('/', 'pages.home')->name('home');
+Route::view('/logoding', 'pages.logoding')->name('logoding');
+
 
 Route::get('/tours', function () {
     $tours = Tour::query()->where('is_active', true)->latest()->get();
