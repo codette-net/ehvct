@@ -85,10 +85,10 @@
                 </div>
             </div>
         </section>
-    </div>
-    </div>
+
+
     {{-- FEATURED TOURS --}}
-    <section class="max-w-6xl mx-auto px-4 pb-14">
+    <section class="max-w-6xl mx-auto px-4 pb-14 mask-below-box">
         <div class="flex items-end justify-between gap-4 mb-6">
             <div>
                 <h2 class="text-3xl font-bold">Popular tours</h2>
@@ -136,9 +136,14 @@
             </div>
         </div>
     </section>
+    </div>
+
+    </div>
+
 
     {{-- HOW BOOKING WORKS --}}
     <section class="bg-base-200">
+
         <div class="max-w-6xl mx-auto px-4 py-14">
             <h2 class="text-3xl font-bold mb-8">Booking is simple</h2>
 
@@ -169,6 +174,7 @@
     </section>
 
     {{-- ABOUT --}}
+
     <section class="max-w-6xl mx-auto px-4 py-14">
         <div class="grid lg:grid-cols-2 gap-10 items-center">
             <div>
