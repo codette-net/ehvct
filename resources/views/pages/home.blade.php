@@ -34,11 +34,11 @@
 
 
     {{-- HIGHLIGHTS --}}
-    <div class="mask-container">
+{{--    <div class="mask-container">--}}
 
     <div class="mask-box">
         <section class="max-w-6xl mx-auto px-4 py-14">
-            <div class="grid md:grid-cols-4 gap-6">
+            <div class="grid md:grid-cols-4 sm:grid-cols-2 gap-6">
                 <div class="card bg-base-100 shadow-sm">
                     <div class="card-body">
                         <h2 class="card-title">Local guide</h2>
@@ -138,7 +138,7 @@
     </section>
     </div>
 
-    </div>
+{{--    </div>--}}
 
 
     {{-- HOW BOOKING WORKS --}}

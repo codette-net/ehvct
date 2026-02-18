@@ -71,7 +71,7 @@
     </div>
 </nav>
 
-<main class="mx-auto rj-gradient-sand">
+<main class="mx-auto rj-gradient-sand mask-container">
     @yield('content')
 </main>
 <footer class="footer sm:footer-horizontal bg-accent text-accent-content p-10 mt-4">
@@ -85,7 +85,7 @@
         <h6 class="footer-title">Partners</h6>
         <a class="link link-hover" href="https://velorent.nl" target="_blank">Velorent (bike rental)</a>
         <a class="link link-hover" href="https://citytourseindhoven.com/" target="_blank">City Tours Eindhoven</a>
-        <a class="link link-hover" href="https://xlcreations.n" target="_blank">XL Creations (drone and visuals)</a>
+        <a class="link link-hover" href="https://xlcreations.nl" target="_blank">XL Creations (drone and visuals)</a>
 
     </nav>
     <nav>
