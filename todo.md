@@ -9,15 +9,15 @@
 - [x] Laravel (PHP 8.2+)
 - [x] DB: MySQL/MariaDB
 - [x] Frontend: Blade + Tailwind (or simple CSS)
-- [ ] Admin: Filament Panel
+- [x] Admin: Filament Panel
 - [ ] Payments: Stripe Checkout + Webhooks
 - [ ] Mail: SMTP (simple provider)
-- [ ] Storage: public disk (uploads), later optimize images (post-MVP)
+- [x] Storage: public disk (uploads), later optimize images (post-MVP)
 - [ ] Cron for cleanup jobs + queue worker (or sync queue for MVP)
 
 ## 2) MVP scope (features)
 ### Public site
-- [ ] Home page (hero + CTA "Book a tour")
+- [x] Home page (hero + CTA "Book a tour")
 - [ ] Tours overview (list)
 - [ ] Tour detail:
   - [ ] description, highlights, meeting point, included items
@@ -29,31 +29,6 @@
 - [ ] Contact page + contact form
 - [ ] Impressions/Gallery page (site gallery using Media)
 
-## 2b) Blog (MVP)
-
-### Goal
-- Share cycling-related stories, routes, nature highlights, and inspiration
-- Keep the website fresh and engaging
-- Support SEO and recurring visitors
-
-### MVP approach
-- Simple blog with articles managed in the admin
-- In early development, some articles may be hardcoded
-- For MVP delivery, blog must be fully manageable via CMS
-
-### Features
-- [ ] Blog overview page (list of articles)
-- [ ] Blog detail page
-- [ ] Admin can create/edit/delete articles
-- [ ] Publish date + draft/published status
-- [ ] Featured image per article
-- [ ] Short excerpt for overview
-- [ ] Basic SEO fields (title, description)
-- [ ] Articles reusable later for homepage highlights
-
-### Content model (minimal)
-- [ ] Post: title, slug, excerpt, content, status, published_at
-- [ ] Optional: cover image (Media)
 
 
 ### Booking rules (core)
@@ -78,17 +53,17 @@
 - [ ] Payment: booking_id, stripe_session_id, stripe_payment_intent_id, status (pending|paid|failed|refunded)
 
 ## 4) Admin/CMS (Filament)
-- [ ] Install Filament Panel + admin auth (single operator)
-- [ ] MediaResource:
-  - [ ] upload image
-  - [ ] alt required, caption/credits optional
+- [x] Install Filament Panel + admin auth (single operator)
+- [x] MediaResource:
+  - [x] upload image
+  - [x] alt required, caption/credits optional
   - [ ] list + search + preview
-- [ ] TourResource:
-  - [ ] fields: title/slug/desc/highlights/meeting point/active
-  - [ ] relation manager: Variants
+- [x] TourResource:
+  - [x] fields: title/slug/desc/highlights/meeting point/active
+  - [x] relation manager: Variants
   - [ ] relation manager: Images (Media attach + role + ordering)
-- [ ] Variant relation manager:
-  - [ ] create/edit duration + price
+- [x ] Variant relation manager:
+  - [x] create/edit duration + price
   - [ ] relation manager: Slots
 - [ ] Slot management:
   - [ ] quick-create slots (date/time, capacity, cutoffs)

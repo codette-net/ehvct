@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\morphToMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Tour extends Model
 {
@@ -16,7 +16,8 @@ class Tour extends Model
     }
 
     public function media(): MorphtoMany {
-        return $this->morphToMany(Media::class, 'mediable','mediables')->withPivot(['role','sort_order'])
+        return $this->morphToMany(Media::class, 'mediable','mediables')
+            ->withPivot(['role','sort_order'])
             ->withTimestamps()
             ->orderBy('mediables.sort_order');
     }
