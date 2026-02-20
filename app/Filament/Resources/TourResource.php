@@ -19,33 +19,37 @@ use Illuminate\Support\Str;
 class TourResource extends Resource
 {
     protected static ?string $model = Tour::class;
-    protected static ?string $navIcon = 'heroicon-o-map';
+    protected static ?string $navigationIcon = 'heroicon-o-map';
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema([
-                Forms\Components\Grid::make(2)->schema([
-                    Forms\Components\TextInput::make('title')
-                        ->required()
-                    ->live(onBlur: true)
-                    ->afterStateUpdated(function ($state, callable $set) {
-                        $set('slug', Str::slug($state ?? ''));
-                    }),
+        return $form->schema([
+            Forms\Components\Grid::make(2)->schema([
+                Forms\Components\TextInput::make('title')
+                    ->required(),
                 Forms\Components\TextInput::make('slug')
-                ->required()
-                ->unique(ignoreRecord: true),
-                ]),
+                    ->required()
+                    ->unique(ignoreRecord: true),
+            ]),
 
-        Forms\Components\TextInput::make('meeting_point')->maxLength(255),
+            Forms\Components\TextInput::make('meeting_point')->maxLength(255),
+            Forms\Components\Toggle::make('is_active')->default(true),
 
-        Forms\Components\Toggle::make('is_active')->default(true),
+            Forms\Components\RichEditor::make('description')
+                ->columnSpanFull()
+                ->default('')
+                ->formatStateUsing(fn ($state) => is_string($state) ? $state : '')
+                ->afterStateHydrated(fn ($component, $state) => $component->state(is_string($state) ? $state : ''))
+                ->dehydrateStateUsing(fn ($state) => $state ?? ''),
 
-        Forms\Components\RichEditor::make('description'),
-        Forms\Components\RichEditor::make('highlights')
-            ->helperText('One per line for seperation'),
-                //
-            ]);
+            Forms\Components\RichEditor::make('highlights')
+                ->columnSpanFull()
+                ->default('')
+                ->formatStateUsing(fn ($state) => is_string($state) ? $state : '')
+                ->afterStateHydrated(fn ($component, $state) => $component->state(is_string($state) ? $state : ''))
+                ->dehydrateStateUsing(fn ($state) => $state ?? ''),
+
+        ]);
     }
 
     public static function table(Table $table): Table

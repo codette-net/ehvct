@@ -21,7 +21,7 @@ class MediaRelationManager extends RelationManager
 
             Forms\Components\Select::make('id')
                 ->label('Media')
-                ->options(fn () => Media::query()->latest()->limit(200)->pluck('alt', 'id'))
+                ->options(fn () => Media::query()->latest()->limit(200)->pluck('alt_text', 'id'))
                 ->searchable()
                 ->required()
                 ->helperText('Attach an existing image from the Media library.'),
@@ -53,7 +53,7 @@ class MediaRelationManager extends RelationManager
                     ->label('Image')
                     ->square(),
 
-                Tables\Columns\TextColumn::make('alt')->label('Alt')->limit(40),
+                Tables\Columns\TextColumn::make('alt_text')->label('Alternative text')->limit(40),
 
                 Tables\Columns\TextColumn::make('pivot.role')
                     ->badge()
@@ -66,7 +66,7 @@ class MediaRelationManager extends RelationManager
             ->headerActions([
                 Tables\Actions\AttachAction::make()
                     ->label('Attach media')
-                    ->recordSelectSearchColumns(['alt', 'title'])
+                    ->recordSelectSearchColumns(['alt_text', 'title'])
                     ->form(fn (Tables\Actions\AttachAction $action): array => [
                         $action->getRecordSelect(),
 
@@ -108,7 +108,7 @@ class MediaRelationManager extends RelationManager
                             ->directory('media')
                             ->required(),
 
-                        Forms\Components\TextInput::make('alt')
+                        Forms\Components\TextInput::make('alt_text')
                             ->required()
                             ->maxLength(160),
 

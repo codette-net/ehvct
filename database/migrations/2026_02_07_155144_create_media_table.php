@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('file_path');
             $table->string('title')->nullable();
-            $table->string('alt_text'); // required for accessibility
+            $table->string('alt_text')->nullable();
             $table->string('caption')->nullable();
             $table->string('credits')->nullable();
             $table->timestamps();

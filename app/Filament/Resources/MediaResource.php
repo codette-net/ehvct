@@ -18,19 +18,21 @@ class MediaResource extends Resource
 {
     protected static ?string $model = Media::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-photo';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 FileUpload::make('file_path')
-                ->label('image')
+                ->label('Image')
                 ->image()
+                    ->imageEditor()
                     ->disk('public')
                     ->directory('media')
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif',])
+                    ->maxSize(5120)
                     ->required(),
-                //imageEditor()
 
                 Forms\Components\TextInput::make('alt_text')
                     ->label('alt text')
@@ -40,7 +42,7 @@ class MediaResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->maxLength(120),
 
-                Forms\Components\TextArea::make('caption')
+                Forms\Components\Textarea::make('caption')
                 ->rows(2),
 
                 Forms\Components\TextInput::make('credits')
@@ -56,7 +58,7 @@ class MediaResource extends Resource
                 Tables\Columns\ImageColumn::make('file_path')
                     ->disk('public')
                     ->square(),
-                Tables\Columns\TextColumn::make('alt')->limit(50)->searchable(),
+                Tables\Columns\TextColumn::make('alt_text')->limit(50)->searchable(),
                 Tables\Columns\TextColumn::make('created_at')->dateTime()->sortable(),
             ])
             ->filters([
