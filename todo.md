@@ -1,121 +1,154 @@
-# TODO — Eindhoven Cycling Tours (Laravel + Filament + Stripe) MVP
+Here’s an updated **TODO** (switching to **Mollie** and reflecting what you’ve already finished), plus a **concrete next-steps plan** to build the booking + payment models/resources.
+
+---
+
+# TODO — Eindhoven Cycling Tours (Laravel + Filament + Mollie) MVP
 
 ## 0) Repo + baseline
-- [x] Create Laravel app + Git repo
-- [x] Configure .env: APP_URL, DB, MAIL, QUEUE, timezone (Europe/Amsterdam), locale (en)
-- [x] Add basic error logging + env separation (local/staging/prod)
 
-## 1) Stack overview (for README)
-- [x] Laravel (PHP 8.2+)
-- [x] DB: MySQL/MariaDB
-- [x] Frontend: Blade + Tailwind (or simple CSS)
-- [x] Admin: Filament Panel
-- [ ] Payments: Stripe Checkout + Webhooks
-- [ ] Mail: SMTP (simple provider)
-- [x] Storage: public disk (uploads), later optimize images (post-MVP)
-- [ ] Cron for cleanup jobs + queue worker (or sync queue for MVP)
+* [x] Create Laravel app + Git repo
+* [x] Configure .env: APP_URL, DB, timezone (Europe/Amsterdam), locale (en)
+* [x] Storage: public disk + `storage:link`
+* [x] Filament assets publishing working (no vendor view overrides)
 
-## 2) MVP scope (features)
+## 1) Stack overview (README)
+
+* [x] Laravel (PHP 8.2+)
+* [x] DB: MySQL/MariaDB
+* [x] Frontend: Blade + Tailwind v3 + daisyUI
+* [x] Admin: Filament Panel (single operator)
+* [ ] Payments: Mollie Checkout + Webhooks
+* [ ] Mail: SMTP (Postmark/Mailgun/SES or simple SMTP)
+* [ ] Cron/queue: MVP can run sync, later queue + cron cleanup
+
+## 2) MVP scope
+
 ### Public site
-- [x] Home page (hero + CTA "Book a tour")
-- [ ] Tours overview (list)
-- [ ] Tour detail:
-  - [ ] description, highlights, meeting point, included items
-  - [ ] images (cover + gallery)
-  - [ ] variants (durations/prices)
-  - [ ] booking calendar/list of available slots
-- [ ] Booking flow (slot -> people -> checkout)
-- [ ] Payment success/cancel pages
-- [ ] Contact page + contact form
-- [ ] Impressions/Gallery page (site gallery using Media)
 
+* [x] Basic layout + nav
+* [ ] Tours overview (list)
+* [ ] Tour detail:
 
+    * [ ] cover + gallery images
+    * [ ] variants (duration/prices)
+    * [ ] upcoming availability (slots list)
+* [ ] Booking flow (slot -> people -> details -> pay)
+* [ ] Payment success/cancel pages
+* [ ] Contact form
+* [ ] Impressions page (site gallery)
 
-### Booking rules (core)
-- [ ] Host creates Slots (dates/times) per TourVariant
-- [ ] Slot has min/max participants
-- [ ] Booking cutoff (e.g. cannot book within X hours of start)
-- [ ] Cancellation cutoff (e.g. refunds allowed only until X hours before)
-- [ ] Upfront payment required (no-show = paid)
+### Booking rules
 
-## 3) Data model (minimal)
+* [ ] Host creates Slots per TourVariant
+* [ ] Slot has min/max participants
+* [ ] Booking cutoff hours (no booking within X hours)
+* [ ] Cancellation cutoff hours (refund allowed only until X hours)
+* [ ] Upfront payment required (no-show = paid)
+
+## 3) Data model
+
 ### Content
-- [x] Tour: title, slug, description, highlights, meeting_point, is_active
-- [x] TourVariant: tour_id, label (e.g. "2 hours"), duration_minutes, price_per_person_cents, currency
-- [x] Media: file_path, title (opt), alt (required), caption (opt), credits (opt)
-- [ ] Mediables pivot (polymorphic):
-  - [ ] media_id, mediable_type, mediable_id
-  - [ ] role (cover|gallery|site_gallery), sort_order
 
-### Booking/Payments
-- [ ] Slot: variant_id, starts_at, min_people, max_people, booking_cutoff_hours, cancel_cutoff_hours, status
-- [ ] Booking: slot_id, name, email, phone (opt), people_count, total_amount_cents, currency, status (pending|confirmed|canceled|expired)
-- [ ] Payment: booking_id, stripe_session_id, stripe_payment_intent_id, status (pending|paid|failed|refunded)
+* [x] Tour
+* [x] TourVariant
+* [x] Media
+* [x] Mediables pivot (role + sort_order) + working attach UI
+
+### Booking/Payments (MVP)
+
+* [ ] Slot
+
+    * [ ] tour_variant_id
+    * [ ] starts_at (datetime)
+    * [ ] min_people, max_people
+    * [ ] booking_cutoff_hours, cancel_cutoff_hours
+    * [ ] status (active|canceled)
+* [ ] Booking
+
+    * [ ] slot_id
+    * [ ] name, email, phone (optional)
+    * [ ] people_count
+    * [ ] unit_price_cents, total_amount_cents, currency
+    * [ ] status (pending|paid|confirmed|canceled|expired|failed)
+    * [ ] paid_at, confirmed_at, canceled_at (nullable datetimes)
+* [ ] Payment
+
+    * [ ] booking_id
+    * [ ] provider (mollie)
+    * [ ] provider_payment_id (Mollie payment id)
+    * [ ] provider_status (open|paid|failed|canceled|expired|refunded)
+    * [ ] amount_cents, currency
+    * [ ] webhook_payload (json) optional (debug)
+    * [ ] paid_at (nullable)
 
 ## 4) Admin/CMS (Filament)
-- [x] Install Filament Panel + admin auth (single operator)
-- [x] MediaResource:
-  - [x] upload image
-  - [x] alt required, caption/credits optional
-  - [ ] list + search + preview
-- [x] TourResource:
-  - [x] fields: title/slug/desc/highlights/meeting point/active
-  - [x] relation manager: Variants
-  - [ ] relation manager: Images (Media attach + role + ordering)
-- [x ] Variant relation manager:
-  - [x] create/edit duration + price
-  - [ ] relation manager: Slots
-- [ ] Slot management:
-  - [ ] quick-create slots (date/time, capacity, cutoffs)
-  - [ ] occupancy display (confirmed seats / max)
-- [ ] BookingResource:
-  - [ ] list upcoming + filters (paid/confirmed/canceled)
-  - [ ] detail view read-only-ish
-  - [ ] actions: cancel (manual), refund note (MVP), resend email (optional)
-- [ ] Settings (optional MVP):
-  - [ ] contact email/phone
-  - [ ] default meeting point
-  - [ ] social links
 
-## 5) Booking flow (public)
-- [ ] Availability listing (simple first):
-  - [ ] show next X upcoming slots per tour variant
-  - [ ] optional month view later
-- [ ] Booking form (slot + people_count + customer details)
-- [ ] Create Booking as pending + create Stripe Checkout Session
-- [ ] Redirect to Stripe Checkout
-- [ ] Stripe webhook verifies payment -> Booking confirmed + seats locked in
-- [ ] Expire pending bookings older than N minutes -> status expired (release hold)
+* [x] MediaResource (upload + fields)
+* [x] TourResource
+* [x] Variants relation manager
+* [x] Media attach relation manager
+* [ ] Slots under TourVariant:
 
-## 6) Payments (Stripe)
-- [ ] Stripe keys + webhook secret in env
-- [ ] Checkout Session:
-  - [ ] line item = people_count * price_per_person
-  - [ ] include booking_id in metadata
-- [ ] Webhook endpoint:
-  - [ ] verify signature
-  - [ ] handle checkout.session.completed -> mark paid/confirmed
-  - [ ] store session_id + payment_intent_id
-- [ ] Refund workflow (MVP manual in admin):
-  - [ ] check cancellation cutoff
-  - [ ] call Stripe refund API (post-MVP if needed)
+    * [ ] SlotsRelationManager (CRUD starts_at, capacity, cutoffs, status)
+    * [ ] Occupancy display: confirmed seats / max
+* [ ] BookingResource
+
+    * [ ] list + filters (pending/paid/confirmed/canceled/expired)
+    * [ ] show: customer + slot + payment status
+    * [ ] actions: cancel (manual), mark as refunded (MVP note), resend email (optional)
+* [ ] PaymentResource (optional)
+
+    * [ ] mostly read-only, link to booking, show Mollie id/status
+
+## 5) Public booking flow
+
+* [ ] Slot list page (per tour or variant) showing next X upcoming slots
+* [ ] Booking form:
+
+    * [ ] validate min/max people
+    * [ ] enforce booking cutoff
+* [ ] Create Booking (pending) + create Mollie payment
+* [ ] Redirect to Mollie checkout
+* [ ] Webhook updates booking/payment state
+* [ ] “Thank you” page shows booking reference
+
+## 6) Mollie payments
+
+* [ ] Mollie API key in env
+* [ ] Create payment:
+
+    * [ ] amount = people_count * price_per_person
+    * [ ] metadata includes booking_id
+    * [ ] redirectUrl = success route with booking reference
+    * [ ] webhookUrl = webhook route
+* [ ] Webhook handler:
+
+    * [ ] fetch payment from Mollie (don’t trust request blindly)
+    * [ ] update Payment + Booking status
+    * [ ] on paid: confirm booking + lock seats
+* [ ] Expire pending bookings (cron):
+
+    * [ ] pending > N minutes -> expired (release seat hold if implemented)
 
 ## 7) Emails (MVP)
-- [ ] Confirmation email (on confirmed booking):
-  - [ ] date/time, meeting point, #people, contact info, policy
-- [ ] Admin notification email on new confirmed booking
 
-## 8) Policy + pages + UX
-- [ ] Terms + cancellation/no-show policy (clear cutoff rules)
-- [ ] Privacy policy (basic)
-- [ ] Payment error states: sold out, slot closed, payment canceled/failed
+* [ ] Booking confirmation (after paid/confirmed)
+* [ ] Admin notification on new confirmed booking
 
-## 9) Security + reliability
-- [ ] Prevent overbooking:
-  - [ ] DB transaction + row lock on Slot when creating booking/hold
-- [ ] Rate limit booking + contact form
-- [ ] Logs for webhook processing and payment state changes
-- [ ] Backups
+## 8) Policies + pages
+
+* [ ] Cancellation/no-show policy page
+* [ ] Privacy policy
+* [ ] Terms
+
+## 9) Reliability / security
+
+* [ ] Prevent overbooking (transaction + row locking on slot)
+* [ ] Rate limit booking + webhook
+* [ ] Logs for webhook + payment transitions
+* [ ] Backups
+
+---
 
 ## 10) Testing checklist
 - [ ] Successful booking: paid -> confirmed + email
