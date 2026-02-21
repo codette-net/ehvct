@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Tour;
+use App\Http\Controllers\MollieWebhookController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
