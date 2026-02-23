@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-
+use Illuminate\Support\Carbon;
 class Slot extends Model
 {
     protected $fillable = [
@@ -21,6 +21,16 @@ class Slot extends Model
     protected $casts = [
         'starts_at' => 'datetime',
     ];
+
+    public function bookingClosesAt(): Carbon {
+        return $this->starts_at->copy()->subHours((int) $this->booking_cutoff_hours);
+    }
+
+    public function isBookableNow(): bool {
+        return $this->status === 'active' &&
+            $this->starts_at->isFuture() &&
+            now()->lt($this->bookingClosesAt());
+    }
 
     public function variant(): BelongsTo
     {

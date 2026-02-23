@@ -52,10 +52,36 @@
                         @endforeach
                     </div>
 
-                    <div class="mt-4">
-                        <button class="btn btn-primary btn-block" disabled>
-                            Choose date & time
-                        </button>
+                    <div class="mt-4 space-y-4">
+                        @foreach($tour->variants as $variant)
+                            <div class="bg-base-100 rounded p-3 border">
+                                <div class="flex justify-between items-start gap-3">
+                                    <div>
+                                        <div class="font-semibold">{{ $variant->label }}</div>
+                                        <div class="text-sm opacity-70">{{ $variant->duration_minutes }} min</div>
+                                    </div>
+                                    <div class="font-semibold">
+                                        €{{ number_format($variant->price_per_person_cents / 100, 2) }}
+                                    </div>
+                                </div>
+
+                                <div class="mt-3 space-y-2">
+                                    @php
+                                        $slots = $variant->slots->filter(fn($s) => $s->isBookableNow());
+                                    @endphp
+
+                                    @forelse($slots as $slot)
+                                        <a href="{{ route('bookings.create', $slot) }}"
+                                           class="btn btn-outline btn-sm w-full justify-between">
+                                            <span>{{ $slot->starts_at->format('D d M, H:i') }}</span>
+                                            <span class="opacity-70">Seats left: {{ $slot->remainingSeats() }}</span>
+                                        </a>
+                                    @empty
+                                        <div class="text-sm opacity-70">No bookable slots right now.</div>
+                                    @endforelse
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

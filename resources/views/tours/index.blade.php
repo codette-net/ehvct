@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+    <section class="max-w-6xl mx-auto px-4 py-14">
+
     <h1 class="text-3xl font-bold mb-6">Tours</h1>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -18,4 +20,6 @@
             <p>No tours yet.</p>
         @endforelse
     </div>
+        <section class="max-w-6xl mx-auto px-4 py-14">
+
 @endsection

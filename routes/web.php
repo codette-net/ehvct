@@ -5,6 +5,7 @@ use App\Models\Tour;
 use App\Http\Controllers\MollieWebhookController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TourPublicController;
+use App\Http\Controllers\BookingController;
 
 
 /*
@@ -24,6 +25,16 @@ Route::view('/logoding', 'pages.logoding')->name('logoding');
 
 Route::get('/tours', [TourPublicController::class, 'index'])->name('tours.index');
 Route::get('/tours/{tour:slug}', [TourPublicController::class, 'show'])->name('tours.show');
+
+// Booking
+Route::get('/book/{slot}',[BookingController::class, 'create'])->name('bookings.create');
+Route::post('/book/{slot}',[BookingController::class, 'store'])->name('bookings.store');
+
+// Success page
+Route::get('/payment/success/{reference}', [PaymentController::class, 'success'])->name('payment.success');
+
+// mollie webhooks
+Route::post('/webhooks/mollie', MollieWebhookController::class)->name('webhooks.mollie');
 
 Route::view('/about', 'pages.about')->name('about');
 Route::view('/impressions', 'pages.impressions')->name('impressions');

@@ -30,7 +30,8 @@ class MolliePayments
             ],
             'description' => "Eindhoven Cycling Tours — {$booking->reference}",
             'redirectUrl' => route('payment.success', ['reference' => $booking->reference]),
-            'webhookUrl' => route('webhooks.mollie'),
+//            'webhookUrl' => route('webhooks.mollie'),
+        'webhookUrl' => config('services.mollie.webhook_url'),
             'metadata' => [
                 'booking_id' => $booking->id,
                 'reference' => $booking->reference,

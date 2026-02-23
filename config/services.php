@@ -33,6 +33,7 @@ return [
 
     'mollie' => [
         'key' => env('MOLLIE_API_KEY'),
+        'webhook_url' => env('MOLLIE_WEBHOOK_URL'),
     ],
 
 ];
