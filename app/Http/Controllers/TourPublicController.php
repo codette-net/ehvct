@@ -10,7 +10,13 @@ class TourPublicController extends Controller
     {
         $tours = Tour::query()
             ->where('is_active', true)
-            ->orderBy('title')
+            ->with([
+                'variants:id,tour_id,price_per_person_cents,currency,label',
+                'coverImage' => function ($q) {
+                    $q->orderBy('mediables.sort_order');
+                },
+            ])
+            ->orderBy('id')
             ->get();
 
         return view('tours.index', compact('tours'));
