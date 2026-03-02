@@ -32,18 +32,18 @@ Here’s an updated **TODO** (switching to **Mollie** and reflecting what you’
     * [ ] cover + gallery images
     * [ ] variants (duration/prices)
     * [ ] upcoming availability (slots list)
-* [ ] Booking flow (slot -> people -> details -> pay)
+* [x] Booking flow (slot -> people -> details -> pay)
 * [ ] Payment success/cancel pages
 * [ ] Contact form
 * [ ] Impressions page (site gallery)
 
 ### Booking rules
 
-* [ ] Host creates Slots per TourVariant
-* [ ] Slot has min/max participants
-* [ ] Booking cutoff hours (no booking within X hours)
-* [ ] Cancellation cutoff hours (refund allowed only until X hours)
-* [ ] Upfront payment required (no-show = paid)
+* [x] Host creates Slots per TourVariant
+* [x] Slot has min/max participants
+* [x] Booking cutoff hours (no booking within X hours)
+* [x] Cancellation cutoff hours (refund allowed only until X hours)
+* [x] Upfront payment required (no-show = paid)
 
 ## 3) Data model
 
@@ -56,30 +56,30 @@ Here’s an updated **TODO** (switching to **Mollie** and reflecting what you’
 
 ### Booking/Payments (MVP)
 
-* [ ] Slot
+* [x] Slot
 
-    * [ ] tour_variant_id
-    * [ ] starts_at (datetime)
-    * [ ] min_people, max_people
-    * [ ] booking_cutoff_hours, cancel_cutoff_hours
-    * [ ] status (active|canceled)
-* [ ] Booking
+    * [x] tour_variant_id
+    * [x] starts_at (datetime)
+    * [x] min_people, max_people
+    * [x] booking_cutoff_hours, cancel_cutoff_hours
+    * [x] status (active|canceled)
+* [x] Booking
 
-    * [ ] slot_id
-    * [ ] name, email, phone (optional)
-    * [ ] people_count
-    * [ ] unit_price_cents, total_amount_cents, currency
-    * [ ] status (pending|paid|confirmed|canceled|expired|failed)
-    * [ ] paid_at, confirmed_at, canceled_at (nullable datetimes)
-* [ ] Payment
+    * [x] slot_id
+    * [x] name, email, phone (optional)
+    * [x] people_count
+    * [x] unit_price_cents, total_amount_cents, currency
+    * [x] status (pending|paid|confirmed|canceled|expired|failed)
+    * [x] paid_at, confirmed_at, canceled_at (nullable datetimes)
+* [x] Payment
 
-    * [ ] booking_id
-    * [ ] provider (mollie)
-    * [ ] provider_payment_id (Mollie payment id)
-    * [ ] provider_status (open|paid|failed|canceled|expired|refunded)
-    * [ ] amount_cents, currency
-    * [ ] webhook_payload (json) optional (debug)
-    * [ ] paid_at (nullable)
+    * [x] booking_id
+    * [x] provider (mollie)
+    * [x] provider_payment_id (Mollie payment id)
+    * [x] provider_status (open|paid|failed|canceled|expired|refunded)
+    * [x] amount_cents, currency
+    * [x] webhook_payload (json) optional (debug)
+    * [x] paid_at (nullable)
 
 ## 4) Admin/CMS (Filament)
 
@@ -102,20 +102,20 @@ Here’s an updated **TODO** (switching to **Mollie** and reflecting what you’
 
 ## 5) Public booking flow
 
-* [ ] Slot list page (per tour or variant) showing next X upcoming slots
-* [ ] Booking form:
+* [x] Slot list page (per tour or variant) showing next X upcoming slots
+* [x] Booking form:
 
-    * [ ] validate min/max people
-    * [ ] enforce booking cutoff
-* [ ] Create Booking (pending) + create Mollie payment
-* [ ] Redirect to Mollie checkout
+    * [x] validate min/max people
+    * [x] enforce booking cutoff
+* [x] Create Booking (pending) + create Mollie payment
+* [x] Redirect to Mollie checkout
 * [ ] Webhook updates booking/payment state
-* [ ] “Thank you” page shows booking reference
+* [x] “Thank you” page shows booking reference
 
 ## 6) Mollie payments
 
-* [ ] Mollie API key in env
-* [ ] Create payment:
+* [x] Mollie API key in env
+* [x] Create payment:
 
     * [ ] amount = people_count * price_per_person
     * [ ] metadata includes booking_id

@@ -5,6 +5,9 @@ namespace App\Services;
 use App\Models\Booking;
 use App\Models\Payment;
 use Mollie\Api\MollieApiClient;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\BookingConfirmedMail;
+use App\Mail\AdminBookingConfirmedMail;
 
 class MolliePayments
 {
@@ -80,11 +83,22 @@ class MolliePayments
         }
 
         if ($molliePayment->isPaid()) {
+            $wasConfirmed = in_array($booking->status, ['confirmed','paid'], true);
+
             $booking->update([
                 'status' => 'confirmed',
                 'paid_at' => $booking->paid_at ?? now(),
                 'confirmed_at' => $booking->confirmed_at ?? now(),
             ]);
+
+            if (! $wasConfirmed) {
+                Mail::to($booking->email)->send(new BookingConfirmedMail($booking));
+
+                $admin = config('mail.admin_notify') ?? env('ADMIN_NOTIFY_EMAIL');
+                if ($admin) {
+                    Mail::to($admin)->send(new AdminBookingConfirmedMail($booking));
+                }
+            }
         } elseif ($molliePayment->isCanceled() || $molliePayment->isExpired() || $molliePayment->isFailed()) {
             $booking->update([
                 'status' => $molliePayment->isCanceled() ? 'canceled' : ($molliePayment->isExpired() ? 'expired' : 'failed'),
