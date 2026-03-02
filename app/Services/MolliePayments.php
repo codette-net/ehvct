@@ -23,6 +23,20 @@ class MolliePayments
             'provider_status' => 'open',
         ]);
 
+        \Log::info('Creating Mollie payment', [
+            'amount' => [
+                'currency' => $booking->currency,
+                'value' => number_format($booking->total_amount_cents / 100, 2, '.', ''),
+            ],
+            'description' => "Eindhoven Cycling Tours — {$booking->reference}",
+            'redirectUrl' => route('payment.success', ['reference' => $booking->reference]),
+            'webhookUrl' => config('services.mollie.webhook_url'),
+            'metadata' => [
+                'booking_id' => $booking->id,
+                'reference' => $booking->reference,
+            ],
+        ]);
+
         $molliePayment = $this->mollie->payments->create([
             'amount' => [
                 'currency' => $booking->currency,
