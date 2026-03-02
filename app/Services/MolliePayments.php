@@ -74,7 +74,7 @@ class MolliePayments
         if ($payment) {
             $payment->update([
                 'provider_status' => $molliePayment->status,
-                'webhook_payload' => $molliePayment->jsonSerialize(),
+                'webhook_payload' => json_decode(json_encode($molliePayment), true),
                 'paid_at' => $molliePayment->isPaid() ? now() : $payment->paid_at,
             ]);
         }
