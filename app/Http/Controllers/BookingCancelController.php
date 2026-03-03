@@ -7,23 +7,28 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 
+
 class BookingCancelController extends Controller
 {
-    public function request(string $reference)
+    private const CANCEL_LINK_TTL_MINUTES = 30;
+
+    public function request(string $reference): \Illuminate\View\View
     {
         $booking = $this->findBookingOrFail($reference);
 
+        $now = now();
         $cutoff = $this->cancellationCutoffFor($booking);
         $canCancel = $this->canCancel($booking);
 
         $cancelPostUrl = URL::temporarySignedRoute(
             'bookings.cancel.submit',
-            now()->addMinutes(30),
+            $now->copy()->addMinutes(self::CANCEL_LINK_TTL_MINUTES),
             ['reference' => $booking->reference]
         );
 
         return view('bookings.cancel', compact('booking', 'cutoff', 'canCancel', 'cancelPostUrl'));
     }
+
 
     public function submit(Request $request, string $reference)
     {
@@ -33,7 +38,8 @@ class BookingCancelController extends Controller
             'message' => ['nullable', 'string', 'max:1000'],
         ]);
 
-        $canCancel = $this->canCancel($booking);
+        $cutoff = $this->cancellationCutoffFor($booking);
+        $canCancel = now()->lt($cutoff);
 
         // MVP: send email to admin; no auto-cancel for now.
         $adminEmail = $this->adminNotifyEmail();
