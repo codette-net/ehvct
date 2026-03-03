@@ -29,6 +29,9 @@ Route::get('/tours/{tour:slug}', [TourPublicController::class, 'show'])->name('t
 // Booking
 Route::get('/book/{slot}',[BookingController::class, 'create'])->name('bookings.create');
 Route::post('/book/{slot}',[BookingController::class, 'store'])->name('bookings.store');
+// Booking cancel
+Route::get('booking/{reference}/cancel',[BookingController::class, 'request'])->name('bookings.cancel.request');
+Route::post('booking/{reference}/cancel',[BookingController::class, 'submit'])->name('bookings.cancel.submit');
 
 // Success page
 Route::get('/payment/success/{reference}', [PaymentController::class, 'success'])->name('payment.success');
