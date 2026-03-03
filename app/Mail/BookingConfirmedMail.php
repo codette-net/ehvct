@@ -4,57 +4,47 @@ namespace App\Mail;
 
 use App\Models\Booking;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\URL;
 
 class BookingConfirmedMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
     public function __construct(public Booking $booking)
     {
-
-    }
-    public function build() {
         $this->booking->loadMissing('slot.variant.tour');
-
-        return $this
-            ->subject('Booking Confirmed - ' . $this->booking->reference)
-            ->markdown('emails.bookings.confirmed',[
-                'booking' => $this->booking,
-            ]);
     }
-    /**
-     * Get the message envelope.
-     */
+
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Booking Confirmed Mail',
+            subject: 'Booking confirmed — ' . $this->booking->reference,
         );
     }
 
-    /**
-     * Get the message content definition.
-     */
     public function content(): Content
     {
+        // Signed cancel link, expires in 7 days (adjust if you want shorter)
+        $cancelUrl = URL::temporarySignedRoute(
+            'bookings.cancel.request',
+            now()->addDays(7),
+            ['reference' => $this->booking->reference]
+        );
+
         return new Content(
-            markdown: 'emails.bookings.confirmed',
+            view: 'emails.bookings.confirmed-html',
+            text: 'emails.bookings.confirmed-text',
+            with: [
+                'booking' => $this->booking,
+                'cancelUrl' => $cancelUrl,
+            ],
         );
     }
 
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
-     */
     public function attachments(): array
     {
         return [];

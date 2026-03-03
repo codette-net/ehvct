@@ -23,7 +23,7 @@
                     </p>
                 </div>
 
-                <form method="POST" action="{{ route('bookings.cancel.submit', $booking->reference) }}" class="mt-6 space-y-3">
+                <form method="POST" action="{{ $cancelPostUrl }}" class="mt-6 space-y-3">
                     @csrf
                     <label class="form-control">
                         <div class="label"><span class="label-text">Message (optional)</span></div>

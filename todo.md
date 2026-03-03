@@ -1,6 +1,3 @@
-Here’s an updated **TODO** (switching to **Mollie** and reflecting what you’ve already finished), plus a **concrete next-steps plan** to build the booking + payment models/resources.
-
----
 
 # TODO — Eindhoven Cycling Tours (Laravel + Filament + Mollie) MVP
 
@@ -17,25 +14,23 @@ Here’s an updated **TODO** (switching to **Mollie** and reflecting what you’
 * [x] DB: MySQL/MariaDB
 * [x] Frontend: Blade + Tailwind v3 + daisyUI
 * [x] Admin: Filament Panel (single operator)
-* [ ] Payments: Mollie Checkout + Webhooks
+* [x] Payments: Mollie Checkout + Webhooks
 * [ ] Mail: SMTP (Postmark/Mailgun/SES or simple SMTP)
 * [ ] Cron/queue: MVP can run sync, later queue + cron cleanup
 
-## 2) MVP scope
-
-### Public site
-
-* [x] Basic layout + nav
-* [ ] Tours overview (list)
-* [ ] Tour detail:
-
-    * [ ] cover + gallery images
-    * [ ] variants (duration/prices)
-    * [ ] upcoming availability (slots list)
-* [x] Booking flow (slot -> people -> details -> pay)
-* [ ] Payment success/cancel pages
-* [ ] Contact form
-* [ ] Impressions page (site gallery)
+## 2) Public site
+- [x] Tours overview (cards)
+    - [x] cover image
+    - [x] "starting from" (min variant price)
+- [x] Tour detail:
+    - [x] variants list
+    - [x] upcoming slots per variant
+    - [x] booking CTA -> booking form
+- [x] Booking flow (slot -> people -> details -> Mollie -> return)
+- [x] Payment success page
+- [ ] Payment cancel/fail page (nice UX)
+- [ ] Contact page + contact form
+- [ ] Impressions page (site gallery)
 
 ### Booking rules
 
@@ -115,31 +110,32 @@ Here’s an updated **TODO** (switching to **Mollie** and reflecting what you’
 ## 6) Mollie payments
 
 * [x] Mollie API key in env
+* [x] Webhook endpoint reachable on preview/prod
+* [x] CSRF excluded for /webhooks/mollie
+* [x] Webhook updates Payment + Booking state
 * [x] Create payment:
 
     * [ ] amount = people_count * price_per_person
     * [ ] metadata includes booking_id
     * [ ] redirectUrl = success route with booking reference
     * [ ] webhookUrl = webhook route
-* [ ] Webhook handler:
 
-    * [ ] fetch payment from Mollie (don’t trust request blindly)
-    * [ ] update Payment + Booking status
-    * [ ] on paid: confirm booking + lock seats
-* [ ] Expire pending bookings (cron):
-
-    * [ ] pending > N minutes -> expired (release seat hold if implemented)
+    * [ ] Idempotency guard (no double email / no double confirm)
+    * [ ] Pending cleanup job (expire pending older than N minutes) + cron
 
 ## 7) Emails (MVP)
+- [x] Booking confirmation email on confirmed
+- [x] Admin notification email on confirmed
+- [ ] Improve email template (HTML + clean text fallback)
+- [ ] Add booking policy snippet (cutoff times)
+- [ ] Add “Manage booking” section (cancel request link)
 
-* [ ] Booking confirmation (after paid/confirmed)
-* [ ] Admin notification on new confirmed booking
-
-## 8) Policies + pages
-
-* [ ] Cancellation/no-show policy page
-* [ ] Privacy policy
-* [ ] Terms
+## 8) Cancellation (MVP)
+- [x] Cancel request page (reference link)
+- [ ] Signed cancel link (temporarySignedRoute)
+- [ ] Cutoff rules shown + enforced
+- [ ] Admin gets cancel request email
+- [ ] (Optional) store cancel_request row in DB
 
 ## 9) Reliability / security
 
@@ -151,11 +147,13 @@ Here’s an updated **TODO** (switching to **Mollie** and reflecting what you’
 ---
 
 ## 10) Testing checklist
-- [ ] Successful booking: paid -> confirmed + email
-- [ ] Checkout canceled: booking stays pending -> expires -> seats released
-- [ ] Concurrent booking attempts do not exceed capacity
-- [ ] Booking cutoff works
-- [ ] Admin can CRUD tours/variants/slots/media easily
+- [x] Paid -> confirmed via webhook
+- [ ] Webhook retry does not duplicate emails
+- [ ] Checkout canceled -> booking canceled/failed
+- [ ] Expired -> booking expired
+- [ ] Concurrent booking doesn’t exceed capacity
+- [ ] Booking cutoff blocks booking
+- [ ] Cancel cutoff messaging correct
 
 ## 11) Nice-to-haves (post-MVP)
 - [ ] Proper calendar month UI

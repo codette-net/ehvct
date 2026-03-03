@@ -21,7 +21,7 @@
 
                 <tr>
                     <td style="padding:22px;">
-                        <h1 style="margin:0 0 10px 0;font-size:22px;line-height:1.3;">Booking confirmed ✅</h1>
+                        <h1 style="margin:0 0 10px 0;font-size:22px;line-height:1.3;">Booking confirmed!</h1>
                         <p style="margin:0 0 16px 0;color:#374151;">Hi {{ $booking->name }}, your booking is confirmed.</p>
 
                         <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;margin:14px 0 8px 0;">

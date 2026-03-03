@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\URL;
 
 class BookingCancelController extends Controller
 {
@@ -15,7 +16,13 @@ class BookingCancelController extends Controller
         $cutoff = $this->cancellationCutoffFor($booking);
         $canCancel = $this->canCancel($booking);
 
-        return view('bookings.cancel', compact('booking', 'cutoff', 'canCancel'));
+        $cancelPostUrl = URL::temporarySignedRoute(
+            'bookings.cancel.submit',
+            now()->addMinutes(30),
+            ['reference' => $booking->reference]
+        );
+
+        return view('bookings.cancel', compact('booking', 'cutoff', 'canCancel', 'cancelPostUrl'));
     }
 
     public function submit(Request $request, string $reference)

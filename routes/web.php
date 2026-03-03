@@ -31,8 +31,12 @@ Route::get('/tours/{tour:slug}', [TourPublicController::class, 'show'])->name('t
 Route::get('/book/{slot}',[BookingController::class, 'create'])->name('bookings.create');
 Route::post('/book/{slot}',[BookingController::class, 'store'])->name('bookings.store');
 // Booking cancel
-Route::get('booking/{reference}/cancel',[BookingCancelController::class, 'request'])->name('bookings.cancel.request');
-Route::post('booking/{reference}/cancel',[BookingCancelController::class, 'submit'])->name('bookings.cancel.submit');
+Route::get('booking/{reference}/cancel',[BookingCancelController::class, 'request'])
+    ->middleware('signed')
+    ->name('bookings.cancel.request');
+Route::post('booking/{reference}/cancel',[BookingCancelController::class, 'submit'])
+    ->middleware('signed')
+    ->name('bookings.cancel.submit');
 
 
 // Success page
