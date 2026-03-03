@@ -6,6 +6,7 @@ use App\Http\Controllers\MollieWebhookController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TourPublicController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\BookingCancelController;
 
 
 /*
@@ -30,8 +31,9 @@ Route::get('/tours/{tour:slug}', [TourPublicController::class, 'show'])->name('t
 Route::get('/book/{slot}',[BookingController::class, 'create'])->name('bookings.create');
 Route::post('/book/{slot}',[BookingController::class, 'store'])->name('bookings.store');
 // Booking cancel
-Route::get('booking/{reference}/cancel',[BookingController::class, 'request'])->name('bookings.cancel.request');
-Route::post('booking/{reference}/cancel',[BookingController::class, 'submit'])->name('bookings.cancel.submit');
+Route::get('booking/{reference}/cancel',[BookingCancelController::class, 'request'])->name('bookings.cancel.request');
+Route::post('booking/{reference}/cancel',[BookingCancelController::class, 'submit'])->name('bookings.cancel.submit');
+
 
 // Success page
 Route::get('/payment/success/{reference}', [PaymentController::class, 'success'])->name('payment.success');
