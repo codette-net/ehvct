@@ -115,26 +115,26 @@
 * [x] Webhook updates Payment + Booking state
 * [x] Create payment:
 
-    * [ ] amount = people_count * price_per_person
-    * [ ] metadata includes booking_id
-    * [ ] redirectUrl = success route with booking reference
-    * [ ] webhookUrl = webhook route
+    * [x] amount = people_count * price_per_person
+    * [x] metadata includes booking_id
+    * [x] redirectUrl = success route with booking reference
+    * [x] webhookUrl = webhook route
 
-    * [ ] Idempotency guard (no double email / no double confirm)
+    * [x] Idempotency guard (no double email / no double confirm)
     * [ ] Pending cleanup job (expire pending older than N minutes) + cron
 
 ## 7) Emails (MVP)
 - [x] Booking confirmation email on confirmed
 - [x] Admin notification email on confirmed
-- [ ] Improve email template (HTML + clean text fallback)
+- [x] Improve email template (HTML + clean text fallback)
 - [ ] Add booking policy snippet (cutoff times)
 - [ ] Add “Manage booking” section (cancel request link)
 
 ## 8) Cancellation (MVP)
 - [x] Cancel request page (reference link)
-- [ ] Signed cancel link (temporarySignedRoute)
+- [x] Signed cancel link (temporarySignedRoute)
 - [ ] Cutoff rules shown + enforced
-- [ ] Admin gets cancel request email
+- [x] Admin gets cancel request email
 - [ ] (Optional) store cancel_request row in DB
 
 ## 9) Reliability / security
@@ -148,7 +148,7 @@
 
 ## 10) Testing checklist
 - [x] Paid -> confirmed via webhook
-- [ ] Webhook retry does not duplicate emails
+- [x] Webhook retry does not duplicate emails
 - [ ] Checkout canceled -> booking canceled/failed
 - [ ] Expired -> booking expired
 - [ ] Concurrent booking doesn’t exceed capacity

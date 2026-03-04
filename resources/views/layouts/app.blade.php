@@ -9,7 +9,7 @@
 </head>
 <body class="min-h-screen">
 
-<nav class="navbar shadow-sm">
+<nav class="navbar shadow-sm fixed top-0 z-50 bg-base-100/90 backdrop-blur-sm">
     <div class="navbar-start">
         <div class="dropdown">
             <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -17,25 +17,18 @@
             </div>
             <ul
                 tabindex="-1"
-                class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                <li>
-                    <details>
-                        <summary>Tours</summary>
-                        <ul class="p-2 bg-base-100 w-40 z-1">
-                            <li><a href="{{ route('tours.index') }}">all tours</a>
-                            </li>
-                            <li><a>Submenu 2</a></li>
-                        </ul>
-                    </details>
+                class="menu menu-sm dropdown-content bg-base-100 rounded-sm w-60 min-h-70 sz-1 p-2 shadow">
+                <li class="mb-2">
+                    <a href="{{ route('tours.index') }}">Tours</a>
                 </li>
-                <li>
+                <li class="mb-2">
                     <a href="{{ route('about') }}">About</a>
                 </li>
 
-                <li>
+                <li class="mb-2">
                     <a href="{{ route('impressions') }}">Impressions</a>
                 </li>
-                <li>
+                <li class="mb-2">
                     <a href="{{ route('contact') }}">Contact</a>
                 </li>
             </ul>
@@ -46,13 +39,7 @@
     <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
             <li>
-                <details>
-                    <summary>Tours</summary>
-                    <ul class="p-2 bg-base-100 w-40 z-1">
-                        <li><a href="{{ route('tours.index') }}">all tours</a>
-                        <li><a>Submenu 2</a></li>
-                    </ul>
-                </details>
+                <a href="{{ route('tours.index') }}">Tours</a>
             </li>
             <li>
                 <a href="{{ route('about') }}">About</a>
@@ -71,7 +58,7 @@
     </div>
 </nav>
 
-<main class="mx-auto rj-gradient-sand mask-container">
+<main class="mx-auto mt-6 rj-gradient-sand mask-container">
     @yield('content')
 </main>
 <footer class="footer sm:footer-horizontal bg-accent text-accent-content p-10 mt-4">
