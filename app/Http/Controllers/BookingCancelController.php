@@ -55,7 +55,7 @@ class BookingCancelController extends Controller
         );
 
         return redirect()
-            ->route('bookings.cancel.request', $booking->reference)
+            ->to($this->signedCancelRequestUrl($booking))
             ->with('status', 'Cancellation request sent. We will contact you by e-mail shortly.');
     }
 
@@ -99,5 +99,13 @@ class BookingCancelController extends Controller
             'Message:',
             $messageText,
         ]);
+    }
+    private function signedCancelRequestUrl(Booking $booking): string
+    {
+        return URL::temporarySignedRoute(
+            'bookings.cancel.request',
+            now()->addMinutes(self::CANCEL_LINK_TTL_MINUTES),
+            ['reference' => $booking->reference]
+        );
     }
 }
