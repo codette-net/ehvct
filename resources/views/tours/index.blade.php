@@ -35,10 +35,10 @@
 {{--                            todo get 'from price'--}}
 {{--                            <p class="text-lg font-semibold text-black cursor-auto my-3">&euro;20</p>--}}
                             @if($tour->starting_from_cents !== null)
-                                <p class="cursor-auto my-3 ml-2">
+                                <div class="cursor-auto my-3 ml-2 flex flex-col">
                                     <div class="text-sm opacity-70">Starting from</div>
                                     <div class="text-lg font-semibold">{{ $tour->starting_from_formatted }}</div>
-                                </p>
+                                </div>
                             @endif
 {{--                            <del>--}}
 {{--                                <p class="text-sm text-gray-600 cursor-auto ml-2">$199</p>--}}

@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="max-w-2xl">
+    <section class="max-w-6xl mx-auto px-4 py-14">
+
         <div class="breadcrumbs text-sm mb-4">
             <ul>
                 <li><a href="{{ route('tours.index') }}">Tours</a></li>
@@ -12,20 +13,19 @@
 
         <h1 class="text-3xl font-bold">Book your tour</h1>
 
-        <div class="mt-4 card bg-base-200">
+        <div class="mt-4 bg-neutral-content/60 p-4 rounded-lg shadow-lg max-w-4xl">
             <div class="card-body">
-                <div class="flex justify-between">
-                    <div>
+                <div class="grid grid-cols-2 flex-none gap-8 bg-neutral-content/60 p-4 items-end justify-center border-gray-500 rounded-md shadow-sm ">
+                    <div class="flex flex-col flex-none gap-2 border-r pr-4">
                         <div class="font-semibold">{{ $tour->title }}</div>
                         <div class="text-sm opacity-70">{{ $variant->label }}</div>
                         <div class="text-sm opacity-70">{{ $slot->starts_at->format('D d M Y, H:i') }}</div>
                     </div>
-                    <div class="text-right">
-                        <div class="font-semibold">
+                    <p class="text-center flex-none">
+                        <span class="font-semibold text-lg">
                             €{{ number_format($variant->price_per_person_cents / 100, 2) }}
-                        </div>
-                        <div class="text-sm opacity-70">per person</div>
-                    </div>
+                        </span> <span class="text-sm opacity-70">per person</span>
+                    </p>
                 </div>
 
                 @if(session('error'))
@@ -37,7 +37,7 @@
                 <form method="POST" action="{{ route('bookings.store', $slot) }}" class="mt-6 space-y-4">
                     @csrf
 
-                    <div class="steps steps-vertical">
+                    <div class="steps steps-horizontal">
                         <div class="step step-primary">Details</div>
                         <div class="step">Payment</div>
                         <div class="step">Confirmation</div>
@@ -89,5 +89,5 @@
                 </form>
             </div>
         </div>
-    </div>
+    </section>
 @endsection

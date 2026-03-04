@@ -1,44 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
+    <section class="max-w-6xl mx-auto px-4 py-14">
+
     <div class="breadcrumbs text-sm mb-4">
         <ul>
-            <li><a href="{{ route('tours.index') }}">Tours</a></li>
+            <li><a href="{{ route('tours.index') }}" class="underline">Tours</a></li>
             <li>{{ $tour->title }}</li>
         </ul>
     </div>
 
-    <div class="grid lg:grid-cols-3 gap-8">
+    <article class="grid md:grid-cols-3 gap-8 rj-tour bg-neutral-content/60 p-4 rounded-lg shadow-lg">
         <div class="lg:col-span-2">
             <h1 class="text-4xl font-bold">{{ $tour->title }}</h1>
 
-            <div class="prose max-w-none mt-6">
+            <div class="max-w-none mt-6 rj-description">
                 {!! $tour->description !!}
             </div>
 
-            <div class="mt-8">
-                <h2 class="text-2xl font-semibold">Highlights</h2>
-                <div class="prose max-w-none mt-3">
-                    {!! $tour->highlights !!}
-                </div>
-            </div>
 
-            <div class="mt-8">
-                <h2 class="text-2xl font-semibold">Meeting point</h2>
-                <p class="mt-2 opacity-80">{{ $tour->meeting_point ?: 'TBD' }}</p>
-            </div>
+
+
         </div>
 
         <aside class="lg:col-span-1">
-            <div class="card bg-base-200 sticky top-6">
+            <div class="card bg-primary/75 sticky top-6">
                 <div class="card-body">
                     <h3 class="card-title">Book this tour</h3>
-
-                    <p class="opacity-80 text-sm">
-                        Next step: show upcoming slots + variant selection here.
-                    </p>
-
-                    <div class="mt-4 space-y-2">
+                   <div class="mt-4 space-y-2">
                         @foreach($tour->variants as $variant)
                             <div class="flex justify-between items-center bg-base-100 rounded p-3">
                                 <div>
@@ -85,6 +74,20 @@
                     </div>
                 </div>
             </div>
+
         </aside>
-    </div>
+        <div class="grid md:grid-cols-3 col-span-3 gap-4">
+            <div class="p-2 border border-gray-500 rounded-md bg-base-100 bg-opacity-50 shadow">
+                <h3 class="text-2xl font-semibold mb-2">Highlights</h3>
+
+                {!! $tour->highlights !!}
+            </div>
+            <div class="p-2 border border-gray-500 rounded-md bg-base-100 bg-opacity-50 shadow">
+                <h3 class="text-2xl font-semibold">Meeting point</h3>
+                <p class="mt-2">{{ $tour->meeting_point ?: 'TBD' }}</p>
+            </div>
+        </div>
+    </article>
+   <section class="max-w-6xl mx-auto px-4 py-14">
+
 @endsection

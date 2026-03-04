@@ -100,3 +100,20 @@
     background-image: linear-gradient(90deg, var(--mask-grad-b), var(--mask-grad-a));
 
 }
+
+/*tour index and solo view*/
+
+.rj-tour {
+
+}
+
+.rj-tour .rj-description h2 {
+    font-size: 1.35rem;
+    margin-bottom: 1rem;
+}
+
+.rj-tour .rj-description p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 0.66rem;
+}
