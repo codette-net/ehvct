@@ -58,7 +58,7 @@
     </div>
 </nav>
 
-<main class="mx-auto mt-6 rj-gradient-sand mask-container">
+<main class="mx-auto rj-gradient-sand mask-container">
     @yield('content')
 </main>
 <footer class="footer sm:footer-horizontal bg-accent text-accent-content p-10 mt-4">

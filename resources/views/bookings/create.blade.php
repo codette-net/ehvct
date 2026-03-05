@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="max-w-6xl mx-auto px-4 py-14">
+    <section class="max-w-6xl mx-auto px-4 py-20">
 
         <div class="breadcrumbs text-sm mb-4">
             <ul>
@@ -37,43 +37,41 @@
                 <form method="POST" action="{{ route('bookings.store', $slot) }}" class="mt-6 space-y-4">
                     @csrf
 
-                    <div class="steps steps-horizontal">
+                    <div class="steps steps-vertical md:steps-horizontal">
                         <div class="step step-primary">Details</div>
                         <div class="step">Payment</div>
                         <div class="step">Confirmation</div>
                     </div>
 
                     <div class="grid sm:grid-cols-2 gap-4">
-                        <label class="form-control">
-                            <div class="label"><span class="label-text">Name</span></div>
-                            <input name="name" value="{{ old('name') }}" class="input input-bordered" required>
-                            @error('name')<div class="text-error text-sm mt-1">{{ $message }}</div>@enderror
-                        </label>
 
-                        <label class="form-control">
-                            <div class="label"><span class="label-text">Email</span></div>
-                            <input type="email" name="email" value="{{ old('email') }}" class="input input-bordered" required>
-                            @error('email')<div class="text-error text-sm mt-1">{{ $message }}</div>@enderror
-                        </label>
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend mb-2">Name</legend>
+                            <input type="text" class="input validator w-full" placeholder="Jane Doe" name="name" value="{{ old('name') }}"/>
+                           @error('name')<p class="validator-hint">{{ $message }}</p>@enderror
+                        </fieldset>
 
-                        <label class="form-control">
-                            <div class="label"><span class="label-text">Phone (optional)</span></div>
-                            <input name="phone" value="{{ old('phone') }}" class="input input-bordered">
-                            @error('phone')<div class="text-error text-sm mt-1">{{ $message }}</div>@enderror
-                        </label>
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend mb-2">E-mail</legend>
+                            <input type="email" class="input validator w-full" placeholder="person@example.com" name="email" value="{{ old('name') }}" required/>
+                            @error('email')<p class="validator-hint">{{ $message }}</p>@enderror
+                        </fieldset>
 
-                        <label class="form-control">
-                            <div class="label"><span class="label-text">People</span></div>
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend mb-2">Phone</legend>
+                            <input name="phone" class="input validator w-full" placeholder="06-12345678" value="{{ old('phone') }}"/>
+                            <p class="label text-sm opacity-70">Optional</p>
+                            @error('phone')<p class="validator-hint">{{ $message }}</p>@enderror
+                        </fieldset>
+
+                        <fieldset class="fieldset">
+                            <legend class="fieldset-legend mb-2">People</legend>
                             <input type="number" min="{{ $slot->min_people }}" max="{{ $slot->max_people }}"
-                                   name="people_count" value="{{ old('people_count', max(1, $slot->min_people)) }}"
-                                   class="input input-bordered" required>
-                            <div class="label">
-                            <span class="label-text-alt opacity-70">
-                                Min {{ $slot->min_people }}, Max {{ $slot->max_people }}
-                            </span>
-                            </div>
-                            @error('people_count')<div class="text-error text-sm mt-1">{{ $message }}</div>@enderror
-                        </label>
+                                   name="people_count" value="{{ old('people_count', max(1, $slot->min_people)) }}" class="input validator"/>
+                            <p class="label text-sm opacity-70">Min {{ $slot->min_people }}, Max {{ $slot->max_people }}</p>
+                            @error('people_count')<p class="validator-hint">{{ $message }}</p>@enderror
+                        </fieldset>
+
                     </div>
 
                     <div class="divider"></div>
