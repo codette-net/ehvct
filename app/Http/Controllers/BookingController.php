@@ -24,7 +24,7 @@ class BookingController extends Controller
 
         return response()->json([
             'status' => $booking->status, // pending, paid, confirmed, cancelled
-            'updated_at' => $booking->updated_at?->toIso8601String(),
+            'updated_at' => optional($booking->updated_at)->toIso8601String(),
         ]);
     }
 
