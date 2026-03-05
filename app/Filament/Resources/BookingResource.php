@@ -9,6 +9,8 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\BookingCanceledMail;
 
 class BookingResource extends Resource
 {
@@ -48,7 +50,8 @@ class BookingResource extends Resource
                 Tables\Columns\TextColumn::make('slot.variant.tour.title')->label('Tour')->searchable(),
                 Tables\Columns\TextColumn::make('people_count')->label('People')->sortable(),
                 Tables\Columns\TextColumn::make('total_amount_cents')
-                    ->label('Total (cents)')
+                    ->label('Total')
+                    ->formatStateUsing(fn(Booking $record) => '€ ' . number_format($record->total_amount_cents / 100, 2))
                     ->sortable(),
                 Tables\Columns\TextColumn::make('status')->badge()->sortable(),
                 Tables\Columns\TextColumn::make('created_at')->since(),
@@ -66,16 +69,35 @@ class BookingResource extends Resource
                     ]),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\Action::make('cancel')
+                Tables\Actions\ViewAction::make(), Tables\Actions\Action::make('cancel')
                     ->label('Cancel')
+                    ->color('danger')
+                    ->icon('heroicon-o-x-mark')
                     ->requiresConfirmation()
-                    ->visible(fn (Booking $record) => in_array($record->status, ['pending','confirmed','paid'], true))
-                    ->action(function (Booking $record) {
+                    ->form([
+                        Forms\Components\Textarea::make('reason')
+                            ->label('Reason (sent to customer)')
+                            ->rows(3)
+                            ->maxLength(500)
+                            ->required(),
+                    ])
+                    ->visible(fn(Booking $record) => in_array($record->status, ['pending', 'confirmed', 'paid'], true))
+                    ->action(function (Booking $record, array $data) {
+                        // Idempotency: don’t cancel twice
+                        if ($record->status === 'canceled') {
+                            return;
+                        }
+
                         $record->update([
                             'status' => 'canceled',
                             'canceled_at' => now(),
+                            'canceled_reason' => $data['reason'],
                         ]);
+
+                        // Send customer email
+                        if ($record->email) {
+                            Mail::to($record->email)->send(new BookingCanceledMail($record));
+                        }
                     }),
             ]);
     }
@@ -84,9 +106,8 @@ class BookingResource extends Resource
     {
         return [
             'index' => Pages\ListBookings::route('/'),
-            'edit'  => Pages\EditBooking::route('/{record}/edit'),
-//            'view' => Pages\EditBooking::route('/{record}/edit'),
-//            php artisan make:filament-page ViewBooking --resource=BookingResource --type=view
+            'view' => Pages\ViewBooking::route('/{record}'),
+            'edit' => Pages\EditBooking::route('/{record}/edit'),
         ];
     }
 }

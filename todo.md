@@ -82,15 +82,16 @@
 * [x] TourResource
 * [x] Variants relation manager
 * [x] Media attach relation manager
-* [ ] Slots under TourVariant:
+* [x] Slots
 
-    * [ ] SlotsRelationManager (CRUD starts_at, capacity, cutoffs, status)
-    * [ ] Occupancy display: confirmed seats / max
+    * [x] SlotsRelationManager (CRUD starts_at, capacity, cutoffs, status)
+    * [x] Occupancy display: confirmed seats / max
 * [ ] BookingResource
 
-    * [ ] list + filters (pending/paid/confirmed/canceled/expired)
-    * [ ] show: customer + slot + payment status
-    * [ ] actions: cancel (manual), mark as refunded (MVP note), resend email (optional)
+    * [x] list + filters (pending/paid/confirmed/canceled/expired)
+    * [x] show: customer + slot + payment status
+    * [x] actions: cancel (manual), mark as refunded (MVP note), resend email (optional)
+    * [x] Admin cancel action sends email to customer + logs reason
 * [ ] PaymentResource (optional)
 
     * [ ] mostly read-only, link to booking, show Mollie id/status
@@ -104,7 +105,7 @@
     * [x] enforce booking cutoff
 * [x] Create Booking (pending) + create Mollie payment
 * [x] Redirect to Mollie checkout
-* [ ] Webhook updates booking/payment state
+* [x] Webhook updates booking/payment state
 * [x] “Thank you” page shows booking reference
 
 ## 6) Mollie payments

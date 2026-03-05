@@ -50,11 +50,11 @@
                     @include('bookings.partials.status-box', ['status' => $booking->status])
                 </div>
                 <div class="mt-4 flex gap-3">
-                    <a href="{{ route('tours.index') }}" class="btn btn-outline">Back to tours</a>
+                    <a href="{{ route('tours.index') }}" class="btn btn-primary">Back to tours</a>
 
                     @if($booking->status === 'confirmed')
                         <a href="{{ URL::temporarySignedRoute('bookings.cancel.request', now()->addDays(7), ['reference' => $booking->reference]) }}"
-                           class="btn btn-primary">
+                           class="btn btn-outline">
                             Request cancellation
                         </a>
                     @endif
