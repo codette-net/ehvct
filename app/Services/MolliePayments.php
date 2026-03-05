@@ -32,7 +32,7 @@ class MolliePayments
                 'value' => number_format($booking->total_amount_cents / 100, 2, '.', ''),
             ],
             'description' => "Eindhoven Cycling Tours — {$booking->reference}",
-            'redirectUrl' => route('payment.success', ['reference' => $booking->reference]),
+            'redirectUrl' => route('bookings.status', ['reference' => $booking->reference]),
             'webhookUrl' => config('services.mollie.webhook_url'),
             'metadata' => [
                 'booking_id' => $booking->id,
@@ -46,7 +46,7 @@ class MolliePayments
                 'value' => number_format($booking->total_amount_cents / 100, 2, '.', ''),
             ],
             'description' => "Eindhoven Cycling Tours — {$booking->reference}",
-            'redirectUrl' => route('payment.success', ['reference' => $booking->reference]),
+            'redirectUrl' => route('bookings.status', ['reference' => $booking->reference]),
 //            'webhookUrl' => route('webhooks.mollie'),
         'webhookUrl' => config('services.mollie.webhook_url'),
             'metadata' => [

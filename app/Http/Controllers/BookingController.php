@@ -10,6 +10,24 @@ use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
+
+    public function status(string $reference) {
+        $booking = Booking::where('reference', $reference)
+            ->with('slot.variant.tour')
+            ->firstOrFail();
+
+        return view('bookings.status', compact('booking'));
+    }
+
+    public function statusJson(string $reference) {
+        $booking = Booking::where('reference', $reference)->firstOrFail();
+
+        return response()->json([
+            'status' => $booking->status, // pending, paid, confirmed, cancelled
+            'updated_at' => $booking->updated_at?->toIso8601String(),
+        ]);
+    }
+
     public function create(Slot $slot)
     {
         $slot->load('variant.tour');

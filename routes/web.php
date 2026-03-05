@@ -30,6 +30,13 @@ Route::get('/tours/{tour:slug}', [TourPublicController::class, 'show'])->name('t
 // Booking
 Route::get('/book/{slot}',[BookingController::class, 'create'])->name('bookings.create');
 Route::post('/book/{slot}',[BookingController::class, 'store'])->name('bookings.store');
+
+// Booking status
+Route::get('booking/{reference}',[BookingController::class, 'status'])
+    ->name('bookings.status');
+Route::get('/booking/{reference}/status.json', [\App\Http\Controllers\BookingStatusController::class, 'statusJson'])
+    ->name('bookings.status.json');
+
 // Booking cancel
 Route::get('booking/{reference}/cancel',[BookingCancelController::class, 'request'])
     ->middleware('signed')
