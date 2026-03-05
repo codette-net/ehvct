@@ -11,6 +11,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\BookingCanceledMail;
+use Filament\Notifications\Notification;
+use Illuminate\Support\Facades\Log;
 
 class BookingResource extends Resource
 {
@@ -83,10 +85,7 @@ class BookingResource extends Resource
                     ])
                     ->visible(fn(Booking $record) => in_array($record->status, ['pending', 'confirmed', 'paid'], true))
                     ->action(function (Booking $record, array $data) {
-                        // Idempotency: don’t cancel twice
-                        if ($record->status === 'canceled') {
-                            return;
-                        }
+                        if ($record->status === 'canceled') return;
 
                         $record->update([
                             'status' => 'canceled',
@@ -94,9 +93,26 @@ class BookingResource extends Resource
                             'canceled_reason' => $data['reason'],
                         ]);
 
-                        // Send customer email
-                        if ($record->email) {
+                        try {
                             Mail::to($record->email)->send(new BookingCanceledMail($record));
+
+                            Notification::make()
+                                ->title('Booking canceled')
+                                ->body('Customer email sent.')
+                                ->success()
+                                ->send();
+                        } catch (\Throwable $e) {
+                            Log::error('Cancel email failed', [
+                                'booking_id' => $record->id,
+                                'reference' => $record->reference,
+                                'error' => $e->getMessage(),
+                            ]);
+
+                            Notification::make()
+                                ->title('Booking canceled')
+                                ->body('Canceled, but email could not be sent. You can retry later.')
+                                ->warning()
+                                ->send();
                         }
                     }),
             ]);

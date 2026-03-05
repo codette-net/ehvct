@@ -23,6 +23,7 @@ class Booking extends Model
         'paid_at',
         'confirmed_at',
         'canceled_at',
+        'canceled_reason',
     ];
 
     protected $casts = [
