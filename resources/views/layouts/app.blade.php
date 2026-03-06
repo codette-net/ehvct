@@ -9,7 +9,7 @@
 </head>
 <body class="min-h-screen">
 
-<nav class="navbar shadow-sm fixed top-0 z-50 bg-base-100/90 backdrop-blur-sm">
+<nav class="navbar shadow-sm fixed top-0 z-40 bg-base-100/90 backdrop-blur-sm">
     <div class="navbar-start">
         <div class="dropdown">
             <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -59,7 +59,7 @@
 </nav>
 
 @if(session('success'))
-    <div class="toast toast-start toast-middle z-60">
+    <div class="toast toast-start z-50">
         <div class="alert alert-success shadow-lg">
             <span>{{ session('success') }}</span>
         </div>
@@ -67,7 +67,7 @@
 @endif
 
 @if(session('error'))
-    <div class="toast toast-start toast-middle z-60">
+    <div class="toast toast-start z-50">
         <div class="alert alert-error shadow-lg">
             <span>{{ session('error') }}</span>
         </div>
