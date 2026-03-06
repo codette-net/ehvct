@@ -22,8 +22,7 @@ use App\Http\Controllers\ContactController;
 */
 
 
-Route::view('/', 'pages.home')->name('home');
-Route::view('/logoding', 'pages.logoding')->name('logoding');
+Route::get('/', [TourPublicController::class, 'toursForHome'])->name('home');
 
 Route::get('/tours', [TourPublicController::class, 'index'])->name('tours.index');
 Route::get('/tours/{tour:slug}', [TourPublicController::class, 'show'])->name('tours.show');

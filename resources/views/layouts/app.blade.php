@@ -59,19 +59,31 @@
 </nav>
 
 @if(session('success'))
-    <div class="toast toast-start z-50">
+    <div class="toast toast-start z-50" id="flash-success">
         <div class="alert alert-success shadow-lg">
             <span>{{ session('success') }}</span>
         </div>
     </div>
+    <script>
+        setTimeout(() => {
+            const el = document.getElementById('flash-success');
+            if (el) el.remove();
+        }, 4000);
+    </script>
 @endif
 
 @if(session('error'))
-    <div class="toast toast-start z-50">
+    <div class="toast toast-start z-50" id="flash-error">
         <div class="alert alert-error shadow-lg">
             <span>{{ session('error') }}</span>
         </div>
     </div>
+    <script>
+        setTimeout(() => {
+            const el = document.getElementById('flash-error');
+            if (el) el.remove();
+        }, 4000);
+    </script>
 @endif
 <main class="mx-auto rj-gradient-sand mask-container">
     @yield('content')

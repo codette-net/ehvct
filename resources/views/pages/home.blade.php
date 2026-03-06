@@ -5,9 +5,9 @@
     <section class="hero min-h-[85vh]"
              style="background-image: url(/images/EHVCT-cover-img.jpg); background-position: 33% 50%;">
         <div class="hero-overlay bg-neutral/60"></div>
-        <div class="hero-content flex-col gap-10 text-neutral-content">
+        <div class="hero-content flex-col gap-10 text-neutral-content z-10">
             <img src="/images/ehvct_logo.png"
-                 class="w-60 sm:w-72 rounded-lg shadow-2xl bg-white/70 p-4" alt="EHVCT logo" />
+                 class="w-60 sm:w-72 rounded-lg shadow-2xl bg-white/70 p-4" alt="EHVCT logo"/>
 
             <div class="max-w-xl">
                 <h1 class="text-4xl sm:text-5xl font-bold leading-tight">
@@ -34,116 +34,125 @@
 
 
     {{-- HIGHLIGHTS --}}
-{{--    <div class="mask-container">--}}
+    {{--    <div class="mask-container">--}}
 
     <div class="mask-box">
-        <section class="max-w-6xl mx-auto px-4 py-14">
-            <div class="grid md:grid-cols-4 sm:grid-cols-2 gap-6">
-                <div class="card bg-base-100 shadow-sm">
-                    <div class="card-body">
-                        <h2 class="card-title">Local guide</h2>
-                        <p class="text-sm opacity-80">Maurice was born and raised in Eindhoven.</p>
-                    </div>
-                    <figure>
-                        <img
-                            src="/images/ehvct_logo.png"
-                            alt="Shoes" />
-                    </figure>
+
+        {{-- FEATURED TOURS --}}
+        <section class="max-w-5xl mx-auto px-4 pb-14 above-mask-box">
+            <div class="flex items-end justify-between gap-4 mb-6">
+                <div>
+                    <h2 class="text-3xl font-bold">Popular tours</h2>
+                    <p class="opacity-80 mt-1">Pick a ride, choose a date, and you’re set.</p>
                 </div>
-                <div class="card bg-base-100 shadow-sm">
-                    <div class="card-body">
-                        <h2 class="card-title">Relaxed pace</h2>
-                        <p class="text-sm opacity-80">Not a race. Just a good ride together.</p>
-                    </div>
-                    <figure>
-                        <img
-                            src="/images/EHVCT-bike-sunset.jpg"
-                            alt="Bike with sun setting in the background" />
-                    </figure>
-                </div>
-                <div class="card bg-base-100 shadow-sm">
-                    <div class="card-body">
-                        <h2 class="card-title">Great stops</h2>
-                        <p class="text-sm opacity-80">Coffee, views, and local favorites along the way.</p>
-                    </div>
-                    <figure>
-                        <img
-                            src="/images/EHVCT-mill-oerle.jpg"
-                            alt="View of the Mill Oerle" />
-                    </figure>
-                </div>
-                <div class="card bg-base-100 shadow-sm">
-                    <div class="card-body">
-                        <h2 class="card-title">Meet people</h2>
-                        <p class="text-sm opacity-80">A friendly mix of expats and locals.</p>
-                    </div>
-                    <figure>
-                        <img
-                            src="/images/EHVCT-people-cartoon.jpg"
-                            alt="people on the border of the Netherlands and Belgium" />
-                    </figure>
-                </div>
+                <a class="btn btn-outline" href="{{ route('tours.index') }}">All tours</a>
             </div>
+
+            <div class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-y-20 gap-x-8 mt-10 mb-5">
+                @forelse($tours as $tour)
+                    <article class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+                        <h3 class="text-lg font-bold text-black truncate block capitalize py-2 px-4">{{ $tour->title }}</h3>
+
+                        <a href="{{ route('tours.show', $tour) }}" title="{{ $tour->title }}">
+                            @if($tour->cover_url)
+                                <figure class="aspect-[16/10] h-80 w-72 object-cover rounded-t-xl">
+                                    <img src="{{ $tour->cover_url }}"
+                                         alt="{{ $tour->cover_media?->alt_text ?? $tour->title }}"
+                                         class="w-full h-full object-cover">
+                                </figure>
+                            @else
+                                <div class="aspect-[16/10] bg-base-200 flex items-center justify-center opacity-70">
+                                    No image yet
+                                </div>
+                            @endif
+                            {{--                    <img src="{{ $tour  }}" alt="Product" class="h-80 w-72 object-cover rounded-t-xl" />--}}
+                            <div class="px-4 py-3 w-72">
+                                {{--                        <span class="text-gray-400 mr-3 uppercase text-xs">Brand</span>--}}
+                                @if($tour->next_slot_at)
+                                    <p class="text-sm badge badge-outline badge-neutral">
+                                        Next
+                                        available: {{ \Illuminate\Support\Carbon::parse($tour->next_slot_at)->format('D d M, H:i') }}
+                                    </p>
+                                @endif
+                                <div class="flex items-center">
+                                    {{--                            todo get 'from price'--}}
+                                    {{--                            <p class="text-lg font-semibold text-black cursor-auto my-3">&euro;20</p>--}}
+                                    @if($tour->starting_from_cents !== null)
+                                        <div class="cursor-auto my-3 ml-2 flex flex-col">
+                                            <div class="text-sm opacity-70">Starting from</div>
+                                            <div class="text-lg font-semibold">{{ $tour->starting_from_formatted }}</div>
+                                        </div>
+                                    @endif
+                                    {{--                            <del>--}}
+                                    {{--                                <p class="text-sm text-gray-600 cursor-auto ml-2">$199</p>--}}
+                                    {{--                            </del>--}}
+                                    <div class="card-actions justify-end mt-2 ml-auto">
+                                        <span class="btn btn-accent btn-md">View</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                @empty
+                    <p>No tours yet.</p>
+                @endforelse
+            </div>
+
         </section>
 
-
-    {{-- FEATURED TOURS --}}
-    <section class="max-w-6xl mx-auto px-4 pb-14 mask-below-box">
-        <div class="flex items-end justify-between gap-4 mb-6">
-            <div>
-                <h2 class="text-3xl font-bold">Popular tours</h2>
-                <p class="opacity-80 mt-1">Pick a ride, choose a date, and you’re set.</p>
-            </div>
-            <a class="btn btn-outline" href="{{ route('tours.index') }}">All tours</a>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-6">
-            {{-- Replace with @foreach later --}}
-            <div class="card bg-base-100 shadow-sm">
-                <figure><img src="/images/EHVCT_14.jpg" alt="Forest & Apple Pie Tour"></figure>
-                <div class="card-body">
-                    <h3 class="card-title">Forest & Apple Pie Tour</h3>
-                    <p class="text-sm opacity-80">Green paths, calm roads, and a well-earned sweet stop.</p>
-                    <div class="card-actions justify-between items-center mt-2">
-                        <span class="badge badge-ghost">From €… p.p.</span>
-                        <a class="btn btn-accent btn-sm" href="{{ route('tours.index') }}">View dates</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card bg-base-100 shadow-sm">
-                <figure><img src="/images/EHVCT_26.jpeg" alt="Strawberry Farm & Oirschot Tour"></figure>
-                <div class="card-body">
-                    <h3 class="card-title">Strawberry Farm & Oirschot Tour</h3>
-                    <p class="text-sm opacity-80">Ride to Oirschot, fuel up at a strawberry farm, and explore the historic centre.</p>
-                    <div class="card-actions justify-between items-center mt-2">
-                        <span class="badge badge-ghost">From €20 p.p.</span>
-                        <a class="btn btn-accent btn-sm" href="{{ route('tours.index') }}">View dates</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card bg-base-100 shadow-sm">
-                <figure><img src="/images/EHVCT-van-gogh-path.jpg" alt="Sunset Tour & Van Gogh Bike Path"></figure>
-                <div class="card-body">
-                    <h3 class="card-title">Sunset Tour & Van Gogh Bike Path</h3>
-                    <p class="text-sm opacity-80">Golden-hour ride, then the glowing Van Gogh-Roosegaarde path.</p>
-                    <div class="card-actions justify-between items-center mt-2">
-                        <span class="badge badge-ghost">From €12.50 p.p.</span>
-                        <a class="btn btn-accent btn-sm" href="{{ route('tours.index') }}">View dates</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     </div>
 
-{{--    </div>--}}
+    {{--    </div>--}}
 
 
     {{-- HOW BOOKING WORKS --}}
-    <section class="bg-base-200">
-
+    <section class="bg-base-100/60 mx-auto px-4 py-14 z-10">
+        <div class="max-w-6xl grid md:grid-cols-4 sm:grid-cols-2 gap-6">
+            <div class="card bg-base-100 shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title">Local guide</h2>
+                    <p class="text-sm opacity-80">Maurice was born and raised in Eindhoven.</p>
+                </div>
+                <figure>
+                    <img
+                        src="/images/ehvct_logo.png"
+                        alt="Shoes"/>
+                </figure>
+            </div>
+            <div class="card bg-base-100 shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title">Relaxed pace</h2>
+                    <p class="text-sm opacity-80">Not a race. Just a good ride together.</p>
+                </div>
+                <figure>
+                    <img
+                        src="/images/EHVCT-bike-sunset.jpg"
+                        alt="Bike with sun setting in the background"/>
+                </figure>
+            </div>
+            <div class="card bg-base-100 shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title">Great stops</h2>
+                    <p class="text-sm opacity-80">Coffee, views, and local favorites along the way.</p>
+                </div>
+                <figure>
+                    <img
+                        src="/images/EHVCT-mill-oerle.jpg"
+                        alt="View of the Mill Oerle"/>
+                </figure>
+            </div>
+            <div class="card bg-base-100 shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title">Meet people</h2>
+                    <p class="text-sm opacity-80">A friendly mix of expats and locals.</p>
+                </div>
+                <figure>
+                    <img
+                        src="/images/EHVCT-people-cartoon.jpg"
+                        alt="people on the border of the Netherlands and Belgium"/>
+                </figure>
+            </div>
+        </div>
         <div class="max-w-6xl mx-auto px-4 py-14">
             <h2 class="text-3xl font-bold mb-8">Booking is simple</h2>
 
@@ -181,12 +190,13 @@
                 <h2 class="text-3xl font-bold mb-4">Meet your guide</h2>
                 <div class="avatar" style="float: left; margin-right: 1.5rem; shape-outside: circle();">
                     <div class="ring-accent ring-offset-base-100 w-24 rounded-full ring-2 ring-offset-2">
-                        <img src="/images/EHVCT_Maurice_avatar.jpg" />
+                        <img src="/images/EHVCT_Maurice_avatar.jpg"/>
                     </div>
                 </div>
                 <p class="mt-4 opacity-85">
                     Eindhoven Cycling Tours was founded by Maurice Meijer, born and raised in Eindhoven.
-                    Today ECT brings people together on easy-going rides through nature, villages, and hidden highlights.
+                    Today ECT brings people together on easy-going rides through nature, villages, and hidden
+                    highlights.
                 </p>
                 <div class="mt-6 flex gap-3">
                     <a class="btn btn-outline" href="#">Read more</a>
@@ -212,7 +222,8 @@
             </div>
             <div class="flex gap-3">
                 <a class="btn btn-neutral" href="{{ route('tours.index') }}">Book a tour</a>
-                <a class="btn btn-outline border-accent-content text-accent-content" href="{{ route('contact.show') }}">Ask a question</a>
+                <a class="btn btn-outline border-accent-content text-accent-content" href="{{ route('contact.show') }}">Ask
+                    a question</a>
             </div>
         </div>
     </section>
@@ -229,7 +240,8 @@
                         Do I need to bring my own bike?
                     </div>
                     <div class="collapse-content text-sm opacity-80">
-                        You can bring your own bike or rent one nearby. We can recommend local rental partners in Eindhoven.
+                        You can bring your own bike or rent one nearby. We can recommend local rental partners in
+                        Eindhoven.
                     </div>
                 </div>
 
