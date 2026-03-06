@@ -151,7 +151,7 @@
 
                 <div class="mt-4 flex flex-wrap gap-3 items-center">
                     <a href="https://velorent.nl/" target="_blank" class="btn btn-outline btn-sm">Velorent (bike rental)</a>
-                    <a href="{{ route('contact') }}" class="btn btn-accent btn-sm">Ask about rentals</a>
+                    <a href="{{ route('contact.show') }}" class="btn btn-accent btn-sm">Ask about rentals</a>
                 </div>
             </div>
         </div>
@@ -177,7 +177,7 @@
                         </p>
 
                         <div class="flex flex-wrap gap-3 mt-4">
-                            <a href="{{ route('contact') }}" class="btn btn-accent">Contact</a>
+                            <a href="{{ route('contact.show') }}" class="btn btn-accent">Contact</a>
                             <a href="https://wa.link/uk5101" target="_blank" class="btn btn-outline">WhatsApp</a>
                         </div>
                     </div>
@@ -227,7 +227,7 @@
             </div>
             <div class="flex gap-3">
                 <a href="{{ route('tours.index') }}" class="btn btn-neutral">Book a tour</a>
-                <a href="{{ route('contact') }}" class="btn btn-outline border-accent-content text-accent-content">
+                <a href="{{ route('contact.show') }}" class="btn btn-outline border-accent-content text-accent-content">
                     Ask a question
                 </a>
             </div>

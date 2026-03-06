@@ -129,7 +129,7 @@
                 <p class="mt-3 opacity-80">Pick a tour, choose a date, and join the ride.</p>
                 <div class="mt-6 flex justify-center gap-3">
                     <a href="{{ route('tours.index') }}" class="btn btn-accent">Book a tour</a>
-                    <a href="{{ route('contact') }}" class="btn btn-outline">Contact</a>
+                    <a href="{{ route('contact.show') }}" class="btn btn-outline">Contact</a>
                 </div>
             </div>
 

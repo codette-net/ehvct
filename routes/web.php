@@ -7,7 +7,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TourPublicController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\BookingCancelController;
-use App\http\Controllers\ContactController;
+use App\Http\Controllers\ContactController;
 
 
 /*
