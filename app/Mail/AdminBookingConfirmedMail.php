@@ -19,17 +19,8 @@ class AdminBookingConfirmedMail extends Mailable
      */
     public function __construct(public Booking $booking)
     {
-        //
-    }
-
-    public function build() {
         $this->booking->loadMissing('slot.variant.tour');
 
-        return $this
-            ->subject('New booking -' . $this->booking->reference)
-            ->markdown('emails.bookings.admin-confirmed',[
-                'booking' => $this->booking,
-            ]);
     }
 
     /**
@@ -38,7 +29,7 @@ class AdminBookingConfirmedMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Admin Booking Confirmed Mail',
+            subject: 'new booking confirmed ' . $this->booking->reference,
         );
     }
 
@@ -48,7 +39,9 @@ class AdminBookingConfirmedMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'emails.bookings.admin-confirmed',
+            view: 'emails.bookings.admin-confirmed-html',
+            text: 'emails.bookings.admin-confirmed-text',
+            with: ['booking' => $this->booking],
         );
     }
 

@@ -34,7 +34,7 @@ Route::post('/book/{slot}',[BookingController::class, 'store'])->name('bookings.
 // Booking status
 Route::get('booking/{reference}',[BookingController::class, 'status'])
     ->name('bookings.status');
-Route::get('/booking/{reference}/status.json', [\App\Http\Controllers\BookingController::class, 'statusJson'])
+Route::get('/booking/{reference}/status.json', [BookingController::class, 'statusJson'])
     ->name('bookings.status.json');
 
 // Booking cancel
