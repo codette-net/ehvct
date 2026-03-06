@@ -197,7 +197,7 @@
                 <div class="card-body">
                     <h3 class="font-semibold">Also available</h3>
                     <p class="text-sm opacity-80">Private tours, company outings, and teambuilding rides.</p>
-                    <a class="btn btn-outline" href="{{ route('contact') }}">Request a private tour</a>
+                    <a class="btn btn-outline" href="{{ route('contact.show') }}">Request a private tour</a>
                 </div>
             </div>
         </div>
@@ -212,7 +212,7 @@
             </div>
             <div class="flex gap-3">
                 <a class="btn btn-neutral" href="{{ route('tours.index') }}">Book a tour</a>
-                <a class="btn btn-outline border-accent-content text-accent-content" href="{{ route('contact') }}">Ask a question</a>
+                <a class="btn btn-outline border-accent-content text-accent-content" href="{{ route('contact.show') }}">Ask a question</a>
             </div>
         </div>
     </section>
