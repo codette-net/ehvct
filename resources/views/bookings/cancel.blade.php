@@ -4,11 +4,6 @@
     <section class="max-w-6xl mx-auto px-4 py-14 min-h-[66dvh]">
 
     <h1 class="text-3xl font-bold">Cancellation request</h1>
-
-        @if(session('status'))
-            <div class="alert alert-success mt-4"><span>{{ session('status') }}</span></div>
-        @endif
-
         <div class="card mt-4 bg-neutral-content/60 p-4 rounded-lg shadow-lg max-w-4xl">
             <div class="card-body">
                 <div class="font-semibold">{{ $booking->slot->variant->tour->title }} | {{ $booking->slot->variant->label }}</div>

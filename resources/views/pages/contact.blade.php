@@ -5,12 +5,6 @@
 
         <h1 class="text-3xl font-bold mb-6">Contact us</h1>
 
-        @if(session('success'))
-            <div class="alert alert-success mb-6">
-                {{ session('success') }}
-            </div>
-        @endif
-
         <form method="POST" action="{{ route('contact.submit') }}" class="mt-4 bg-neutral-content/60 p-4 rounded-lg shadow-lg max-w-2xl">
             @csrf
 

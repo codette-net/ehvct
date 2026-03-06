@@ -41,11 +41,6 @@
                     <div class="step {{ $stepConfirm }}">Confirmation</div>
                 </div>
 
-                @if(session('error'))
-                    <div class="alert alert-error mt-4">
-                        <span>{{ session('error') }}</span>
-                    </div>
-                @endif
                 <div id="statusBox" class="mt-6">
                     @include('bookings.partials.status-box', ['status' => $booking->status])
                 </div>

@@ -58,6 +58,21 @@
     </div>
 </nav>
 
+@if(session('success'))
+    <div class="toast toast-top toast-end z-50">
+        <div class="alert alert-success shadow-lg">
+            <span>{{ session('success') }}</span>
+        </div>
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="toast toast-top toast-end z-50">
+        <div class="alert alert-error shadow-lg">
+            <span>{{ session('error') }}</span>
+        </div>
+    </div>
+@endif
 <main class="mx-auto rj-gradient-sand mask-container">
     @yield('content')
 </main>

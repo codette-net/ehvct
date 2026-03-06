@@ -28,12 +28,6 @@
                     </p>
                 </div>
 
-                @if(session('error'))
-                    <div class="alert alert-error mt-4">
-                        <span>{{ session('error') }}</span>
-                    </div>
-                @endif
-
                 <form method="POST" action="{{ route('bookings.store', $slot) }}" class="mt-6 space-y-4">
                     @csrf
 
