@@ -9,17 +9,20 @@ use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\URL;
+
 
 class ContactMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public array $data;
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -28,11 +31,9 @@ class ContactMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('jeffrey@example.com', 'Jeffrey Way'),
-            replyTo: [
-                new Address('taylor@example.com', 'Taylor Otwell'),
-            ],
-            subject: 'Message from ehvct.nl',
+            from: new Address($this->data['email'] , $this->data['name']),
+
+            subject: 'EHVCT mail: ' . $this->data['subject'],
         );
     }
 
@@ -42,7 +43,7 @@ class ContactMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'pages.contact',
+            view: 'emails.contact',
         );
     }
 

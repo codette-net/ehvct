@@ -29,7 +29,7 @@
                     <a href="{{ route('impressions') }}">Impressions</a>
                 </li>
                 <li class="mb-2">
-                    <a href="{{ route('contact') }}">Contact</a>
+                    <a href="{{ route('contact.show') }}">Contact</a>
                 </li>
             </ul>
         </div>
@@ -49,7 +49,7 @@
                 <a href="{{ route('impressions') }}">Impressions</a>
             </li>
             <li>
-                <a href="{{ route('contact') }}">Contact</a>
+                <a href="{{ route('contact.show') }}">Contact</a>
             </li>
         </ul>
     </div>
@@ -66,7 +66,7 @@
         <h6 class="footer-title">Eindhoven Cycling Tours</h6>
         <a href="{{ route('tours.index') }}" class="link link-hover">All tours</a>
         <a href="{{ route('impressions') }}" class="link link-hover">Impressions</a>
-        <a href="{{ route('contact') }}" class="link link-hover">Contact</a>
+        <a href="{{ route('contact.show') }}" class="link link-hover">Contact</a>
     </nav>
     <nav>
         <h6 class="footer-title">Partners</h6>

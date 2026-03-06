@@ -7,6 +7,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TourPublicController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\BookingCancelController;
+use App\http\Controllers\ContactController;
 
 
 /*
@@ -54,8 +55,11 @@ Route::post('/webhooks/mollie', MollieWebhookController::class)->name('webhooks.
 
 Route::view('/about', 'pages.about')->name('about');
 Route::view('/impressions', 'pages.impressions')->name('impressions');
-Route::view('/contact', 'pages.contact')->name('contact');
 
+Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
+Route::post('/contact', [ContactController::class, 'submit'])
+    ->middleware('throttle:5,1') // max 5 msg p/m
+    ->name('contact.submit');
 
 Route::post('/webhooks/mollie', MollieWebhookController::class)->name('webhooks.mollie');
 Route::get('/payment/success/{reference}', [PaymentController::class, 'success'])->name('payment.success');
