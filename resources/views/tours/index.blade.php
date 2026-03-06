@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="max-w-6xl mx-auto px-4 py-14">
+    <section class="max-w-6xl mx-auto px-4 py-20">
 
     <h1 class="text-3xl font-bold mb-6">Tours</h1>
 

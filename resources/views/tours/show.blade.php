@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="max-w-6xl mx-auto px-4 py-14">
+    <section class="max-w-6xl mx-auto px-4 py-20">
 
     <div class="breadcrumbs text-sm mb-4">
         <ul>
@@ -27,19 +27,6 @@
             <div class="card bg-primary/75 sticky top-6">
                 <div class="card-body">
                     <h3 class="card-title">Book this tour</h3>
-                   <div class="mt-4 space-y-2">
-                        @foreach($tour->variants as $variant)
-                            <div class="flex justify-between items-center bg-base-100 rounded p-3">
-                                <div>
-                                    <div class="font-semibold">{{ $variant->label }}</div>
-                                    <div class="text-sm opacity-70">{{ $variant->duration_minutes }} min</div>
-                                </div>
-                                <div class="font-semibold">
-                                    €{{ number_format($variant->price_per_person_cents / 100, 2) }}
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
 
                     <div class="mt-4 space-y-4">
                         @foreach($tour->variants as $variant)

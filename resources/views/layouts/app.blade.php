@@ -59,7 +59,7 @@
 </nav>
 
 @if(session('success'))
-    <div class="toast toast-top toast-end z-50">
+    <div class="toast toast-start toast-middle z-60">
         <div class="alert alert-success shadow-lg">
             <span>{{ session('success') }}</span>
         </div>
@@ -67,7 +67,7 @@
 @endif
 
 @if(session('error'))
-    <div class="toast toast-top toast-end z-50">
+    <div class="toast toast-start toast-middle z-60">
         <div class="alert alert-error shadow-lg">
             <span>{{ session('error') }}</span>
         </div>
