@@ -59,8 +59,8 @@
     container-type: inline-size;
 
     /* responsive mask sizes */
-    --mask-head-size: calc(0.172 * 100cqw);
-    --mask-foot-size: calc(0.116 * 100cqw);
+    --mask-head-size: calc(0.172 * 77cqw);
+    --mask-foot-size: calc(0.122 * 94cqw);
 
     /* customizable colors */
     --mask-above-bg: oklch(var(--b1)); /* fallback to theme-ish */
