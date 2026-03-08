@@ -221,12 +221,12 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                     <a class="btn btn-accent" href="{{ route('tours.index') }}">See all tours</a>
                 </div>
 
-{{--                <div class="mt-6 flex flex-wrap gap-3 text-sm opacity-95">--}}
-{{--                    <span class="badge badge-primary">Local guide</span>--}}
-{{--                    <span class="badge badge-primary">Beginner-friendly</span>--}}
-{{--                    <span class="badge badge-primary">Expats & locals</span>--}}
-{{--                    <span class="badge badge-primary">Small groups</span>--}}
-{{--                </div>--}}
+                {{--                <div class="mt-6 flex flex-wrap gap-3 text-sm opacity-95">--}}
+                {{--                    <span class="badge badge-primary">Local guide</span>--}}
+                {{--                    <span class="badge badge-primary">Beginner-friendly</span>--}}
+                {{--                    <span class="badge badge-primary">Expats & locals</span>--}}
+                {{--                    <span class="badge badge-primary">Small groups</span>--}}
+                {{--                </div>--}}
             </div>
         </div>
     </section>
@@ -241,15 +241,16 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
         <section class="max-w-5xl mx-auto px-4 pb-14 above-mask-box">
             <div class="flex items-end justify-between gap-4 mb-6">
                 <div>
-                    <h2 class="text-3xl font-bold">Popular tours</h2>
-                    <p class="opacity-80 mt-1">Pick a ride, choose a date, and you’re set.</p>
+                    <h2 class="text-3xl font-bold">Upcoming tours</h2>
+                    <p class="opacity-80 mt-2">Pick a ride, choose a date, and you’re set.</p>
                 </div>
-                <a class="btn btn-outline" href="{{ route('tours.index') }}">All tours</a>
+                <a class="btn btn-neutral" href="{{ route('tours.index') }}">All tours</a>
             </div>
 
-            <div class="mx-auto grid grid-cols-[repeat(auto-fit,minmax(min(100%,18rem),1fr))] gap-6">
+            <div class="mx-auto grid grid-cols-[repeat(auto-fit,min(100%,18rem))] place-content-center gap-4">
                 @forelse($tours as $tour)
-                    <article class="bg-white/80 shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl max-w-[18rem]">
+                    <article
+                        class="bg-white/80 shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
                         <h3 class="text-lg font-bold text-black truncate block capitalize py-2 px-4">{{ $tour->title }}</h3>
 
                         <a href="{{ route('tours.show', $tour) }}" title="{{ $tour->title }}">
@@ -302,13 +303,45 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
 
     </div>
 
-    {{--    </div>--}}
-
-
-    {{-- HOW BOOKING WORKS --}}
     <section class="bg-base-100/60 mx-auto px-4 py-14 z-10">
-        <div class="max-w-6xl grid grid-cols-[repeat(auto-fit,minmax(min(100%,10rem),1fr))] gap-6">
-            <div class="card bg-base-100 shadow-md">
+        <div class="max-w-6xl mx-auto px-4 py-6">
+            <h2 class="text-3xl font-bold mb-8">Booking is simple</h2>
+            <div class="flex flex-col justify-center items-center">
+                <ul class="steps steps-vertical md:steps-horizontal">
+                    <li class="step step-primary">
+                        <div class="card bg-base-100/80 shadow-md max-w-[12rem] min-h-[12rem] m-2 ">
+                            <div class="card-body">
+                                <div class="text-2xl font-bold">1</div>
+                                <h3 class="font-semibold">Choose a tour</h3>
+                                <p class="text-sm opacity-80">Pick your route and vibe.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="step step-primary">
+                        <div class="card bg-base-100/80 shadow-md max-w-[12rem] min-h-[12rem] m-2">
+                            <div class="card-body">
+                                <div class="text-2xl font-bold">2</div>
+                                <h3 class="font-semibold">Select a date & group size</h3>
+                                <p class="text-sm opacity-80">See available spots instantly.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="step step-primary">
+                        <div class="card bg-base-100/80 shadow-md max-w-[12rem] min-h-[12rem] m-2">
+                            <div class="card-body">
+                                <div class="text-2xl font-bold">3</div>
+                                <h3 class="font-semibold">Pay online</h3>
+                                <p class="text-sm opacity-80">You’ll receive a confirmation email right away.</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="max-w-6xl grid grid-cols-[repeat(auto-fit,minmax(min(100%,10rem),1fr))] gap-4">
+            <div class="card bg-base-100/80 shadow-md">
                 <div class="card-body">
                     <h2 class="card-title">Local guide</h2>
                     <p class="text-sm opacity-80">Maurice was born and raised in Eindhoven.</p>
@@ -319,7 +352,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                         alt="Maurice on the bike" class="w-full h-full object-cover"/>
                 </figure>
             </div>
-            <div class="card bg-base-100 shadow-md">
+            <div class="card bg-base-100/80 shadow-md">
                 <div class="card-body">
                     <h2 class="card-title">Relaxed pace</h2>
                     <p class="text-sm opacity-80">Not a race. Just a good ride together.</p>
@@ -330,7 +363,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                         alt="Bike with sun setting in the background" class="w-full h-full object-cover"/>
                 </figure>
             </div>
-            <div class="card bg-base-100 shadow-md">
+            <div class="card bg-base-100/80 shadow-md">
                 <div class="card-body">
                     <h2 class="card-title">Great stops</h2>
                     <p class="text-sm opacity-80">Coffee, views, and local favorites along the way.</p>
@@ -341,7 +374,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                         alt="View of the Mill Oerle" class="w-full h-full object-cover"/>
                 </figure>
             </div>
-            <div class="card bg-base-100 shadow-md">
+            <div class="card bg-base-100/80 shadow-md">
                 <div class="card-body">
                     <h2 class="card-title">Meet people</h2>
                     <p class="text-sm opacity-80">A friendly mix of expats and locals.</p>
@@ -353,57 +386,30 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                 </figure>
             </div>
         </div>
-        <div class="max-w-6xl mx-auto px-4 py-14">
-            <h2 class="text-3xl font-bold mb-8">Booking is simple</h2>
-
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="card bg-base-100 shadow-sm">
-                    <div class="card-body">
-                        <div class="text-2xl font-bold">1</div>
-                        <h3 class="font-semibold">Choose a tour</h3>
-                        <p class="text-sm opacity-80">Pick your route and vibe.</p>
-                    </div>
-                </div>
-                <div class="card bg-base-100 shadow-sm">
-                    <div class="card-body">
-                        <div class="text-2xl font-bold">2</div>
-                        <h3 class="font-semibold">Select a date & group size</h3>
-                        <p class="text-sm opacity-80">See available spots instantly.</p>
-                    </div>
-                </div>
-                <div class="card bg-base-100 shadow-sm">
-                    <div class="card-body">
-                        <div class="text-2xl font-bold">3</div>
-                        <h3 class="font-semibold">Pay online</h3>
-                        <p class="text-sm opacity-80">You’ll receive a confirmation email right away.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
     {{-- ABOUT --}}
 
     <section class="max-w-6xl mx-auto px-4 py-14">
-        <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div class="grid lg:grid-cols-2 gap-10 place-items-center">
             <div>
                 <h2 class="text-3xl font-bold mb-4">Meet your guide</h2>
-                <div class="avatar" style="float: left; margin-right: 1.5rem; shape-outside: circle();">
+                <div class="avatar mb-2" style="float: left; margin-right: 1.5rem; shape-outside: circle();">
                     <div class="ring-accent ring-offset-base-100 w-24 rounded-full ring-2 ring-offset-2">
                         <img src="/images/EHVCT_Maurice_avatar.jpg"/>
                     </div>
                 </div>
-                <p class="mt-4 opacity-85">
+                <p class="mt-4 py-2 opacity-85">
                     Eindhoven Cycling Tours was founded by Maurice Meijer, born and raised in Eindhoven.
                     Today ECT brings people together on easy-going rides through nature, villages, and hidden
                     highlights.
                 </p>
-                <div class="mt-6 flex gap-3">
-                    <a class="btn btn-outline" href="#">Read more</a>
+                <div class="mt-8 flex gap-3">
+                    <a class="btn btn-outline" href="{{ route('about') }}">Read more</a>
                     <a class="btn btn-accent" href="{{ route('tours.index') }}">Book a tour</a>
                 </div>
             </div>
-            <div class="card bg-base-100 shadow-sm">
+            <div class="card bg-base-100/80 shadow-lg">
                 <div class="card-body">
                     <h3 class="font-semibold">Also available</h3>
                     <p class="text-sm opacity-80">Private tours, company outings, and teambuilding rides.</p>
