@@ -121,3 +121,7 @@
     line-height: 1.5;
     margin-bottom: 0.66rem;
 }
+
+tr {
+    border-bottom-color: #2228;
+}

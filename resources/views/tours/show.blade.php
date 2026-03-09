@@ -23,8 +23,7 @@
 
         </div>
 
-        <aside class="lg:col-span-1">
-            <div class="card bg-primary/75 sticky top-6">
+        <aside class="card bg-primary/75 sticky top-6 lg:col-span-1 rounded-xl shadow-md">
                 <div class="card-body">
                     <h3 class="card-title">Book this tour</h3>
 
@@ -34,7 +33,7 @@
                                 <div class="flex justify-between items-start gap-3">
                                     <div>
                                         <div class="font-semibold">{{ $variant->label }}</div>
-                                        <div class="text-sm opacity-70">{{ $variant->duration_minutes }} min</div>
+                                        <div class="text-sm opacity-70">{{ number_format($variant->duration_minutes / 60 , 1)  }} hours</div>
                                     </div>
                                     <div class="font-semibold">
                                         €{{ number_format($variant->price_per_person_cents / 100, 2) }}
@@ -47,10 +46,11 @@
                                     @endphp
 
                                     @forelse($slots as $slot)
+                                        <span class="opacity-70">Seats left: {{ $slot->remainingSeats() }}</span>
+
                                         <a href="{{ route('bookings.create', $slot) }}"
                                            class="btn btn-outline btn-sm w-full justify-between">
                                             <span>{{ $slot->starts_at->format('D d M, H:i') }}</span>
-                                            <span class="opacity-70">Seats left: {{ $slot->remainingSeats() }}</span>
                                         </a>
                                     @empty
                                         <div class="text-sm opacity-70">No bookable slots right now.</div>
@@ -60,16 +60,15 @@
                         @endforeach
                     </div>
                 </div>
-            </div>
 
         </aside>
         <div class="grid md:grid-cols-3 col-span-3 gap-4">
-            <div class="p-2 border border-gray-500 rounded-md bg-base-100 bg-opacity-50 shadow">
+            <div class="p-2 border border-gray-500 rounded-md bg-base-100 bg-opacity-50 shadow-md">
                 <h3 class="text-2xl font-semibold mb-2">Highlights</h3>
 
                 {!! $tour->highlights !!}
             </div>
-            <div class="p-2 border border-gray-500 rounded-md bg-base-100 bg-opacity-50 shadow">
+            <div class="p-2 border border-gray-500 rounded-md bg-base-100 bg-opacity-50 shadow-md">
                 <h3 class="text-2xl font-semibold">Meeting point</h3>
                 <p class="mt-2">{{ $tour->meeting_point ?: 'TBD' }}</p>
             </div>
