@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title','Home')
 @section('content')
     {{-- HERO --}}
     <section class="hero min-h-[90vh] max-w-[1280px] mx-auto"

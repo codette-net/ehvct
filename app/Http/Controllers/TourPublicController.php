@@ -67,6 +67,9 @@ class TourPublicController extends Controller
             'variants' => function ($query) {
             $query->orderBy('id');
             },
+            'coverImage' => function ($q) {
+                $q->orderBy('mediables.sort_order');
+            },
             'variants.slots' => function ($query) {
             $query->where('status', 'active')
             ->where('starts_at', '>=', now())

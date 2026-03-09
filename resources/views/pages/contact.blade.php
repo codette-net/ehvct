@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title','Contact')
 
 @section('content')
     <section class="max-w-6xl mx-auto px-4 py-20">

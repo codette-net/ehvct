@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title','Impressions')
 
 @section('content')
     <section class="relative">

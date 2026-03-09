@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title','Tours')
 @section('content')
     <section class="max-w-6xl mx-auto px-4 py-20">
 
@@ -12,8 +12,7 @@
 
 
         <div class="overflow-x-auto  max-w-fit mx-auto mb-8 bg-base-100/60 rounded-xl shadow-md">
-            <h2 class="text-2xl font-bold p-4">
-                Upcoming tours:
+            <h2 class="text-2xl font-bold p-4 bg-base-100/60 rounded-t-xl border-b" style="border-color: #2228">Upcoming tours
             </h2>
             <table class="table table-sm">
                 <tbody>
@@ -27,24 +26,13 @@
                 </thead>
 
                 @forelse($upcomingTours as $upTour)
-                    <tr style="border-bottom-color: #2222">
+                    <tr style="border-bottom-color: #2222" class="hover:bg-base-100/80">
                         <td>
-                            <div class="flex items-center gap-3">
-                                <div class="avatar">
-                                    <div class="mask mask-squircle h-12 w-12">
-                                        <img src="{{ $upTour->cover_url }}"
-                                             alt="{{ $upTour->cover_media?->alt_text ?? $upTour->title }}">
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="font-bold">{{ $upTour->title }}</div>
-                                    {{--                                    <div class="text-sm opacity-50"> {{ $upTour->label }} </div>--}}
-                                </div>
-                            </div>
+                            <p class="font-bold">{{ $upTour->title }}</p>
                         </td>
                         <td>
                             @if($upTour->next_slot_at)
-                                <p class="text-sm badge badge-outline badge-neutral">
+                                <p class="text-sm text-balance">
                                     {{ \Illuminate\Support\Carbon::parse($upTour->next_slot_at)->format('D d M, H:i') }}
                                 </p>
                             @endif
@@ -54,24 +42,20 @@
                                 <p
                                     class="font-semibold">from<br> {{ $upTour->starting_from_formatted }}
                                 </p>
-
                             @endif
                         </td>
                         <th>
-                            <a href="/tours/{{ $upTour->slug }}" class="btn btn-accent btn-md">View</a>
+                            <a href="/tours/{{ $upTour->slug }}" class="btn btn-accent btn-sm">View</a>
                         </th>
                     </tr>
                 @empty
                     <tr>
                         <td colspan="4">No upcoming tours</td>
                     </tr>
-
                 @endforelse
                 </tbody>
-
             </table>
         </div>
-
 
         <div class="mx-auto grid grid-cols-[repeat(auto-fit,min(100%,18rem))] place-content-center gap-4">
             @forelse($tours as $tour)
