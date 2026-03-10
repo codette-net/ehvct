@@ -17,10 +17,10 @@
 <body class="min-h-screen">
 
 @php
-    $navLinkClass = 'font-medium';
-    $navActiveClass = 'active text-primary';
-    $mobileNavLinkClass = 'font-medium';
-    $mobileNavActiveClass = 'active text-primary';
+    $navLinkClass = 'btn-ghost hover:btn-outline';
+    $navActiveClass = 'active btn-neutral';
+    $mobileNavLinkClass = 'btn-ghost hover:btn-outline';
+    $mobileNavActiveClass = 'active btn-neutral';
 @endphp
 
 <nav class="navbar shadow-sm fixed top-0 z-40 bg-base-100/90 backdrop-blur-sm">
@@ -29,7 +29,7 @@
             <button
                 id="nav-menu-button"
                 type="button"
-                class="btn btn-ghost"
+                class="btn btn-outline mr-2"
                 aria-label="Open menu"
                 aria-expanded="false"
                 aria-controls="mobile-nav-menu"
@@ -46,7 +46,7 @@
                 <li class="mb-2">
                     <a
                         href="{{ route('tours.index') }}"
-                        class="{{ request()->routeIs('tours.*') ? $mobileNavActiveClass : $mobileNavLinkClass }}"
+                        class="btn btn-sm {{ request()->routeIs('tours.*') ? $mobileNavActiveClass : $mobileNavLinkClass }}"
                     >
                         Tours
                     </a>
@@ -54,7 +54,7 @@
                 <li class="mb-2">
                     <a
                         href="{{ route('about') }}"
-                        class="{{ request()->routeIs('about') ? $mobileNavActiveClass : $mobileNavLinkClass }}"
+                        class="btn btn-sm {{ request()->routeIs('about') ? $mobileNavActiveClass : $mobileNavLinkClass }}"
                     >
                         About
                     </a>
@@ -62,7 +62,7 @@
                 <li class="mb-2">
                     <a
                         href="{{ route('impressions') }}"
-                        class="{{ request()->routeIs('impressions') ? $mobileNavActiveClass : $mobileNavLinkClass }}"
+                        class="btn btn-sm {{ request()->routeIs('impressions') ? $mobileNavActiveClass : $mobileNavLinkClass }}"
                     >
                         Impressions
                     </a>
@@ -70,7 +70,7 @@
                 <li class="mb-2">
                     <a
                         href="{{ route('contact.show') }}"
-                        class="{{ request()->routeIs('contact.*') ? $mobileNavActiveClass : $mobileNavLinkClass }}"
+                        class="btn btn-sm {{ request()->routeIs('contact.*') ? $mobileNavActiveClass : $mobileNavLinkClass }}"
                     >
                         Contact
                     </a>
@@ -281,11 +281,11 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
     </div>
 
     <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal px-1">
+        <ul class="menu menu-horizontal px-1 gap-2">
             <li>
                 <a
                     href="{{ route('tours.index') }}"
-                    class="{{ request()->routeIs('tours.*') ? $navActiveClass : $navLinkClass }}"
+                    class="btn btn-sm  {{ request()->routeIs('tours.*') ? $navActiveClass : $navLinkClass }}"
                 >
                     Tours
                 </a>
@@ -293,7 +293,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
             <li>
                 <a
                     href="{{ route('about') }}"
-                    class="{{ request()->routeIs('about') ? $navActiveClass : $navLinkClass }}"
+                    class="btn btn-sm  {{ request()->routeIs('about') ? $navActiveClass : $navLinkClass }}"
                 >
                     About
                 </a>
@@ -301,7 +301,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
             <li>
                 <a
                     href="{{ route('impressions') }}"
-                    class="{{ request()->routeIs('impressions') ? $navActiveClass : $navLinkClass }}"
+                    class="btn btn-sm  {{ request()->routeIs('impressions') ? $navActiveClass : $navLinkClass }}"
                 >
                     Impressions
                 </a>
@@ -309,7 +309,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
             <li>
                 <a
                     href="{{ route('contact.show') }}"
-                    class="{{ request()->routeIs('contact.*') ? $navActiveClass : $navLinkClass }}"
+                    class="btn btn-sm  {{ request()->routeIs('contact.*') ? $navActiveClass : $navLinkClass }}"
                 >
                     Contact
                 </a>
