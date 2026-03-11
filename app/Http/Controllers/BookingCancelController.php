@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\URL;
 
 class BookingCancelController extends Controller
 {
-    private const CANCEL_LINK_TTL_MINUTES = 30;
+    private const CANCEL_LINK_TTL_MINUTES = 5;
 
     public function request(string $reference): \Illuminate\View\View
     {
