@@ -73,6 +73,12 @@ class MolliePayments
         $booking = Booking::find($bookingId);
         if (! $booking) return;
 
+        \Log::info('Mollie webhook received', [
+            'provider_payment_id' => $providerPaymentId,
+            'mollie_status' => $molliePayment->status,
+            'booking_id' => $bookingId,
+        ]);
+
         $payment = $booking->payment;
         if ($payment) {
             $payment->update([
@@ -89,6 +95,12 @@ class MolliePayments
                 'status' => 'confirmed',
                 'paid_at' => $booking->paid_at ?? now(),
                 'confirmed_at' => $booking->confirmed_at ?? now(),
+            ]);
+
+            \Log::info('Mollie webhook received', [
+                'provider_payment_id' => $providerPaymentId,
+                'mollie_status' => $molliePayment->status,
+                'booking_id' => $bookingId,
             ]);
 
             if (! $wasConfirmed) {

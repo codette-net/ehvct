@@ -67,12 +67,18 @@ class BookingController extends Controller
             $people = (int) $data['people_count'];
 
             if ($people < (int) $lockedSlot->min_people || $people > (int) $lockedSlot->max_people) {
-                throw new \RuntimeException('Invalid number of people for this slot.');
+//                throw new \RuntimeException('Invalid number of people for this slot.');
+                return back()
+                    ->withInput()
+                    ->with('error', 'Invalid number of people for this slot.')->withInput();
             }
 
             $remaining = $lockedSlot->remainingSeats();
             if ($people > $remaining) {
-                throw new \RuntimeException('Not enough seats left for this slot.');
+//                throw new \RuntimeException('Not enough seats left for this slot.');
+                return back()
+                    ->withInput()
+                    ->with('error', 'Not enough seats left for this slot.')->withInput();
             }
 
             $unit = (int) $variant->price_per_person_cents;

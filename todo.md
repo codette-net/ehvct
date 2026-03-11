@@ -15,7 +15,7 @@
 * [x] Frontend: Blade + Tailwind v3 + daisyUI
 * [x] Admin: Filament Panel (single operator)
 * [x] Payments: Mollie Checkout + Webhooks
-* [ ] Mail: SMTP (Postmark/Mailgun/SES or simple SMTP)
+* [x] Mail: SMTP (Postmark/Mailgun/SES or simple SMTP)
 * [ ] Cron/queue: MVP can run sync, later queue + cron cleanup
 
 ## 2) Public site
@@ -29,7 +29,7 @@
 - [x] Booking flow (slot -> people -> details -> Mollie -> return)
 - [x] Payment success page
 - [ ] Payment cancel/fail page (nice UX)
-- [ ] Contact page + contact form
+- [x] Contact page + contact form
 - [ ] Impressions page (site gallery)
 
 ### Booking rules
@@ -48,6 +48,7 @@
 * [x] TourVariant
 * [x] Media
 * [x] Mediables pivot (role + sort_order) + working attach UI
+* 
 
 ### Booking/Payments (MVP)
 
