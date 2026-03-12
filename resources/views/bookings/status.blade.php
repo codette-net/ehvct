@@ -4,6 +4,7 @@
     @php
         $tour = $booking->slot->variant->tour;
         $variant = $booking->slot->variant;
+        $isTourPassed = $booking->slot->starts_at < now();
 
         $stepDetails = 'step-primary';
         $stepPayment = in_array($booking->status, ['pending','confirmed']) ? 'step-primary' : '';
@@ -47,12 +48,14 @@
                 <div class="mt-4 flex gap-3">
                     <a href="{{ route('tours.index') }}" class="btn btn-primary">Back to tours</a>
 
-                    @if($booking->status === 'confirmed')
+                    @if($booking->status === 'confirmed' && ! $isTourPassed)
                         <a href="{{ URL::temporarySignedRoute('bookings.cancel.request', now()->addDays(7), ['reference' => $booking->reference]) }}"
                            class="btn btn-outline">
                             Request cancellation
                         </a>
                     @endif
+
+
                 </div>
 
                 <p class="text-xs opacity-70 mt-4">

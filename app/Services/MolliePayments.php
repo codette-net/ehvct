@@ -68,10 +68,10 @@ class MolliePayments
         $molliePayment = $this->mollie->payments->get($providerPaymentId);
 
         $bookingId = $molliePayment->metadata->booking_id ?? null;
-        if (!$bookingId) return;
+        if (! $bookingId) return;
 
         $booking = Booking::find($bookingId);
-        if (!$booking) return;
+        if (! $booking) return;
 
         \Log::info('Mollie webhook received', [
             'provider_payment_id' => $providerPaymentId,
@@ -80,12 +80,23 @@ class MolliePayments
         ]);
 
         $payment = $booking->payment;
+
         if ($payment) {
+            // Preserve refunded locally if we already know it was refunded
+            $providerStatus = $payment->provider_status === 'refunded'
+                ? 'refunded'
+                : $molliePayment->status;
+
             $payment->update([
-                'provider_status' => $molliePayment->status,
+                'provider_status' => $providerStatus,
                 'webhook_payload' => json_decode(json_encode($molliePayment), true),
                 'paid_at' => $molliePayment->isPaid() ? now() : $payment->paid_at,
             ]);
+        }
+
+        // Never downgrade refunded booking back to confirmed.
+        if ($booking->status === 'refunded' || optional($booking->payment)->provider_status === 'refunded') {
+            return;
         }
 
         if ($molliePayment->isPaid()) {
@@ -97,7 +108,7 @@ class MolliePayments
                 'confirmed_at' => $booking->confirmed_at ?? now(),
             ]);
 
-            if (!$wasConfirmed) {
+            if (! $wasConfirmed) {
                 Mail::to($booking->email)->send(new BookingConfirmedMail($booking));
 
                 $admin = config('mail.admin_notify') ?? env('ADMIN_NOTIFY_EMAIL');
@@ -107,7 +118,9 @@ class MolliePayments
             }
         } elseif ($molliePayment->isCanceled() || $molliePayment->isExpired() || $molliePayment->isFailed()) {
             $booking->update([
-                'status' => $molliePayment->isCanceled() ? 'canceled' : ($molliePayment->isExpired() ? 'expired' : 'failed'),
+                'status' => $molliePayment->isCanceled()
+                    ? 'canceled'
+                    : ($molliePayment->isExpired() ? 'expired' : 'failed'),
             ]);
         }
     }
