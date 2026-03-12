@@ -48,7 +48,7 @@ class MolliePayments
             'description' => "Eindhoven Cycling Tours — {$booking->reference}",
             'redirectUrl' => route('bookings.status', ['reference' => $booking->reference]),
 //            'webhookUrl' => route('webhooks.mollie'),
-        'webhookUrl' => config('services.mollie.webhook_url'),
+            'webhookUrl' => config('services.mollie.webhook_url'),
             'metadata' => [
                 'booking_id' => $booking->id,
                 'reference' => $booking->reference,
@@ -68,10 +68,10 @@ class MolliePayments
         $molliePayment = $this->mollie->payments->get($providerPaymentId);
 
         $bookingId = $molliePayment->metadata->booking_id ?? null;
-        if (! $bookingId) return;
+        if (!$bookingId) return;
 
         $booking = Booking::find($bookingId);
-        if (! $booking) return;
+        if (!$booking) return;
 
         \Log::info('Mollie webhook received', [
             'provider_payment_id' => $providerPaymentId,
@@ -89,7 +89,7 @@ class MolliePayments
         }
 
         if ($molliePayment->isPaid()) {
-            $wasConfirmed = in_array($booking->status, ['confirmed','paid'], true);
+            $wasConfirmed = in_array($booking->status, ['confirmed', 'paid'], true);
 
             $booking->update([
                 'status' => 'confirmed',
@@ -97,13 +97,7 @@ class MolliePayments
                 'confirmed_at' => $booking->confirmed_at ?? now(),
             ]);
 
-            \Log::info('Mollie webhook received', [
-                'provider_payment_id' => $providerPaymentId,
-                'mollie_status' => $molliePayment->status,
-                'booking_id' => $bookingId,
-            ]);
-
-            if (! $wasConfirmed) {
+            if (!$wasConfirmed) {
                 Mail::to($booking->email)->send(new BookingConfirmedMail($booking));
 
                 $admin = config('mail.admin_notify') ?? env('ADMIN_NOTIFY_EMAIL');
@@ -117,4 +111,78 @@ class MolliePayments
             ]);
         }
     }
+
+    public function cancelPaymentForBooking(Booking $booking): void
+    {
+        $payment = $booking->payment;
+
+        if (! $payment || ! $payment->provider_payment_id) {
+            throw new \RuntimeException('Payment not found or not yet processed.');
+        }
+
+        $molliePayment = $this->mollie->payments->get($payment->provider_payment_id);
+
+        if (! $molliePayment->isCancelable) {
+            throw new \RuntimeException('This payment is no longer cancelable.');
+        }
+
+        $this->mollie->payments->cancel($payment->provider_payment_id);
+
+        $payment->update([
+            'provider_status' => 'canceled',
+        ]);
+
+        $booking->update([
+            'status' => 'canceled',
+            'canceled_at' => now(),
+        ]);
+
+        \Log::info('Mollie payment canceled', [
+            'booking_id' => $booking->id,
+            'reference' => $booking->reference,
+            'provider_payment_id' => $payment->provider_payment_id,
+        ]);
+    }
+
+    public function refundPaymentForBooking(Booking $booking, ?int $amountCents = null): void
+    {
+        $payment = $booking->payment;
+
+        if (! $payment || ! $payment->provider_payment_id) {
+            throw new \RuntimeException('Payment not found or not yet processed.');
+        }
+
+        $refundAmount = $amountCents ?? $booking->total_amount_cents;
+
+        if ($refundAmount <= 0) {
+            throw new \RuntimeException('Refund amount must be greater than zero.');
+        }
+
+        $this->mollie->paymentRefunds->createForId(
+            $payment->provider_payment_id,
+            [
+                'amount' => [
+                    'currency' => $booking->currency,
+                    'value' => number_format($refundAmount / 100, 2, '.', ''),
+                ],
+            ]
+        );
+
+        $payment->update([
+            'provider_status' => 'refunded',
+        ]);
+
+        $booking->update([
+            'status' => 'refunded',
+            'canceled_at' => $booking->canceled_at ?? now(),
+        ]);
+
+        \Log::info('Mollie refund created', [
+            'booking_id' => $booking->id,
+            'reference' => $booking->reference,
+            'provider_payment_id' => $payment->provider_payment_id,
+            'refund_amount_cents' => $refundAmount,
+        ]);
+    }
+
 }

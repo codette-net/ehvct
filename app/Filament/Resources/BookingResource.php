@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\BookingCanceledMail;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Log;
+use App\Services\MolliePayments;
 
 class BookingResource extends Resource
 {
@@ -72,7 +73,7 @@ class BookingResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(), Tables\Actions\Action::make('cancel')
-                    ->label('Cancel')
+                    ->label('Admin Cancel booking')
                     ->color('danger')
                     ->icon('heroicon-o-x-mark')
                     ->requiresConfirmation()
@@ -115,7 +116,84 @@ class BookingResource extends Resource
                                 ->send();
                         }
                     }),
-            ]);
+                Tables\Actions\Action::make('cancel_payment')
+                    ->label('Cancel payment')
+                    ->color('warning')
+                    ->icon('heroicon-o-no-symbol')
+                    ->requiresConfirmation()
+                    ->visible(function (Booking $record) {
+                        return $record->status === 'pending'
+                            && optional($record->payment)->provider_status === 'open';
+                    })
+                    ->action(function (Booking $record, MolliePayments $molliePayments) {
+                        try {
+                            $molliePayments->cancelPaymentForBooking($record);
+
+                            Notification::make()
+                                ->title('Payment canceled')
+                                ->body('The Mollie payment and booking were canceled.')
+                                ->success()
+                                ->send();
+                        } catch (\Throwable $e) {
+                            Log::error('Cancel Mollie payment failed', [
+                                'booking_id' => $record->id,
+                                'reference' => $record->reference,
+                                'error' => $e->getMessage(),
+                            ]);
+
+                            Notification::make()
+                                ->title('Could not cancel payment')
+                                ->body($e->getMessage())
+                                ->danger()
+                                ->send();
+                        }
+                    }),
+                Tables\Actions\Action::make('refund_payment')
+                    ->label('Refund')
+                    ->color('info')
+                    ->icon('heroicon-o-arrow-uturn-left')
+                    ->requiresConfirmation()
+                    ->form([
+                        Forms\Components\TextInput::make('amount_cents')
+                            ->label('Refund amount (cents)')
+                            ->numeric()
+                            ->default(fn (Booking $record) => $record->total_amount_cents)
+                            ->required()
+                            ->helperText('Use full booking amount for full refund.'),
+                    ])
+                    ->visible(function (Booking $record) {
+                        return in_array($record->status, ['confirmed', 'paid'], true)
+                            && optional($record->payment)->provider_status === 'paid';
+                    })
+                    ->action(function (Booking $record, array $data, MolliePayments $molliePayments) {
+                        try {
+                            $molliePayments->refundPaymentForBooking(
+                                $record,
+                                (int) $data['amount_cents']
+                            );
+
+                            Notification::make()
+                                ->title('Refund created')
+                                ->body('Refund was sent to Mollie and booking marked refunded.')
+                                ->success()
+                                ->send();
+                        } catch (\Throwable $e) {
+                            Log::error('Refund Mollie payment failed', [
+                                'booking_id' => $record->id,
+                                'reference' => $record->reference,
+                                'error' => $e->getMessage(),
+                            ]);
+
+                            Notification::make()
+                                ->title('Could not create refund')
+                                ->body($e->getMessage())
+                                ->danger()
+                                ->send();
+                        }
+                    }),
+            ],
+
+            );
     }
 
     public static function getPages(): array
