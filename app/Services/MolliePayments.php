@@ -125,77 +125,75 @@ class MolliePayments
         }
     }
 
-    public function cancelPaymentForBooking(Booking $booking): void
+    public function cancelOrRefundBooking(Booking $booking): string
     {
         $payment = $booking->payment;
 
         if (! $payment || ! $payment->provider_payment_id) {
-            throw new \RuntimeException('Payment not found or not yet processed.');
+            $booking->update([
+                'status' => 'canceled',
+                'canceled_at' => now(),
+            ]);
+
+            return 'canceled';
         }
 
         $molliePayment = $this->mollie->payments->get($payment->provider_payment_id);
 
-        if (! $molliePayment->isCancelable) {
-            throw new \RuntimeException('This payment is no longer cancelable.');
+        // Open / pending payment: cancel it
+        if ($molliePayment->isCancelable) {
+            $this->mollie->payments->cancel($payment->provider_payment_id);
+
+            $payment->update([
+                'provider_status' => 'canceled',
+            ]);
+
+            $booking->update([
+                'status' => 'canceled',
+                'canceled_at' => now(),
+            ]);
+
+            \Log::info('Mollie payment canceled from admin action', [
+                'booking_id' => $booking->id,
+                'reference' => $booking->reference,
+                'provider_payment_id' => $payment->provider_payment_id,
+            ]);
+
+            return 'canceled';
         }
 
-        $this->mollie->payments->cancel($payment->provider_payment_id);
+        // Already paid: refund it
+        if ($molliePayment->isPaid()) {
+            $this->mollie->paymentRefunds->createForId(
+                $payment->provider_payment_id,
+                [
+                    'amount' => [
+                        'currency' => $booking->currency,
+                        'value' => number_format($booking->total_amount_cents / 100, 2, '.', ''),
+                    ],
+                ]
+            );
 
-        $payment->update([
-            'provider_status' => 'canceled',
-        ]);
+            $payment->update([
+                'provider_status' => 'refunded',
+            ]);
 
-        $booking->update([
-            'status' => 'canceled',
-            'canceled_at' => now(),
-        ]);
+            $booking->update([
+                'status' => 'refunded',
+                'canceled_at' => $booking->canceled_at ?? now(),
+                'refunded_at' => now(),
+            ]);
 
-        \Log::info('Mollie payment canceled', [
-            'booking_id' => $booking->id,
-            'reference' => $booking->reference,
-            'provider_payment_id' => $payment->provider_payment_id,
-        ]);
-    }
+            \Log::info('Mollie payment refunded from admin action', [
+                'booking_id' => $booking->id,
+                'reference' => $booking->reference,
+                'provider_payment_id' => $payment->provider_payment_id,
+            ]);
 
-    public function refundPaymentForBooking(Booking $booking, ?int $amountCents = null): void
-    {
-        $payment = $booking->payment;
-
-        if (! $payment || ! $payment->provider_payment_id) {
-            throw new \RuntimeException('Payment not found or not yet processed.');
+            return 'refunded';
         }
 
-        $refundAmount = $amountCents ?? $booking->total_amount_cents;
-
-        if ($refundAmount <= 0) {
-            throw new \RuntimeException('Refund amount must be greater than zero.');
-        }
-
-        $this->mollie->paymentRefunds->createForId(
-            $payment->provider_payment_id,
-            [
-                'amount' => [
-                    'currency' => $booking->currency,
-                    'value' => number_format($refundAmount / 100, 2, '.', ''),
-                ],
-            ]
-        );
-
-        $payment->update([
-            'provider_status' => 'refunded',
-        ]);
-
-        $booking->update([
-            'status' => 'refunded',
-            'canceled_at' => $booking->canceled_at ?? now(),
-        ]);
-
-        \Log::info('Mollie refund created', [
-            'booking_id' => $booking->id,
-            'reference' => $booking->reference,
-            'provider_payment_id' => $payment->provider_payment_id,
-            'refund_amount_cents' => $refundAmount,
-        ]);
+        throw new \RuntimeException('This booking cannot be canceled or refunded via Mollie in its current state.');
     }
 
 }

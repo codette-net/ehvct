@@ -30,6 +30,7 @@ class Booking extends Model
         'paid_at' => 'datetime',
         'confirmed_at' => 'datetime',
         'canceled_at' => 'datetime',
+        'refunded_at' => 'datetime',
     ];
 
     protected static function booted(): void
@@ -51,4 +52,15 @@ class Booking extends Model
     {
         return $this->hasOne(Payment::class);
     }
+
+    public function cancellationCutoffAt()
+    {
+        return $this->slot->starts_at->copy()->subHours((int) $this->slot->cancel_cutoff_hours);
+    }
+
+    public function isBeforeCancellationCutoff(): bool
+    {
+        return now()->lt($this->cancellationCutoffAt());
+    }
+
 }

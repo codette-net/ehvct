@@ -39,6 +39,10 @@ class BookingResource extends Resource
                 Forms\Components\DateTimePicker::make('paid_at')->disabled(),
                 Forms\Components\DateTimePicker::make('confirmed_at')->disabled(),
                 Forms\Components\DateTimePicker::make('canceled_at')->disabled(),
+                Forms\Components\DatePicker::make('refunded_at')->disabled(),
+                Forms\Components\Textarea::make('canceled_reason')->disabled()
+                    ->rows(3)
+                    ->columnSpanFull(),
             ])->columns(3),
         ]);
     }
@@ -56,7 +60,17 @@ class BookingResource extends Resource
                     ->label('Total')
                     ->formatStateUsing(fn(Booking $record) => '€ ' . number_format($record->total_amount_cents / 100, 2))
                     ->sortable(),
-                Tables\Columns\TextColumn::make('status')->badge()->sortable(),
+                Tables\Columns\TextColumn::make('status')
+                    ->badge()
+                    ->color(fn(string $state): string => match ($state) {
+                        'confirmed' => 'success',
+                        'refunded' => 'info',
+                        'canceled' => 'warning',
+                        'failed', 'expired' => 'danger',
+                        'pending' => 'gray',
+                        default => 'gray',
+                    })
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')->since(),
             ])
             ->filters([
@@ -72,128 +86,101 @@ class BookingResource extends Resource
                     ]),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(), Tables\Actions\Action::make('cancel')
-                    ->label('Admin Cancel booking')
+                Tables\Actions\ViewAction::make(),
+
+                Tables\Actions\Action::make('cancel_booking')
+                    ->label('Cancel booking')
                     ->color('danger')
                     ->icon('heroicon-o-x-mark')
                     ->requiresConfirmation()
                     ->form([
+                        Forms\Components\Placeholder::make('cutoff_info')
+                            ->label('Cancellation policy')
+                            ->content(function (Booking $record) {
+                                $cutoff = $record->slot->starts_at->copy()->subHours((int)$record->slot->cancel_cutoff_hours);
+
+                                return $record->canCancel()
+                                    ? 'This booking is still before the cancellation cutoff.'
+                                    : 'This booking is past the cancellation cutoff.';
+                            }),
+
                         Forms\Components\Textarea::make('reason')
                             ->label('Reason (sent to customer)')
                             ->rows(3)
                             ->maxLength(500)
                             ->required(),
+
+                        Forms\Components\Toggle::make('override_cutoff')
+                            ->label('Allow cancellation even after cutoff')
+                            ->default(false)
+                            ->visible(fn(Booking $record) => !$record->canCancel()),
                     ])
                     ->visible(fn(Booking $record) => in_array($record->status, ['pending', 'confirmed', 'paid'], true))
-                    ->action(function (Booking $record, array $data) {
-                        if ($record->status === 'canceled') return;
+                    ->action(function (Booking $record, array $data, MolliePayments $molliePayments) {
+                        $beforeCutoff = $record->isBeforeCancellationCutoff();
+                        $override = (bool)($data['override_cutoff'] ?? false);
+
+                        if (!$beforeCutoff && !$override) {
+                            Notification::make()
+                                ->title('Past cancellation cutoff')
+                                ->body('This booking is past the cancellation cutoff. Enable override if you still want to cancel it.')
+                                ->warning()
+                                ->send();
+
+                            return;
+                        }
 
                         $record->update([
-                            'status' => 'canceled',
-                            'canceled_at' => now(),
                             'canceled_reason' => $data['reason'],
                         ]);
 
                         try {
-                            Mail::to($record->email)->send(new BookingCanceledMail($record));
+                            $result = $molliePayments->cancelOrRefundBooking($record);
 
-                            Notification::make()
-                                ->title('Booking canceled')
-                                ->body('Customer email sent.')
-                                ->success()
-                                ->send();
+                            try {
+                                Mail::to($record->email)->send(new BookingCanceledMail($record));
+
+                                Notification::make()
+                                    ->title('Booking updated')
+                                    ->body(
+                                        $result === 'refunded'
+                                            ? 'Booking refunded and customer email sent.'
+                                            : 'Booking canceled and customer email sent.'
+                                    )
+                                    ->success()
+                                    ->send();
+                            } catch (\Throwable $mailException) {
+                                Log::error('Cancel/refund email failed', [
+                                    'booking_id' => $record->id,
+                                    'reference' => $record->reference,
+                                    'error' => $mailException->getMessage(),
+                                ]);
+
+                                Notification::make()
+                                    ->title('Booking updated')
+                                    ->body(
+                                        $result === 'refunded'
+                                            ? 'Booking refunded, but customer email could not be sent.'
+                                            : 'Booking canceled, but customer email could not be sent.'
+                                    )
+                                    ->warning()
+                                    ->send();
+                            }
                         } catch (\Throwable $e) {
-                            Log::error('Cancel email failed', [
+                            Log::error('Cancel/refund booking failed', [
                                 'booking_id' => $record->id,
                                 'reference' => $record->reference,
                                 'error' => $e->getMessage(),
                             ]);
 
                             Notification::make()
-                                ->title('Booking canceled')
-                                ->body('Canceled, but email could not be sent. You can retry later.')
-                                ->warning()
-                                ->send();
-                        }
-                    }),
-                Tables\Actions\Action::make('cancel_payment')
-                    ->label('Cancel payment')
-                    ->color('warning')
-                    ->icon('heroicon-o-no-symbol')
-                    ->requiresConfirmation()
-                    ->visible(function (Booking $record) {
-                        return $record->status === 'pending'
-                            && optional($record->payment)->provider_status === 'open';
-                    })
-                    ->action(function (Booking $record, MolliePayments $molliePayments) {
-                        try {
-                            $molliePayments->cancelPaymentForBooking($record);
-
-                            Notification::make()
-                                ->title('Payment canceled')
-                                ->body('The Mollie payment and booking were canceled.')
-                                ->success()
-                                ->send();
-                        } catch (\Throwable $e) {
-                            Log::error('Cancel Mollie payment failed', [
-                                'booking_id' => $record->id,
-                                'reference' => $record->reference,
-                                'error' => $e->getMessage(),
-                            ]);
-
-                            Notification::make()
-                                ->title('Could not cancel payment')
+                                ->title('Could not cancel booking')
                                 ->body($e->getMessage())
                                 ->danger()
                                 ->send();
                         }
                     }),
-                Tables\Actions\Action::make('refund_payment')
-                    ->label('Refund')
-                    ->color('info')
-                    ->icon('heroicon-o-arrow-uturn-left')
-                    ->requiresConfirmation()
-                    ->form([
-                        Forms\Components\TextInput::make('amount_cents')
-                            ->label('Refund amount (cents)')
-                            ->numeric()
-                            ->default(fn (Booking $record) => $record->total_amount_cents)
-                            ->required()
-                            ->helperText('Use full booking amount for full refund.'),
-                    ])
-                    ->visible(function (Booking $record) {
-                        return in_array($record->status, ['confirmed', 'paid'], true)
-                            && optional($record->payment)->provider_status === 'paid';
-                    })
-                    ->action(function (Booking $record, array $data, MolliePayments $molliePayments) {
-                        try {
-                            $molliePayments->refundPaymentForBooking(
-                                $record,
-                                (int) $data['amount_cents']
-                            );
-
-                            Notification::make()
-                                ->title('Refund created')
-                                ->body('Refund was sent to Mollie and booking marked refunded.')
-                                ->success()
-                                ->send();
-                        } catch (\Throwable $e) {
-                            Log::error('Refund Mollie payment failed', [
-                                'booking_id' => $record->id,
-                                'reference' => $record->reference,
-                                'error' => $e->getMessage(),
-                            ]);
-
-                            Notification::make()
-                                ->title('Could not create refund')
-                                ->body($e->getMessage())
-                                ->danger()
-                                ->send();
-                        }
-                    }),
-            ],
-
-            );
+            ]);
     }
 
     public static function getPages(): array
