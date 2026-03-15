@@ -99,7 +99,7 @@ class BookingResource extends Resource
                             ->content(function (Booking $record) {
                                 $cutoff = $record->slot->starts_at->copy()->subHours((int)$record->slot->cancel_cutoff_hours);
 
-                                return $record->canCancel()
+                                return $record->isBeforeCancellationCutoff()
                                     ? 'This booking is still before the cancellation cutoff.'
                                     : 'This booking is past the cancellation cutoff.';
                             }),
@@ -113,7 +113,7 @@ class BookingResource extends Resource
                         Forms\Components\Toggle::make('override_cutoff')
                             ->label('Allow cancellation even after cutoff')
                             ->default(false)
-                            ->visible(fn(Booking $record) => !$record->canCancel()),
+                            ->visible(fn(Booking $record) => !$record->isBeforeCancellationCutoff()),
                     ])
                     ->visible(fn(Booking $record) => in_array($record->status, ['pending', 'confirmed', 'paid'], true))
                     ->action(function (Booking $record, array $data, MolliePayments $molliePayments) {
@@ -136,6 +136,7 @@ class BookingResource extends Resource
 
                         try {
                             $result = $molliePayments->cancelOrRefundBooking($record);
+                            $record->refresh();
 
                             try {
                                 Mail::to($record->email)->send(new BookingCanceledMail($record));

@@ -150,7 +150,7 @@ class MolliePayments
 
             $booking->update([
                 'status' => 'canceled',
-                'canceled_at' => now(),
+                'canceled_at' => $booking->canceled_at ?? now(),
             ]);
 
             \Log::info('Mollie payment canceled from admin action', [

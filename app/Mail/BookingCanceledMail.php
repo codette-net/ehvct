@@ -4,7 +4,6 @@ namespace App\Mail;
 
 use App\Models\Booking;
 use Illuminate\Bus\Queueable;
-//use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -21,8 +20,12 @@ class BookingCanceledMail extends Mailable
 
     public function envelope(): Envelope
     {
+        $isRefunded = $this->booking->status === 'refunded' || ! is_null($this->booking->refunded_at);
+
         return new Envelope(
-            subject: 'Booking canceled — ' . $this->booking->reference,
+            subject: $isRefunded
+                ? 'Booking canceled and refunded — ' . $this->booking->reference
+                : 'Booking canceled — ' . $this->booking->reference,
         );
     }
 
@@ -31,7 +34,15 @@ class BookingCanceledMail extends Mailable
         return new Content(
             view: 'emails.bookings.canceled-html',
             text: 'emails.bookings.canceled-text',
-            with: ['booking' => $this->booking],
+            with: [
+                'booking' => $this->booking,
+                'isRefunded' => $this->booking->status === 'refunded' || ! is_null($this->booking->refunded_at),
+            ],
         );
+    }
+
+    public function attachments(): array
+    {
+        return [];
     }
 }
