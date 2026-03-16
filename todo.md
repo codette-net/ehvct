@@ -28,7 +28,7 @@
     - [x] booking CTA -> booking form
 - [x] Booking flow (slot -> people -> details -> Mollie -> return)
 - [x] Payment success page
-- [ ] Payment cancel/fail page (nice UX)
+- [x] Payment cancel/fail page (nice UX)
 - [x] Contact page + contact form
 - [ ] Impressions page (site gallery)
 
@@ -87,15 +87,15 @@
 
     * [x] SlotsRelationManager (CRUD starts_at, capacity, cutoffs, status)
     * [x] Occupancy display: confirmed seats / max
-* [ ] BookingResource
+* [x] BookingResource
 
     * [x] list + filters (pending/paid/confirmed/canceled/expired)
     * [x] show: customer + slot + payment status
     * [x] actions: cancel (manual), mark as refunded (MVP note), resend email (optional)
     * [x] Admin cancel action sends email to customer + logs reason
-* [ ] PaymentResource (optional)
+* [x] PaymentResource (optional)
 
-    * [ ] mostly read-only, link to booking, show Mollie id/status
+    * [x ] mostly read-only, link to booking, show Mollie id/status
 
 ## 5) Public booking flow
 
@@ -123,7 +123,7 @@
     * [x] webhookUrl = webhook route
 
     * [x] Idempotency guard (no double email / no double confirm)
-    * [ ] Pending cleanup job (expire pending older than N minutes) + cron
+    * [x] Pending cleanup job (expire pending older than N minutes) + cron
 
 ## 7) Emails (MVP)
 - [x] Booking confirmation email on confirmed

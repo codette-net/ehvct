@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Tour extends Model
 {
-    protected $fillable = ['title', 'slug', 'description', 'highlights', 'meeting_point', 'is_active'];
+    protected $fillable = ['title', 'slug', 'description', 'highlights', 'meeting_point', 'meeting_point_map_url' , 'is_active'];
 
     public function variants(): HasMany
     {
