@@ -323,32 +323,34 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
 </nav>
 
 @if(session('success'))
-    <div class="toast toast-start z-50" id="flash-success">
+    <div class="toast toast-start z-50 flash-toast">
         <div class="alert alert-success shadow-lg">
             <span>{{ session('success') }}</span>
         </div>
     </div>
-    <script>
-        setTimeout(() => {
-            const el = document.getElementById('flash-success');
-            if (el) el.remove();
-        }, 4000);
-    </script>
 @endif
 
 @if(session('error'))
-    <div class="toast toast-start z-50" id="flash-error">
+    <div class="toast toast-start z-50 flash-toast">
         <div class="alert alert-error shadow-lg">
             <span>{{ session('error') }}</span>
         </div>
     </div>
-    <script>
-        setTimeout(() => {
-            const el = document.getElementById('flash-error');
-            if (el) el.remove();
-        }, 4000);
-    </script>
 @endif
+
+@if(session('status'))
+    <div class="toast toast-start z-50 flash-toast">
+        <div class="alert alert-info shadow-lg">
+            <span>{{ session('status') }}</span>
+        </div>
+    </div>
+@endif
+
+<script>
+    setTimeout(() => {
+        document.querySelectorAll('.flash-toast').forEach(el => el.remove());
+    }, 4000);
+</script>
 
 <main class="mx-auto rj-gradient-sand mask-container pt-16">
     @yield('content')

@@ -17,7 +17,6 @@ class SlotResource extends Resource
     protected static ?string $model = Slot::class;
     protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
     protected static ?string $navigationLabel = 'Slots';
-    protected static ?string $navigationGroup = 'Bookings';
 
     public static function form(Form $form): Form
     {

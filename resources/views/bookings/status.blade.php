@@ -32,7 +32,7 @@
                     </div>
                     <p class="text-center flex-none">
                         <span class="font-semibold text-lg">
-                            >€{{ number_format($booking->total_amount_cents / 100, 2) }}
+                            €{{ number_format($booking->total_amount_cents / 100, 2) }}
                         </span> <span class="text-sm opacity-70">{{ $booking->people_count }} person(s)</span>
                     </p>
                 </div>
