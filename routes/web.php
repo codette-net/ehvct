@@ -62,3 +62,8 @@ Route::post('/contact', [ContactController::class, 'submit'])
 
 Route::post('/webhooks/mollie', MollieWebhookController::class)->name('webhooks.mollie');
 Route::get('/payment/success/{reference}', [PaymentController::class, 'success'])->name('payment.success');
+
+// policies
+Route::view('/privacy', 'pages.privacy-policy')->name('privacy-policy');
+Route::view('/terms', 'pages.terms-of-service')->name('terms-of-service');
+Route::view('/cookies', 'pages.cookies')->name('cookies');

@@ -396,9 +396,9 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
     </nav>
     <nav>
         <h6 class="footer-title">Legal</h6>
-        <a class="link link-hover">Terms of use</a>
-        <a class="link link-hover">Privacy policy</a>
-        <a class="link link-hover">Cookie policy</a>
+        <a class="link link-hover" href="/terms">Terms & Booking Policy</a>
+        <a class="link link-hover" href="/privacy">Privacy policy</a>
+        <a class="link link-hover" href="/cookies">Cookie policy</a>
     </nav>
 </footer>
 
