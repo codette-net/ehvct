@@ -2,16 +2,16 @@
 @section('title','Home')
 @section('content')
     {{-- HERO --}}
-    <section class="hero min-h-[90vh] max-w-[1280px] mx-auto"
+    <section class="hero min-h-[90vh] landscape:min-h-[80vw] max-w-[1280px] mx-auto pt-16"
              style="background-image: url(/images/EHVCT-cover-img.jpg); background-position: 33% 50%;">
         <div class="hero-overlay bg-neutral/60"></div>
-        <div class="hero-content flex-col gap-10 text-neutral-content p-0">
+        <div class="hero-content flex-col gap-10 text-neutral-content p-0 z-30">
 
 
-            <div class="max-w-[800px] flex flex-col gap-4 justify-items-center items-center">
+            <div class="landscape:max-w-[66vw] max-w-[800px] flex flex-col gap-4 justify-items-center items-center">
                 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                      viewBox="0 0 1484.000000 877.000000"
-                     preserveAspectRatio="xMidYMid meet" class="drop-shadow-2xl px-4">
+                     preserveAspectRatio="xMidYMid meet" class="drop-shadow-2xl px-4 max-w-[50vw] md:max-w-[60vw]">
 
                     <g transform="translate(0.000000,877.000000) scale(0.100000,-0.100000)"
                        fill="#ffffff" stroke="#ffffff">
@@ -208,7 +208,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                 </svg>
 
                 <header class="px-4 flex flex-col gap-4 justify-items-center items-center">
-                    <h1 class="text-3xl md:text-4xl font-bold leading-tight text-balance text-pretty">
+                    <h1 class="landscape:text-4xl text-3xl md:text-4xl font-bold leading-tight text-balance text-pretty">
                         Easy rides. Great stories. Better views
                     </h1>
                     <p class="text-lg opacity-95 text-balance">

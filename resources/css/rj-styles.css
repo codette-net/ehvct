@@ -125,3 +125,7 @@
 tr {
     border-bottom-color: #2228;
 }
+
+.menu a.active {
+    font-weight: 700;
+}

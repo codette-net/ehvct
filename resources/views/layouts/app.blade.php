@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="emerald">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="emerald" class="scroll-smooth">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,13 +14,13 @@
 
     @vite(['resources/css/app.css', 'resources/css/rj-styles.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-screen">
+<body class="min-h-screen relative ">
 
 @php
     $navLinkClass = 'btn-ghost hover:btn-outline';
-    $navActiveClass = 'active btn-neutral';
+    $navActiveClass = 'active btn-ghost underline underline-offset-4 underline decoration-2';
     $mobileNavLinkClass = 'btn-ghost hover:btn-outline';
-    $mobileNavActiveClass = 'active btn-neutral';
+    $mobileNavActiveClass = 'active bunderline underline-offset-4 underline decoration-2';
 @endphp
 
 <nav class="navbar shadow-sm fixed top-0 z-40 bg-base-100/90 backdrop-blur-sm">
@@ -34,15 +34,21 @@
                 aria-expanded="false"
                 aria-controls="mobile-nav-menu"
             >
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                     stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"/>
                 </svg>
             </button>
 
             <ul
                 id="mobile-nav-menu"
-                class="menu menu-sm dropdown-content bg-base-100 rounded-sm w-60 min-h-70 z-[60] p-2 shadow hidden"
+                class="menu dropdown-content bg-base-100 rounded-md w-60 min-h-70 z-50 p-2 shadow hidden border"
             >
+                <li class="mb-2">
+                    {{--                home --}}
+                    <a href="{{ route('home') }}"
+                       class="btn btn-sm {{ request()->routeIs('home') ? $mobileNavActiveClass : $mobileNavLinkClass }}">Home</a>
+                </li>
                 <li class="mb-2">
                     <a
                         href="{{ route('tours.index') }}"
@@ -80,7 +86,7 @@
 
         <a href="{{ route('home') }}" class="font-semibold">
             <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 1484.000000 877.000000"
+                 viewBox="0 0 1484.000000 877.000000"
                  preserveAspectRatio="xMidYMid meet" class="w-full max-w-[8rem] px-2 mx-2">
 
                 <g transform="translate(0.000000,877.000000) scale(0.100000,-0.100000)"
@@ -266,14 +272,14 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
 -3 170 -17 43 -76 93 -123 106 -57 16 -383 14 -383 -1z m343 -110 c34 -18 46
 -40 47 -81 0 -81 -42 -107 -174 -107 -82 0 -84 1 -90 26 -4 14 -4 59 0 100 l7
 74 94 0 c53 0 104 -5 116 -12z"/>
-{{--                    <path d="M3970 689 c-697 -14 -1341 -42 -1725 -74 -93 -8 -178 -15 -189 -15--}}
-{{---11 0 -17 -2 -15 -4 7 -7 309 -34 504 -46 99 -6 252 -15 340 -20 905 -54 2336--}}
-{{---74 4750 -67 2130 7 2622 15 3610 63 482 23 991 58 1003 68 4 4 -233 25 -473--}}
-{{--41 -260 17 -578 32 -1015 47 -404 13 -6179 20 -6790 7z"/>--}}
-{{--                    <path d="M6029 355 c-3 -2 -203 -5 -445 -6 -635 -3 -1335 -25 -1769 -54 -374--}}
-{{---26 -400 -28 -419 -35 -10 -3 51 -12 135 -18 741 -58 1834 -77 4114 -69 908 3--}}
-{{--1799 10 1980 16 512 16 832 30 1049 46 109 8 206 15 215 16 58 3 -73 20 -262--}}
-{{--33 -555 40 -847 51 -1807 66 -620 10 -2783 14 -2791 5z"/>--}}
+                    {{--                    <path d="M3970 689 c-697 -14 -1341 -42 -1725 -74 -93 -8 -178 -15 -189 -15--}}
+                    {{---11 0 -17 -2 -15 -4 7 -7 309 -34 504 -46 99 -6 252 -15 340 -20 905 -54 2336--}}
+                    {{---74 4750 -67 2130 7 2622 15 3610 63 482 23 991 58 1003 68 4 4 -233 25 -473--}}
+                    {{--41 -260 17 -578 32 -1015 47 -404 13 -6179 20 -6790 7z"/>--}}
+                    {{--                    <path d="M6029 355 c-3 -2 -203 -5 -445 -6 -635 -3 -1335 -25 -1769 -54 -374--}}
+                    {{---26 -400 -28 -419 -35 -10 -3 51 -12 135 -18 741 -58 1834 -77 4114 -69 908 3--}}
+                    {{--1799 10 1980 16 512 16 832 30 1049 46 109 8 206 15 215 16 58 3 -73 20 -262--}}
+                    {{--33 -555 40 -847 51 -1807 66 -620 10 -2783 14 -2791 5z"/>--}}
                 </g>
             </svg>
 
@@ -282,6 +288,14 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
 
     <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1 gap-2">
+            <li>
+                <a
+                    href="{{ route('home') }}"
+                    class="btn btn-sm  {{ request()->routeIs('home') ? $navActiveClass : $navLinkClass }}"
+                >
+                    Home
+                </a>
+            </li>
             <li>
                 <a
                     href="{{ route('tours.index') }}"
@@ -351,8 +365,19 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
         document.querySelectorAll('.flash-toast').forEach(el => el.remove());
     }, 4000);
 </script>
+<a id="scroll-to-top" class="btn btn-neutral btn-circle fixed bottom-4 right-4 cursor-pointer z-50 hidden" href="#top"
+   title="Scroll to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+         class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-up">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M12 5l0 14"/>
+        <path d="M18 11l-6 -6"/>
+        <path d="M6 11l6 -6"/>
+    </svg>
+</a>
 
-<main class="mx-auto rj-gradient-sand mask-container pt-16">
+<main class="mx-auto rj-gradient-sand mask-container">
     @yield('content')
 </main>
 
@@ -382,20 +407,27 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
         <p>© {{ date('Y') }} Eindhoven Cycling Tours</p>
     </aside>
     <nav class="md:place-self-center md:justify-self-end">
-        <div class="grid grid-flow-col gap-4">
+        <div class="grid grid-flow-col gap-4 mr-8">
             <a href="https://wa.link/uk5101" target="_blank" aria-label="WhatsApp">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
-                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="icon icon-tabler icons-tabler-outline icon-tabler-brand-whatsapp">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"/>
+                    <path
+                        d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"/>
                 </svg>
             </a>
             <a href="https://www.instagram.com/eindhoven_cycling_tours/" target="_blank" aria-label="Instagram">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
-                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
+                    <path
+                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
                 </svg>
             </a>
             <a href="https://www.facebook.com/ehvct" target="_blank" aria-label="Facebook">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
-                    <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
+                    <path
+                        d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
                 </svg>
             </a>
         </div>
@@ -403,7 +435,21 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
 </footer>
 
 <script>
+    let scrollTop = document.querySelector("#scroll-to-top");
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 100) {
+            scrollTop.classList.remove("hidden");
+        } else {
+            scrollTop.classList.add("hidden");
+        }
+    })
 
+    if (!scrollTop.classList.contains('hidden')) {
+        scrollTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        })
+    }
 </script>
 
 </body>
