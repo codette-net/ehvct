@@ -4,6 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <meta name="description" content="@yield('meta_description', 'Guided cycling tours around Eindhoven with nature, local highlights and relaxed group rides.')">
+
+    <meta property="og:title" content="@yield('title', 'Eindhoven Cycling Tours')">
+    <meta property="og:description" content="@yield('meta_description', 'Guided cycling tours around Eindhoven with nature, local highlights and relaxed group rides.')">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:image" content="@yield('meta_image', asset('/images/EHVCT-cover-img.jpg'))">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@yield('title', 'Eindhoven Cycling Tours')">
+    <meta name="twitter:description" content="@yield('meta_description', 'Guided cycling tours around Eindhoven with nature, local highlights and relaxed group rides.')">
+    <meta name="twitter:image" content="@yield('meta_image', asset('/images/EHVCT-cover-img.jpg'))">
+
+    <link rel="canonical" href="{{ url()->current() }}">
     <title>
         @hasSection('title')
             @yield('title') | {{ config('app.name', 'Eindhoven Cycling Tours') }}

@@ -36,6 +36,11 @@ class TourResource extends Resource
             Forms\Components\TextInput::make('meeting_point_map_url')->maxLength(255),
             Forms\Components\Toggle::make('is_active')->default(true),
 
+            Forms\Components\Textarea::make('introduction')
+                ->rows(3)
+                ->maxLength(200)
+                ->columnSpanFull(),
+
             Forms\Components\RichEditor::make('description')
                 ->columnSpanFull()
                 ->default('')

@@ -1,115 +1,262 @@
 @extends('layouts.app')
-@section('title',  $tour->title)
+@section('title', $tour->title)
+@section('meta_description', \Illuminate\Support\Str::limit(strip_tags($tour->introduction ?: $tour->description), 155))
+@section('meta_image', $tour->cover_url ?: asset('/images/EHVCT-cover-img.jpg'))
 
 @section('content')
-    <section class="max-w-6xl mx-auto px-4 py-20">
+    <section class="max-w-7xl mx-auto px-4 pt-24 pb-16">
 
-        <div class="breadcrumbs text-sm mb-4">
+        {{-- Breadcrumbs --}}
+        <div class="breadcrumbs text-sm mb-6">
             <ul>
-                <li><a href="{{ route('tours.index') }}" class="underline">Tours</a></li>
+                <li><a href="{{ route('home') }}" class="link">Home</a></li>
+                <li><a href="{{ route('tours.index') }}" class="link">Tours</a></li>
                 <li>{{ $tour->title }}</li>
             </ul>
         </div>
 
-        <article class="flex flex-wrap justify-between gap-8 rj-tour bg-neutral-content/60 p-4 rounded-lg shadow-lg">
-            <div class="max-w-[44ch] md:max-w-[54ch] lg:max-w-[70ch]">
-                <h1 class="text-4xl font-bold">{{ $tour->title }}</h1>
+
+        {{-- Top product-style layout --}}
+        <article class="flex flex-wrap justify-center md:grid md:grid-cols-[repeat(auto-fit,min(100%,20rem))] gap-4 place-items-end">
+
+            {{-- Cover image --}}
+            <section class="order-1 sticky top-0">
                 @if($tour->cover_url)
-                    <figure class="aspect-[3/4] max-w-[33ch] object-cover rounded-xl mt-4 shadow-md">
-                        <img src="{{ $tour->cover_url }}"
-                             alt="{{ $tour->cover_media?->alt_text ?? $tour->title }}"
-                             class="w-full h-full object-cover rounded-xl">
+                    <figure
+                        class="max-w-[100%] md:static sm:max-w-[350px] overflow-hidden rounded-2xl shadow-lg bg-base-200 border border-base-300 mx-auto">
+                        <img
+                            src="{{ $tour->cover_url }}"
+                            alt="{{ $tour->cover_media?->alt_text ?? $tour->title }}"
+                            class="w-full aspect-[3/4] object-cover"
+                        >
                     </figure>
                 @else
-                    <hr>
-                @endif
-                <div class="flex flex-wrap">
-                    <div class="max-w-none mt-4 mx-4 rj-description">
-                        {!! $tour->description !!}
+                    <div
+                        class="aspect-[3/4] rounded-2xl bg-base-200 border border-base-300 flex items-center justify-center text-sm opacity-60 ">
+                        No image available
                     </div>
-                    <div class="flex flex-wrap gap-4 mt-4 justify-center items-start">
-                        <div
-                            class="flex-auto py-2 border border-gray-500 rounded-md bg-base-100/60 shadow-md max-w-[15rem]">
-                            <h3 class="text-2xl font-semibold text-center px-2 pb-2 border-b"
-                                style="border-bottom-color: #2225">Highlights</h3>
-                            <div class="px-2">
-                                <p class="mt-2 text-balance px-2">
-                                    {!! $tour->highlights !!}
-                                </p>
+                @endif
+            </section>
+
+            {{-- Main info --}}
+            <section class="order-2 min-w-0 z-10">
+                <div class="bg-base-100 rounded-2xl shadow-md border border-base-300 p-6 md:p-8">
+                    <header>
+                        <h1 class="text-3xl md:text-4xl font-bold leading-tight">
+                            {{ $tour->title }}
+                        </h1>
+
+                        @if($tour->introduction)
+                            <div class="mt-5 text-lg leading-8 max-w-3xl prose prose-lg max-w-none">
+                                {!! $tour->introduction !!}
                             </div>
+                        @endif
 
-                        </div>
-                        <div
-                            class="flex-auto py-2 border border-gray-500 rounded-md bg-base-100/60 shadow-md max-w-[15rem]">
-                            <h3 class="text-2xl font-semibold text-center px-2 pb-2 border-b"
-                                style="border-bottom-color: #2225">Meeting point</h3>
-                            <p class="mt-2 text-balance px-2">
-                                @if ($tour->meeting_point)
-                                    @if ($tour->meeting_point_map_url)
-                                        <a href="{{ $tour->meeting_point_map_url }}" title="Link to meeting point on mMaps" target="_blank" class="link flex items-center gap-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-map-pin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0" /></svg>
+                    </header>
+                    {{-- Quick facts --}}
+                    <div class="mt-6 flex flex-wrap gap-3">
+                        @if($tour->variants->count())
+                            @php
+                                $lowestPrice = $tour->variants->min('price_per_person_cents');
+                                $shortestDuration = $tour->variants->min('duration_minutes');
+                            @endphp
 
-                                            {{ $tour->meeting_point }}
-                                        </a>
-                                        @else
-                                        {{ $tour->meeting_point }}
-                                    @endif
-                                @else
-                                    TBD
-                                @endif
+                            @if($lowestPrice)
+                                <div class="badge badge-lg badge-outline">
+                                    From €{{ number_format($lowestPrice / 100, 2) }} p.p.
+                                </div>
+                            @endif
+
+                            @if($shortestDuration)
+                                <div class="badge badge-lg badge-outline">
+                                    {{ number_format($shortestDuration / 60, 1) }} hours+
+                                </div>
+                            @endif
+                        @endif
+
+                    </div>
+
+
+                </div>
+            </section>
+
+            {{-- Booking card --}}
+            <aside id="booking-card" class="order-3 w-full">
+                <div class="card bg-base-100 rounded-2xl shadow-lg border border-base-300 overflow-hidden">
+                    <div class="card-body p-0">
+                        <div class="bg-accent text-accent-content px-6 py-5">
+                            <h2 class="text-2xl font-bold">Book this tour</h2>
+                            <p class="text-sm opacity-90 mt-1">
+                                Choose a date and reserve your spot.
                             </p>
                         </div>
-                    </div>
-                </div>
 
+                        <div class="p-5 space-y-4">
+                            @foreach($tour->variants as $variant)
+                                @php
+                                    $slots = $variant->slots->filter(fn($s) => $s->isBookableNow());
+                                @endphp
 
-            </div>
-
-            <aside
-                class="card bg-primary/75 sticky top-20 rounded-xl shadow-md h-full border border-current max-w-[20rem]">
-                <div class="card-body">
-                    <h3 class="card-title">Book this tour</h3>
-
-                    <div class="mt-4 space-y-4">
-                        @foreach($tour->variants as $variant)
-                            <div class="bg-base-100 rounded-xl p-3 border border-current">
-                                <div class="flex justify-between items-start gap-3">
-                                    <div>
-                                        <div class="font-semibold">{{ $variant->label }}</div>
-                                        <div
-                                            class="text-sm opacity-70">{{ number_format($variant->duration_minutes / 60 , 1)  }}
-                                            hours
+                                <div class="rounded-xl border border-base-300 bg-base-200/40 p-4">
+                                    <div class="flex items-start justify-between gap-3">
+                                        <div>
+                                            <h3 class="font-semibold text-lg">{{ $variant->label }}</h3>
+                                            <p class="text-sm opacity-70">
+                                                {{ number_format($variant->duration_minutes / 60, 1) }} hours
+                                            </p>
+                                        </div>
+                                        <div class="text-lg font-bold whitespace-nowrap">
+                                            €{{ number_format($variant->price_per_person_cents / 100, 2) }}
                                         </div>
                                     </div>
-                                    <div class="font-semibold">
-                                        €{{ number_format($variant->price_per_person_cents / 100, 2) }}
+
+                                    <div class="mt-4 space-y-3">
+                                        @forelse($slots as $slot)
+                                            <div class="rounded-xl bg-base-100 border border-base-300 p-3">
+                                                <div class="flex items-center justify-between gap-3 mb-3">
+                                                    <div class="text-sm font-medium">
+                                                        {{ $slot->starts_at->format('D d M, H:i') }}
+                                                    </div>
+                                                    <div class="text-xs opacity-70">
+                                                        {{ $slot->remainingSeats() }} seats left
+                                                    </div>
+                                                </div>
+
+                                                <a href="{{ route('bookings.create', $slot) }}"
+                                                   class="btn btn-accent btn-sm w-full">
+                                                    Book this date
+                                                </a>
+                                            </div>
+                                        @empty
+                                            <p class="text-sm opacity-70">
+                                                No bookable slots right now.
+                                            </p>
+                                        @endforelse
                                     </div>
                                 </div>
+                            @endforeach
 
-                                <div class="mt-3 space-y-2">
-                                    @php
-                                        $slots = $variant->slots->filter(fn($s) => $s->isBookableNow());
-                                    @endphp
-
-                                    @forelse($slots as $slot)
-                                        <span class="opacity-70">Seats left: {{ $slot->remainingSeats() }}</span>
-
-                                        <a href="{{ route('bookings.create', $slot) }}"
-                                           class="btn btn-outline btn-md w-full justify-between">
-                                            <span>{{ $slot->starts_at->format('D d M, H:i') }}</span>
-                                            <span class="btn btn-accent btn-xs">book</span>
-                                        </a>
-                                    @empty
-                                        <div class="text-sm opacity-70">No bookable slots right now.</div>
-                                    @endforelse
-                                </div>
+                            <div class="text-xs opacity-70">
+                                Questions before booking?
+                                <a href="{{ route('contact.show') }}" class="link">Contact us</a>.
                             </div>
-                        @endforeach
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </article>
+
+        {{-- Lower content --}}
+        <section class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_22rem] gap-4 mt-4 items-start">
+
+            {{-- Description --}}
+            <div class="bg-base-100 rounded-2xl shadow-md border border-base-300 p-6 md:p-8">
+                <h2 class="text-2xl font-bold mb-5">About this tour</h2>
+
+                @if($tour->description)
+                    <div class="prose prose-lg max-w-none rj-description">
+                        {!! $tour->description !!}
+                    </div>
+                @endif
+            </div>
+
+            {{-- Side info cards --}}
+            <div class="space-y-6">
+
+                @if($tour->highlights)
+                    <div class="card bg-base-100 rounded-2xl shadow-md border border-base-300">
+                        <div class="card-body">
+                            <h3 class="card-title text-xl">Highlights</h3>
+                            <div class="prose max-w-none">
+                                {!! $tour->highlights !!}
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+                <div class="card bg-base-100 rounded-2xl shadow-md border border-base-300">
+                    <div class="card-body">
+                        <h3 class="card-title text-xl">Meeting point</h3>
+
+                        @if ($tour->meeting_point)
+                            @if ($tour->meeting_point_map_url)
+                                <a href="{{ $tour->meeting_point_map_url }}"
+                                   title="View meeting point on map"
+                                   target="_blank"
+                                   class="link inline-flex items-start gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+                                         fill="none"
+                                         stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round"
+                                         class="shrink-0 mt-0.5">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/>
+                                        <path
+                                            d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0"/>
+                                    </svg>
+                                    <span>{{ $tour->meeting_point }}</span>
+                                </a>
+                            @else
+                                <p>{{ $tour->meeting_point }}</p>
+                            @endif
+                        @else
+                            <p class="opacity-70">To be confirmed</p>
+                        @endif
                     </div>
                 </div>
 
-            </aside>
-        </article>
-        <section class="max-w-6xl mx-auto px-4 py-14">
+                <div class="card bg-base-100 rounded-2xl shadow-md border border-base-300">
+                    <div class="card-body">
+                        <h3 class="card-title text-xl">Good to know</h3>
+                        <ul class="space-y-2 text-sm opacity-80">
+                            <li>Relaxed, guided group ride</li>
+                            <li>Please arrive a little before the start time</li>
+                            <li>Bring weather-appropriate clothing</li>
+                            <li>Need a bike? Ask about rental options</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section class="mt-12 max-w-4xl">
+            <h2 class="text-2xl font-bold mb-6">Frequently asked questions</h2>
+
+            <div class="space-y-3">
+                <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+                    <input type="radio" name="tour-faq" checked="checked"/>
+                    <div class="collapse-title font-semibold">Do I need to bring my own bike?</div>
+                    <div class="collapse-content text-sm opacity-80">
+                        You can bring your own bike or rent one nearby. Ask us if you need help finding a rental option.
+                    </div>
+                </div>
+
+                <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+                    <input type="radio" name="tour-faq"/>
+                    <div class="collapse-title font-semibold">What if the weather is bad?</div>
+                    <div class="collapse-content text-sm opacity-80">
+                        Light rain is usually fine. If conditions are unsafe, we may reschedule or cancel the tour.
+                    </div>
+                </div>
+
+                <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+                    <input type="radio" name="tour-faq"/>
+                    <div class="collapse-title font-semibold">Can I cancel my booking?</div>
+                    <div class="collapse-content text-sm opacity-80">
+                        Yes, depending on the cancellation timing. Please see the booking and cancellation policy for
+                        the exact refund rules.
+                    </div>
+                </div>
+
+                <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+                    <input type="radio" name="tour-faq"/>
+                    <div class="collapse-title font-semibold">Is the tour in English or Dutch?</div>
+                    <div class="collapse-content text-sm opacity-80">
+                        Both. Tours can be guided in English and Dutch.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
 
 @endsection
