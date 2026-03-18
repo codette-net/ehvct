@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SiteMapController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Tour;
 use App\Http\Controllers\MollieWebhookController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\TourPublicController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\BookingCancelController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\SitemapController;
 
 
 /*
@@ -20,7 +22,7 @@ use App\Http\Controllers\ContactController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 
 Route::get('/', [TourPublicController::class, 'toursForHome'])->name('home');
 

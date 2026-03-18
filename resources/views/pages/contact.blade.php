@@ -1,6 +1,18 @@
 @extends('layouts.app')
 @section('title','Contact')
-
+@section('title', 'Contact')
+@section('meta_description', 'Contact Eindhoven Cycling Tours for questions, private tours, team rides, or booking help.')
+@section('canonical', route('contact.show'))
+@section('schema')
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "name": "Contact Eindhoven Cycling Tours",
+          "url": "{{ route('contact.show') }}"
+}
+    </script>
+@endsection
 @section('content')
     <section class="max-w-6xl mx-auto px-4 py-20">
 

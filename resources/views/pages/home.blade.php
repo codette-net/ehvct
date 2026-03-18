@@ -1,5 +1,29 @@
 @extends('layouts.app')
-@section('title','Home')
+@section('title', 'Guided Bike Tours in Eindhoven')
+@section('meta_description', 'Discover Eindhoven and Brabant by bike with guided cycling tours, local stories, nature routes and relaxed group rides.')
+@section('canonical', route('home'))
+@section('og_type', 'website')
+@section('schema')
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "TouristTrip",
+          "name": "Eindhoven Cycling Tours",
+          "description": "Guided cycling tours around Eindhoven exploring nature, culture and local highlights.",
+          "image": "{{ asset('/images/EHVCT-cover-img.jpg') }}",
+  "provider": {
+    "@type": "Organization",
+    "name": "Eindhoven Cycling Tours",
+    "url": "{{ url('/') }}"
+  },
+  "touristType": ["Expats", "Locals", "Visitors"],
+  "areaServed": {
+    "@type": "Place",
+    "name": "Eindhoven, Netherlands"
+  }
+}
+    </script>
+@endsection
 @section('content')
     {{-- HERO --}}
     <section class="hero min-h-[90vh] landscape:min-h-[80vw] max-w-[1280px] mx-auto pt-16"
@@ -221,12 +245,6 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                     <a class="btn btn-accent" href="{{ route('tours.index') }}">See all tours</a>
                 </div>
 
-                {{--                <div class="mt-6 flex flex-wrap gap-3 text-sm opacity-95">--}}
-                {{--                    <span class="badge badge-primary">Local guide</span>--}}
-                {{--                    <span class="badge badge-primary">Beginner-friendly</span>--}}
-                {{--                    <span class="badge badge-primary">Expats & locals</span>--}}
-                {{--                    <span class="badge badge-primary">Small groups</span>--}}
-                {{--                </div>--}}
             </div>
         </div>
     </section>

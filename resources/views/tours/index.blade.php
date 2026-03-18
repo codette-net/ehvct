@@ -1,5 +1,7 @@
 @extends('layouts.app')
-@section('title','Tours')
+@section('title', 'All Tours')
+@section('meta_description', 'Browse guided cycling tours in and around Eindhoven, with nature rides, local highlights and easy-going group routes.')
+@section('canonical', route('tours.index'))
 @section('content')
     <section class="max-w-6xl mx-auto px-4 py-20">
 

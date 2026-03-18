@@ -1,8 +1,64 @@
 @extends('layouts.app')
 @section('title', $tour->title)
 @section('meta_description', \Illuminate\Support\Str::limit(strip_tags($tour->introduction ?: $tour->description), 155))
+@section('canonical', route('tours.show', $tour))
+@section('og_type', 'product')
 @section('meta_image', $tour->cover_url ?: asset('/images/EHVCT-cover-img.jpg'))
-
+@section('schema')
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "{{ route('home') }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tours",
+      "item": "{{ route('tours.index') }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": @json($tour->title),
+      "item": "{{ route('tours.show', $tour) }}"
+    }
+  ]
+}
+    </script>
+    @php
+        $lowestPrice = $tour->variants->min('price_per_person_cents');
+        $bookableVariant = $tour->variants->first();
+        $inStock = $tour->variants->flatMap->slots->contains(fn($slot) => $slot->isBookableNow());
+    @endphp
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": @json($tour->title),
+  "description": @json(\Illuminate\Support\Str::limit(strip_tags($tour->introduction ?: $tour->description), 300)),
+  "image": [
+        @json($tour->cover_url ?: asset('/images/EHVCT-cover-img.jpg'))
+        ],
+        "brand": {
+          "@type": "Brand",
+          "name": "Eindhoven Cycling Tours"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "EUR",
+          "price": "{{ $lowestPrice ? number_format($lowestPrice / 100, 2, '.', '') : '0.00' }}",
+    "availability": "{{ $inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock' }}",
+    "url": "{{ route('tours.show', $tour) }}"
+  }
+}
+    </script>
+@endsection
 @section('content')
     <section class="max-w-7xl mx-auto px-4 pt-24 pb-16">
 
@@ -17,7 +73,8 @@
 
 
         {{-- Top product-style layout --}}
-        <article class="flex flex-wrap justify-center md:grid md:grid-cols-[repeat(auto-fit,min(100%,20rem))] gap-4 place-items-end">
+        <article
+            class="flex flex-wrap justify-center md:grid md:grid-cols-[repeat(auto-fit,min(100%,20rem))] gap-4 place-items-end">
 
             {{-- Cover image --}}
             <section class="order-1 sticky top-0">

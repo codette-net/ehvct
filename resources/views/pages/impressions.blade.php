@@ -1,5 +1,7 @@
 @extends('layouts.app')
-@section('title','Impressions')
+@section('title', 'Impressions')
+@section('meta_description', 'See photos and impressions from Eindhoven Cycling Tours, from nature rides to local group experiences.')
+@section('canonical', route('impressions'))
 
 @section('content')
     <section class="relative">

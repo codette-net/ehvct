@@ -1,30 +1,57 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="emerald" class="scroll-smooth">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        @hasSection('title')
+            @yield('title') | Eindhoven Cycling Tours
+        @else
+            Eindhoven Cycling Tours
+        @endif
+    </title>
 
-    <meta name="description" content="@yield('meta_description', 'Guided cycling tours around Eindhoven with nature, local highlights and relaxed group rides.')">
+    <meta name="description"
+          content="@yield('meta_description', 'Guided cycling tours around Eindhoven with nature, local highlights and relaxed group rides.')">
+    @if(app()->environment('production'))
+        <meta name="robots" content="@yield('meta_robots', 'index,follow')">
+    @else
+        <meta name="robots" content="noindex,nofollow">
+    @endif
+    <link rel="canonical" href="@yield('canonical', url()->current())">
 
-    <meta property="og:title" content="@yield('title', 'Eindhoven Cycling Tours')">
-    <meta property="og:description" content="@yield('meta_description', 'Guided cycling tours around Eindhoven with nature, local highlights and relaxed group rides.')">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:site_name" content="Eindhoven Cycling Tours">
+    <meta property="og:title"
+          content="@yield('og_title', trim($__env->yieldContent('title', 'Eindhoven Cycling Tours')) . ' | Eindhoven Cycling Tours')">
+    <meta property="og:description"
+          content="@yield('og_description', $__env->yieldContent('meta_description', 'Guided cycling tours around Eindhoven with nature, local highlights and relaxed group rides.'))">
+    <meta property="og:type" content="@yield('og_type', 'website')">
+    <meta property="og:url" content="@yield('og_url', url()->current())">
     <meta property="og:image" content="@yield('meta_image', asset('/images/EHVCT-cover-img.jpg'))">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="@yield('title', 'Eindhoven Cycling Tours')">
-    <meta name="twitter:description" content="@yield('meta_description', 'Guided cycling tours around Eindhoven with nature, local highlights and relaxed group rides.')">
+    <meta name="twitter:title"
+          content="@yield('twitter_title', trim($__env->yieldContent('title', 'Eindhoven Cycling Tours')) . ' | Eindhoven Cycling Tours')">
+    <meta name="twitter:description"
+          content="@yield('twitter_description', $__env->yieldContent('meta_description', 'Guided cycling tours around Eindhoven with nature, local highlights and relaxed group rides.'))">
     <meta name="twitter:image" content="@yield('meta_image', asset('/images/EHVCT-cover-img.jpg'))">
+    @sectionMissing('schema')
+        <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Eindhoven Cycling Tours",
+              "url": "{{ url('/') }}",
+  "logo": "{{ asset('/images/ehvct_logo.png') }}",
+  "sameAs": [
+    "https://www.facebook.com/ehvct",
+    "https://www.instagram.com/eindhoven_cycling_tours/"
+  ]
+}
+        </script>
+    @endif
 
-    <link rel="canonical" href="{{ url()->current() }}">
-    <title>
-        @hasSection('title')
-            @yield('title') | {{ config('app.name', 'Eindhoven Cycling Tours') }}
-        @else
-            {{ config('app.name', 'Eindhoven Cycling Tours') }}
-        @endif
-    </title>
+    @yield('schema')
+
+
 
     @vite(['resources/css/app.css', 'resources/css/rj-styles.css', 'resources/js/app.js'])
 </head>

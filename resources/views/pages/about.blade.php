@@ -1,5 +1,7 @@
 @extends('layouts.app')
-@section('title','About')
+@section('title', 'About Maurice')
+@section('meta_description', 'Meet Maurice, founder of Eindhoven Cycling Tours, and discover the story behind the rides.')
+@section('canonical', route('about'))
 
 @section('content')
     {{-- HERO --}}
