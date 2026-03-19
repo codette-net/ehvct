@@ -321,8 +321,8 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
 
     </div>
 
-    <section class="bg-base-100/60 mx-auto px-4 py-14 z-10">
-        <div class="max-w-6xl mx-auto px-4 py-6">
+    <section class="bg-base-100/60 mx-auto px-4 py-14">
+        <div class="relative max-w-6xl mx-auto px-4 py-6  z-10">
             <h2 class="text-3xl font-bold mb-8">Booking is simple</h2>
             <div class="flex flex-col justify-center items-center">
                 <ul class="steps steps-vertical md:steps-horizontal">
@@ -359,7 +359,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
         </div>
 
         <div class="max-w-6xl grid grid-cols-[repeat(auto-fit,minmax(min(100%,10rem),1fr))] gap-4 place-items-center mx-auto" >
-            <div class="card bg-base-100/80 shadow-md">
+            <div class="card bg-base-100/80 rj-shadow-inset">
                 <div class="card-body">
                     <h2 class="card-title">Local guide</h2>
                     <p class="text-sm opacity-80">Maurice was born and raised in Eindhoven.</p>
@@ -370,7 +370,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                         alt="Maurice on the bike" class="w-full h-full object-cover"/>
                 </figure>
             </div>
-            <div class="card bg-base-100/80 shadow-md">
+            <div class="card bg-base-100/80 rj-shadow-inset">
                 <div class="card-body">
                     <h2 class="card-title">Relaxed pace</h2>
                     <p class="text-sm opacity-80">Not a race. Just a good ride together.</p>
@@ -381,7 +381,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                         alt="Bike with sun setting in the background" class="w-full h-full object-cover"/>
                 </figure>
             </div>
-            <div class="card bg-base-100/80 shadow-md">
+            <div class="card bg-base-100/80 rj-shadow-inset">
                 <div class="card-body">
                     <h2 class="card-title">Great stops</h2>
                     <p class="text-sm opacity-80">Coffee, views, and local favorites along the way.</p>
@@ -392,7 +392,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                         alt="View of the Mill Oerle" class="w-full h-full object-cover"/>
                 </figure>
             </div>
-            <div class="card bg-base-100/80 shadow-md">
+            <div class="card bg-base-100/80 rj-shadow-inset">
                 <div class="card-body">
                     <h2 class="card-title">Meet people</h2>
                     <p class="text-sm opacity-80">A friendly mix of expats and locals.</p>
@@ -405,35 +405,130 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
             </div>
         </div>
         <h3 class="text-3xl my-8">Video Impressions</h3>
-        <div class="max-w-5xl flex flex-col my-4 mx-auto">
-            <div class="card lg:card-side bg-base-100/60 shadow-md">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/iWxOgJf4zWE?si=jTQpILzi6vcBr_gV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="rounded rounded-r-none"></iframe>
-                <div class="card-body">
-                    <h2 class="card-title">Strabrechtse Heide</h2>
-                    <p>One of Brabant's largest and most stunning heathlands. </p>
-                    <p>
-                        Video by Max ten Houten.
-                        <br>
-                        <a href="https://www.youtube.com/@Quadromax72" class="link" target="_blank" title="link to youtube of Max ten Houten">https://www.youtube.com/@Quadromax72</a>
-                    </p>
 
+        <div class="max-w-5xl flex flex-col my-4 mx-auto gap-8">
 
+            <div
+                class="relative mx-auto w-full max-w-4xl rounded-xl overflow-hidden shadow-xl bg-cover bg-center p-2 drop-shadow-xl"
+                style="background-image: url('{{ asset('images/bike_on_the_Wall.png') }}');"
+            >
+                <!-- soft glow -->
+                <div class="absolute inset-0 bg-white/10 backdrop-blur-[1px] pointer-events-none"></div>
+
+                <!-- inner card -->
+                <div class="relative z-10 overflow-hidden rounded-lg bg-black/20 backdrop-blur-sm">
+                    <div class="flex flex-col lg:flex-row min-h-[420px]">
+
+                        <div class="w-full lg:w-[42%]">
+                            <iframe
+                                src="https://www.youtube.com/embed/iWxOgJf4zWE?si=jTQpILzi6vcBr_gV"
+                                title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                allowfullscreen
+                                class="block w-full h-[240px] lg:h-full"
+                            ></iframe>
+                        </div>
+
+                        <div class="flex-1 rj-rough-glass p-8 lg:p-10 flex flex-col justify-center">
+                            <h2 class="card-title text-3xl mb-4">Strabrechtse Heide</h2>
+                            <p class="text-lg leading-relaxed mb-6">
+                                One of Brabant's largest and most stunning heathlands.
+                            </p>
+
+                            <p class="text-base leading-relaxed">
+                                Video by Max ten Houten.
+                                <br>
+                                <a
+                                    href="https://www.youtube.com/@Quadromax72"
+                                    class="link link-hover break-all"
+                                    target="_blank"
+                                    title="link to youtube of Max ten Houten"
+                                >
+                                    https://www.youtube.com/@Quadromax72
+                                </a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
+
+
             </div>
 
-            <div class="card lg:card-side bg-base-100/60 shadow-md mt-8">
+            <div
+                class="relative mx-auto w-full max-w-4xl rounded-xl overflow-hidden shadow-xl bg-cover bg-center p-2"
+                style="background-image: url('{{ asset('images/bike_on_the_Wall.png') }}');"
+            >
+                <!-- soft glow -->
+                <div class="absolute inset-0 bg-white/10 backdrop-blur-[1px] pointer-events-none"></div>
+
+                <!-- inner card -->
+                <div class="relative z-10 overflow-hidden rounded-lg bg-black/20 backdrop-blur-sm">
+                    <div class="flex flex-col lg:flex-row min-h-[420px]">
+
+
+
+                        <div class="flex-1 rj-rough-glass p-8 lg:p-10 flex flex-col justify-center">
+                            <h2 class="card-title text-3xl mb-4">Malpie heide sunrise</h2>
+                            <p class="text-lg leading-relaxed mb-6">
+                                One of the most stunning and underrated spots in Natuurgrenspark De Groote Heide
+                            </p>
+
+                            <p class="text-base leading-relaxed">
+                                Video by XL creations.
+                                <br>
+                                <a
+                                    href="https://xlcreations.nl"
+                                    class="link link-hover break-all"
+                                    target="_blank"
+                                    title="link to xl creations website"
+                                >
+                                    https://xlcreations.nl
+                                </a>
+                            </p>
+                        </div>
+                        <div class="w-full lg:w-[42%]">
+                            <iframe
+                                src="https://www.youtube.com/embed/lSbo8vmwO5U?si=y4LVh4tMEHDXGEBS"
+                                title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                allowfullscreen
+                                class="block w-full h-[240px] lg:h-full"
+                            ></iframe>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="card max-w-3xl lg:card-side bg-base-100/60 shadow-md mx-auto overflow-hidden rounded-2xl">
                 <div class="card-body">
                     <h2 class="card-title">Malpie heide sunrise</h2>
                     <p>One of the most stunning and underrated spots in Natuurgrenspark De Groote Heide</p>
                     <p>
                         Video by XL creations.
                         <br>
-                        <a href="https://xlcreations.nl" class="link" target="_blank" title="xlcreations.nl">https://xlcreations.nl</a>
+                        <a href="https://xlcreations.nl" class="link" target="_blank" title="xlcreations.nl">
+                            https://xlcreations.nl
+                        </a>
                     </p>
-                    </div>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/lSbo8vmwO5U?si=y4LVh4tMEHDXGEBS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="rounded rounded-l-none"></iframe>
+                </div>
 
+                <iframe
+                    src="https://www.youtube.com/embed/lSbo8vmwO5U?si=y4LVh4tMEHDXGEBS"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                    class="w-full lg:w-[420px] aspect-video flex-shrink-0"
+                ></iframe>
             </div>
+
         </div>
     </section>
 

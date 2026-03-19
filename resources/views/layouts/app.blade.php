@@ -431,9 +431,11 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
     </nav>
     <nav>
         <h6 class="footer-title">Partners</h6>
-        <a class="link link-hover" href="https://velorent.nl" target="_blank">Velorent (bike rental)</a>
-        <a class="link link-hover" href="https://citytourseindhoven.com/" target="_blank">City Tours Eindhoven</a>
-        <a class="link link-hover" href="https://xlcreations.nl" target="_blank">XL Creations (drone and visuals)</a>
+                <a class="link link-hover" href="https://codette.net" target="_blank">Codette web & media services</a>
+
+{{--        <a class="link link-hover" href="https://velorent.nl" target="_blank">Velorent (bike rental)</a>--}}
+{{--        <a class="link link-hover" href="https://citytourseindhoven.com/" target="_blank">City Tours Eindhoven</a>--}}
+{{--        <a class="link link-hover" href="https://xlcreations.nl" target="_blank">XL Creations (drone and visuals)</a>--}}
     </nav>
     <nav>
         <h6 class="footer-title">Legal</h6>
