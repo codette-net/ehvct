@@ -268,7 +268,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
             <div class="mx-auto grid grid-cols-[repeat(auto-fit,min(100%,18rem))] place-content-center gap-4">
                 @forelse($tours as $tour)
                     <article
-                        class="bg-white/80 shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+                        class="bg-white/80 shadow-md rounded-xl duration-500 hover:scale-105 hover:drop-shadow-xl rj-card-inset">
                         <h3 class="text-lg font-bold text-black truncate block capitalize py-2 px-4">{{ $tour->title }}</h3>
 
                         <a href="{{ route('tours.show', $tour) }}" title="{{ $tour->title }}">
@@ -327,7 +327,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
             <div class="flex flex-col justify-center items-center">
                 <ul class="steps steps-vertical md:steps-horizontal">
                     <li class="step step-primary">
-                        <div class="card bg-base-100/80 shadow-md max-w-[12rem] min-h-[12rem] m-2 ">
+                        <div class="card bg-base-100/80 shadow-md max-w-[12rem] min-h-[13rem] m-2 border-[6px] border-neutral-200/90 rj-card-inset drop-shadow-lg">
                             <div class="card-body">
                                 <div class="text-2xl font-bold">1</div>
                                 <h3 class="font-semibold">Choose a tour</h3>
@@ -336,7 +336,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                         </div>
                     </li>
                     <li class="step step-primary">
-                        <div class="card bg-base-100/80 shadow-md max-w-[12rem] min-h-[12rem] m-2">
+                        <div class="card bg-base-100/80 shadow-md max-w-[12rem] min-h-[13rem] m-2 border-[6px] border-neutral-200/90 rj-card-inset drop-shadow-lg">
                             <div class="card-body">
                                 <div class="text-2xl font-bold">2</div>
                                 <h3 class="font-semibold">Select a date & group size</h3>
@@ -345,7 +345,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                         </div>
                     </li>
                     <li class="step step-primary">
-                        <div class="card bg-base-100/80 shadow-md max-w-[12rem] min-h-[12rem] m-2">
+                        <div class="card bg-base-100/80 shadow-md max-w-[12rem] min-h-[13rem] m-2 border-[6px] border-neutral-200/90 rj-card-inset drop-shadow-lg">
                             <div class="card-body">
                                 <div class="text-2xl font-bold">3</div>
                                 <h3 class="font-semibold">Pay online</h3>
@@ -409,7 +409,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
         <div class="max-w-5xl flex flex-col my-4 mx-auto gap-8">
 
             <div
-                class="relative mx-auto w-full max-w-4xl rounded-xl overflow-hidden shadow-xl bg-cover bg-center p-2 drop-shadow-xl"
+                class="relative mx-auto w-full max-w-4xl rounded-xl overflow-hidden rj-shadow-inset bg-cover bg-center p-2  "
                 style="background-image: url('{{ asset('images/bike_on_the_Wall.png') }}');"
             >
                 <!-- soft glow -->
@@ -505,29 +505,6 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
 
             </div>
 
-            <div class="card max-w-3xl lg:card-side bg-base-100/60 shadow-md mx-auto overflow-hidden rounded-2xl">
-                <div class="card-body">
-                    <h2 class="card-title">Malpie heide sunrise</h2>
-                    <p>One of the most stunning and underrated spots in Natuurgrenspark De Groote Heide</p>
-                    <p>
-                        Video by XL creations.
-                        <br>
-                        <a href="https://xlcreations.nl" class="link" target="_blank" title="xlcreations.nl">
-                            https://xlcreations.nl
-                        </a>
-                    </p>
-                </div>
-
-                <iframe
-                    src="https://www.youtube.com/embed/lSbo8vmwO5U?si=y4LVh4tMEHDXGEBS"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen
-                    class="w-full lg:w-[420px] aspect-video flex-shrink-0"
-                ></iframe>
-            </div>
 
         </div>
     </section>
