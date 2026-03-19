@@ -358,7 +358,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
             </div>
         </div>
 
-        <div class="max-w-6xl grid grid-cols-[repeat(auto-fit,minmax(min(100%,10rem),1fr))] gap-4">
+        <div class="max-w-6xl grid grid-cols-[repeat(auto-fit,minmax(min(100%,10rem),1fr))] gap-4 place-items-center mx-auto" >
             <div class="card bg-base-100/80 shadow-md">
                 <div class="card-body">
                     <h2 class="card-title">Local guide</h2>
@@ -402,6 +402,37 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                         src="/images/EHVCT-people-cartoon.jpg"
                         alt="people on the border of the Netherlands and Belgium" class="w-full h-full object-cover"/>
                 </figure>
+            </div>
+        </div>
+        <h3 class="text-3xl my-8">Video Impressions</h3>
+        <div class="max-w-5xl flex flex-col my-4 mx-auto">
+            <div class="card lg:card-side bg-base-100/60 shadow-md">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/iWxOgJf4zWE?si=jTQpILzi6vcBr_gV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="rounded rounded-r-none"></iframe>
+                <div class="card-body">
+                    <h2 class="card-title">Strabrechtse Heide</h2>
+                    <p>One of Brabant's largest and most stunning heathlands. </p>
+                    <p>
+                        Video by Max ten Houten.
+                        <br>
+                        <a href="https://www.youtube.com/@Quadromax72" class="link" target="_blank" title="link to youtube of Max ten Houten">https://www.youtube.com/@Quadromax72</a>
+                    </p>
+
+
+                </div>
+            </div>
+
+            <div class="card lg:card-side bg-base-100/60 shadow-md mt-8">
+                <div class="card-body">
+                    <h2 class="card-title">Malpie heide sunrise</h2>
+                    <p>One of the most stunning and underrated spots in Natuurgrenspark De Groote Heide</p>
+                    <p>
+                        Video by XL creations.
+                        <br>
+                        <a href="https://xlcreations.nl" class="link" target="_blank" title="xlcreations.nl">https://xlcreations.nl</a>
+                    </p>
+                    </div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/lSbo8vmwO5U?si=y4LVh4tMEHDXGEBS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="rounded rounded-l-none"></iframe>
+
             </div>
         </div>
     </section>
