@@ -143,6 +143,11 @@ return [
         // 'store'  => 'redis',
     ],
 
+    // launch mode
+
+    'launch_mode' => env('SITE_LAUNCH_MODE', false),
+    'launch_date' => env('SITE_LAUNCH_DATE'),
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
