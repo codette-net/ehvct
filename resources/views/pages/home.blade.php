@@ -531,7 +531,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                 </div>
             </div>
             <div class="card bg-base-100/80 shadow-lg border-[6px] border-neutral-200/90 rj-card-inset drop-shadow-lg">
-                <div class="card-body rounded ">
+                <div class="card-body rounded bg-base-100/60">
                     <h3 class="font-semibold">Also available</h3>
                     <p class="text-sm opacity-80">Private tours, company outings, and teambuilding rides.</p>
                     <a class="btn btn-outline" href="{{ route('contact.show') }}">Request a private tour</a>
