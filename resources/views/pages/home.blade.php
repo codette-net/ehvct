@@ -322,12 +322,12 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
     </div>
 
     <section class="bg-base-100/60 mx-auto px-4 py-14">
-        <div class="relative max-w-6xl mx-auto px-4 py-6  z-10">
+        <div class="relative max-w-6xl mx-auto px-4 py-6  z-20">
             <h2 class="text-3xl font-bold mb-8">Booking is simple</h2>
             <div class="flex flex-col justify-center items-center">
                 <ul class="steps steps-vertical md:steps-horizontal">
                     <li class="step step-primary">
-                        <div class="card bg-base-100/80 shadow-md max-w-[12rem] min-h-[13rem] m-2 border-[6px] border-neutral-200/90 rj-card-inset drop-shadow-lg">
+                        <div class="card bg-base-100/80 shadow-md max-w-[12rem] min-h-[13rem] m-2 border-[6px] border-neutral-200/90 rj-card-inset drop-shadow">
                             <div class="card-body">
                                 <div class="text-2xl font-bold">1</div>
                                 <h3 class="font-semibold">Choose a tour</h3>
@@ -336,7 +336,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                         </div>
                     </li>
                     <li class="step step-primary">
-                        <div class="card bg-base-100/80 shadow-md max-w-[12rem] min-h-[13rem] m-2 border-[6px] border-neutral-200/90 rj-card-inset drop-shadow-lg">
+                        <div class="card bg-base-100/80 shadow-md max-w-[12rem] min-h-[13rem] m-2 border-[6px] border-neutral-200/90 rj-card-inset drop-shadow">
                             <div class="card-body">
                                 <div class="text-2xl font-bold">2</div>
                                 <h3 class="font-semibold">Select a date & group size</h3>
@@ -345,7 +345,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                         </div>
                     </li>
                     <li class="step step-primary">
-                        <div class="card bg-base-100/80 shadow-md max-w-[12rem] min-h-[13rem] m-2 border-[6px] border-neutral-200/90 rj-card-inset drop-shadow-lg">
+                        <div class="card bg-base-100/80 shadow-md max-w-[12rem] min-h-[13rem] m-2 border-[6px] border-neutral-200/90 rj-card-inset drop-shadow">
                             <div class="card-body">
                                 <div class="text-2xl font-bold">3</div>
                                 <h3 class="font-semibold">Pay online</h3>
@@ -530,8 +530,8 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                     <a class="btn btn-accent" href="{{ route('tours.index') }}">Book a tour</a>
                 </div>
             </div>
-            <div class="card bg-base-100/80 shadow-lg">
-                <div class="card-body">
+            <div class="card bg-base-100/80 shadow-lg border-[6px] border-neutral-200/90 rj-card-inset drop-shadow-lg">
+                <div class="card-body rounded ">
                     <h3 class="font-semibold">Also available</h3>
                     <p class="text-sm opacity-80">Private tours, company outings, and teambuilding rides.</p>
                     <a class="btn btn-outline" href="{{ route('contact.show') }}">Request a private tour</a>
@@ -559,9 +559,9 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
         <div class="max-w-4xl mx-auto px-4 py-14">
             <h2 class="text-3xl font-bold mb-8 text-center">Frequently asked questions</h2>
 
-            <div class="space-y-3">
+            <div class="space-y-4">
 
-                <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+                <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset mb-4">
                     <input type="radio" name="faq-accordion" checked="checked"/>
                     <div class="collapse-title font-semibold">
                         Do I need to bring my own bike?
@@ -572,7 +572,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                     </div>
                 </div>
 
-                <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+                <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset mb-4">
                     <input type="radio" name="faq-accordion"/>
                     <div class="collapse-title font-semibold">
                         How difficult are the tours?
@@ -583,7 +583,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                     </div>
                 </div>
 
-                <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+                <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset mb-4">
                     <input type="radio" name="faq-accordion"/>
                     <div class="collapse-title font-semibold">
                         What happens if the weather is bad?
@@ -593,7 +593,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                     </div>
                 </div>
 
-                <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+                <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset mb-4">
                     <input type="radio" name="faq-accordion"/>
                     <div class="collapse-title font-semibold">
                         Can I cancel my booking?
@@ -604,7 +604,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                     </div>
                 </div>
 
-                <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+                <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset mb-4">
                     <input type="radio" name="faq-accordion"/>
                     <div class="collapse-title font-semibold">
                         Is the tour in English or Dutch?

@@ -131,7 +131,7 @@ tr {
 }
 
 .rj-shadow-inset {
-        box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1),
+        box-shadow: inset 0 -3em 2em rgba(0,0,0,0.1),
         0 0  0 2px rgb(190, 190, 190),
         0.3em 0.3em 1em rgba(0,0,0,0.3);
 }
@@ -145,7 +145,7 @@ tr {
 }
 
 .rj-card-inset {
-    box-shadow: inset 5px 5px 10px #bbb, inset -5px -5px 10px #fff,
+    box-shadow: inset 3px 3px 8px #bbb, inset -3px -3px 8px #fff,
     0 0  0 2px rgb(190, 190, 190);
 }
 
@@ -157,4 +157,54 @@ tr {
 .steps .step-primary + .step-primary:before, .steps .step-primary:after {
 
     box-shadow: 1px 1px 6px -1px #2228;
+}
+
+/*shadow-[0_2px_4px_rgba(0,0,0,0.7)] hover:shadow-[0_4px_8px_rgba(0,0,0,0.6)] active:shadow-[0_0px_1px_rgba(0,0,0,0.8)] active:scale-[0.995]*/
+/*shadow-[0_1px_3px_rgba(0,0,0,0.5)] active:shadow-[0_0px_1px_rgba(0,0,0,0.5)] active:scale-[0.995]*/
+.btn {
+    box-shadow:  0 1px 3px rgba(80,80,80,0.5);
+    background-image: linear-gradient(120deg, rgb(231 229 228 / 0.2), rgb(255 255 255 / 0.4));
+    transition: all 250ms ease-in-out !important;
+    outline: 1px solid transparent;
+    outline-offset: 3px;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:focus-visible{
+    box-shadow:  0 0 1px rgba(100,100,100,0.5);
+    background-image: linear-gradient(90deg, rgb(231 229 228 / 0.15), rgb(255 255 255 / 0.3));
+
+    transition: all 250ms ease-in-out !important;
+    outline-color: #2229;
+
+}
+
+h1, h2, h3 {
+    text-shadow: 0 1px 2px rgb(60,50,70, 0.55);
+}
+
+.text-neutral-content h1,h2,h3 {
+    text-shadow: 0 1px 2px rgb(60,50,70, 0.55);
+
+
+}
+
+nav .btn {
+    box-shadow: none;
+    background-image: unset;
+
+}
+nav .btn:hover,
+nav .btn:focus,
+nav .btn:focus-visible{
+    box-shadow:  none;
+    background-image: unset;
+
+    outline-color: #2229;
+
+}
+
+.btn.btn-neutral {
+    color: #fafafa
 }

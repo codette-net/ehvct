@@ -129,21 +129,21 @@
 - [x] Booking confirmation email on confirmed
 - [x] Admin notification email on confirmed
 - [x] Improve email template (HTML + clean text fallback)
-- [ ] Add booking policy snippet (cutoff times)
-- [ ] Add “Manage booking” section (cancel request link)
+- [x] Add booking policy snippet (cutoff times)
+- [x] Add “Manage booking” section (cancel request link)
 
 ## 8) Cancellation (MVP)
 - [x] Cancel request page (reference link)
 - [x] Signed cancel link (temporarySignedRoute)
 - [ ] Cutoff rules shown + enforced
 - [x] Admin gets cancel request email
-- [ ] (Optional) store cancel_request row in DB
+- [x] (Optional) store cancel_request row in DB
 
 ## 9) Reliability / security
 
 * [ ] Prevent overbooking (transaction + row locking on slot)
 * [ ] Rate limit booking + webhook
-* [ ] Logs for webhook + payment transitions
+* [x] Logs for webhook + payment transitions
 * [ ] Backups
 
 ---
@@ -152,7 +152,7 @@
 - [x] Paid -> confirmed via webhook
 - [x] Webhook retry does not duplicate emails
 - [ ] Checkout canceled -> booking canceled/failed
-- [ ] Expired -> booking expired
+- [x] Expired -> booking expired
 - [ ] Concurrent booking doesn’t exceed capacity
 - [ ] Booking cutoff blocks booking
 - [ ] Cancel cutoff messaging correct
