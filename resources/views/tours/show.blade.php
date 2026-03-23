@@ -63,7 +63,7 @@
     <section class="max-w-7xl mx-auto px-4 pt-24 pb-16">
 
         {{-- Breadcrumbs --}}
-        <div class="breadcrumbs text-sm mb-6">
+        <div class="breadcrumbs text-md mb-6">
             <ul>
                 <li><a href="{{ route('home') }}" class="link">Home</a></li>
                 <li><a href="{{ route('tours.index') }}" class="link">Tours</a></li>
@@ -80,7 +80,7 @@
             <section class="order-1 sticky top-0">
                 @if($tour->cover_url)
                     <figure
-                        class="max-w-[100%] md:static sm:max-w-[350px] overflow-hidden rounded-2xl shadow-lg bg-base-200 border border-base-300 mx-auto">
+                        class="max-w-[100%] md:static sm:max-w-[350px] overflow-hidden rounded-2xl rj-shadow-inset bg-base-200 border border-base-300 mx-auto">
                         <img
                             src="{{ $tour->cover_url }}"
                             alt="{{ $tour->cover_media?->alt_text ?? $tour->title }}"
@@ -97,7 +97,7 @@
 
             {{-- Main info --}}
             <section class="order-2 min-w-0 z-10">
-                <div class="bg-base-100 rounded-2xl shadow-md border border-base-300 p-6 md:p-8">
+                <div class="bg-base-100/90 rounded-2xl p-6 md:p-8 rj-card-inset">
                     <header>
                         <h1 class="text-3xl md:text-4xl font-bold leading-tight">
                             {{ $tour->title }}
@@ -139,9 +139,9 @@
 
             {{-- Booking card --}}
             <aside id="booking-card" class="order-3 w-full">
-                <div class="card bg-base-100 rounded-2xl shadow-lg border border-base-300 overflow-hidden">
+                <div class="card bg-base-100/90 rounded-2xl overflow-hidden rj-card-inset">
                     <div class="card-body p-0">
-                        <div class="bg-accent text-accent-content px-6 py-5">
+                        <div class="bg-accent/80 text-accent-content px-6 py-5">
                             <h2 class="text-2xl font-bold">Book this tour</h2>
                             <p class="text-sm opacity-90 mt-1">
                                 Choose a date and reserve your spot.
@@ -154,7 +154,7 @@
                                     $slots = $variant->slots->filter(fn($s) => $s->isBookableNow());
                                 @endphp
 
-                                <div class="rounded-xl border border-base-300 bg-base-200/40 p-4">
+                                <div class="rounded-xl bg-base-200/40 p-4 shadow-lg border-[6px] border-neutral-200/90 rj-card-inset">
                                     <div class="flex items-start justify-between gap-3">
                                         <div>
                                             <h3 class="font-semibold text-lg">{{ $variant->label }}</h3>
@@ -169,7 +169,7 @@
 
                                     <div class="mt-4 space-y-3">
                                         @forelse($slots as $slot)
-                                            <div class="rounded-xl bg-base-100 border border-base-300 p-3">
+                                            <div class="rounded-xl bg-base-100/40 border border-base-300 p-3">
                                                 <div class="flex items-center justify-between gap-3 mb-3">
                                                     <div class="text-sm font-medium">
                                                         {{ $slot->starts_at->format('D d M, H:i') }}
@@ -193,7 +193,7 @@
                                 </div>
                             @endforeach
 
-                            <div class="text-xs opacity-70">
+                            <div class="text-xs opacity-90">
                                 Questions before booking?
                                 <a href="{{ route('contact.show') }}" class="link">Contact us</a>.
                             </div>
@@ -207,7 +207,7 @@
         <section class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_22rem] gap-4 mt-4 items-start">
 
             {{-- Description --}}
-            <div class="bg-base-100 rounded-2xl shadow-md border border-base-300 p-6 md:p-8">
+            <div class="bg-base-100/90 rounded-2xl p-6 md:p-8 rj-card-inset">
                 <h2 class="text-2xl font-bold mb-5">About this tour</h2>
 
                 @if($tour->description)
@@ -221,7 +221,7 @@
             <div class="space-y-6">
 
                 @if($tour->highlights)
-                    <div class="card bg-base-100 rounded-2xl shadow-md border border-base-300">
+                    <div class="card bg-base-100/90 shadow-lg border-[6px] border-neutral-200/90 rj-card-inset drop-shadow-lg">
                         <div class="card-body">
                             <h3 class="card-title text-xl">Highlights</h3>
                             <div class="prose max-w-none">
@@ -231,7 +231,7 @@
                     </div>
                 @endif
 
-                <div class="card bg-base-100 rounded-2xl shadow-md border border-base-300">
+                <div class="card bg-base-100/90 rounded-2xl shadow-lg border-[6px] border-neutral-200/90 rj-card-inset">
                     <div class="card-body">
                         <h3 class="card-title text-xl">Meeting point</h3>
 
@@ -262,7 +262,7 @@
                     </div>
                 </div>
 
-                <div class="card bg-base-100 rounded-2xl shadow-md border border-base-300">
+                <div class="card bg-base-100/90 rounded-2xl shadow-lg border-[6px] border-neutral-200/90 rj-card-inset">
                     <div class="card-body">
                         <h3 class="card-title text-xl">Good to know</h3>
                         <ul class="space-y-2 text-sm opacity-80">
@@ -280,7 +280,7 @@
             <h2 class="text-2xl font-bold mb-6">Frequently asked questions</h2>
 
             <div class="space-y-3">
-                <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+                <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset mb-4">
                     <input type="radio" name="tour-faq" checked="checked"/>
                     <div class="collapse-title font-semibold">Do I need to bring my own bike?</div>
                     <div class="collapse-content text-sm opacity-80">
@@ -288,7 +288,7 @@
                     </div>
                 </div>
 
-                <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+                <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset mb-4">
                     <input type="radio" name="tour-faq"/>
                     <div class="collapse-title font-semibold">What if the weather is bad?</div>
                     <div class="collapse-content text-sm opacity-80">
@@ -296,7 +296,7 @@
                     </div>
                 </div>
 
-                <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+                <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset mb-4">
                     <input type="radio" name="tour-faq"/>
                     <div class="collapse-title font-semibold">Can I cancel my booking?</div>
                     <div class="collapse-content text-sm opacity-80">
@@ -305,7 +305,7 @@
                     </div>
                 </div>
 
-                <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+                <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset mb-4">
                     <input type="radio" name="tour-faq"/>
                     <div class="collapse-title font-semibold">Is the tour in English or Dutch?</div>
                     <div class="collapse-content text-sm opacity-80">

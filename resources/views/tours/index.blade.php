@@ -5,7 +5,7 @@
 @section('content')
     <section class="max-w-6xl mx-auto px-4 py-20">
 
-        <header class="pb-4">
+        <header class="pb-4 mt-4">
             <h1 class="text-3xl font-bold mb-6">Our tours</h1>
             <p>
                 Find the tour that fits you best!
@@ -13,8 +13,8 @@
         </header>
 
 
-        <div class="overflow-x-auto  max-w-fit mx-auto mb-8 bg-base-100/60 rounded-xl shadow-md">
-            <h2 class="text-2xl font-bold p-4 bg-base-100/60 rounded-t-xl border-b" style="border-color: #2228">Upcoming tours
+        <div class="overflow-x-auto  max-w-fit mx-auto mb-8 bg-base-100/60 rounded-xl shadow-lg border-[6px] border-neutral-200/90 rj-card-inset drop-shadow-lg">
+            <h2 class="text-2xl font-bold p-4 bg-accent/80 border-b" style="border-color: #2228">Upcoming tours
             </h2>
             <table class="table table-sm">
                 <tbody>
@@ -62,7 +62,7 @@
         <div class="mx-auto grid grid-cols-[repeat(auto-fit,min(100%,18rem))] place-content-center gap-4">
             @forelse($tours as $tour)
                 <article
-                    class="bg-white/80 shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+                    class="bg-base-100/80 shadow-md rounded-xl duration-500 rj-card-inset hover:scale-105 hover:shadow-xl ">
                     <h3 class="text-lg font-bold text-black truncate block capitalize py-2 px-4">{{ $tour->title }}</h3>
 
                     <a href="{{ route('tours.show', $tour) }}" title="{{ $tour->title }}">

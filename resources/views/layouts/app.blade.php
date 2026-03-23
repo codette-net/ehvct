@@ -422,7 +422,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
     @yield('content')
 </main>
 
-<footer class="footer sm:footer-horizontal bg-accent text-accent-content p-10 mt-4">
+<footer class="footer sm:footer-horizontal bg-accent text-accent-content p-10">
     <nav>
         <h6 class="footer-title">Eindhoven Cycling Tours</h6>
         <a href="{{ route('tours.index') }}" class="link link-hover">All tours</a>
@@ -445,7 +445,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
     </nav>
 </footer>
 
-<footer class="footer bg-base-200 text-base-content border-base-300 border-t px-10 py-4">
+<footer class="footer bg-base-100/80 text-base-content border-base-300 border-t px-10 py-4">
     <aside class="grid-flow-col items-center">
         <p>© {{ date('Y') }} Eindhoven Cycling Tours</p>
     </aside>

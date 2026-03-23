@@ -14,9 +14,12 @@
     </script>
 @endsection
 @section('content')
-    <section class="max-w-6xl mx-auto px-4 py-20">
+    <section class="max-w-6xl mx-auto px-4 py-20 my-8">
 
         <h1 class="text-3xl font-bold mb-6">Contact us</h1>
+        <p class="text-lg mt-4">
+          If you have any questions about the tours, a booking or you just want to get in touch, please use the form below.
+        </p>
 
         <form method="POST" action="{{ route('contact.submit') }}" class="mt-4 bg-neutral-content/60 p-4 rounded-lg shadow-lg max-w-2xl">
             @csrf

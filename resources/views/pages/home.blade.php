@@ -511,7 +511,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
 
     {{-- ABOUT --}}
 
-    <section class="max-w-6xl mx-auto px-4 py-14">
+    <section class="max-w-6xl mx-auto px-4 py-14 ">
         <div class="grid lg:grid-cols-2 gap-10 place-items-center">
             <div>
                 <h2 class="text-3xl font-bold mb-4">Meet your guide</h2>
@@ -541,7 +541,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
     </section>
 
     {{-- FINAL CTA --}}
-    <section class="bg-accent text-accent-content">
+    <section class="bg-accent/80">
         <div class="max-w-6xl mx-auto px-4 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
                 <h2 class="text-3xl font-bold">Ready to ride?</h2>
@@ -555,7 +555,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
         </div>
     </section>
     {{-- FAQ --}}
-    <section class="bg-base-200">
+    <section class="bg-base-100/80">
         <div class="max-w-4xl mx-auto px-4 py-14">
             <h2 class="text-3xl font-bold mb-8 text-center">Frequently asked questions</h2>
 
