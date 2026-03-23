@@ -13,7 +13,7 @@
         </header>
 
 
-        <div class="overflow-x-auto  max-w-fit mx-auto mb-8 bg-base-100/60 rounded-xl shadow-lg border-[6px] border-neutral-200/90 rj-card-inset drop-shadow-lg">
+        <div class="overflow-x-auto  max-w-fit mx-auto mb-8 bg-base-100/60 rounded-xl shadow-lg border-[6px] border-neutral-200/90 rj-card-inset drop-shadow-lg fade-up">
             <h2 class="text-2xl font-bold p-4 bg-accent/80 border-b" style="border-color: #2228">Upcoming tours
             </h2>
             <table class="table table-sm">
@@ -59,7 +59,7 @@
             </table>
         </div>
 
-        <div class="mx-auto grid grid-cols-[repeat(auto-fit,min(100%,18rem))] place-content-center gap-4">
+        <div class="mx-auto grid grid-cols-[repeat(auto-fit,min(100%,18rem))] place-content-center gap-4 fade-up-delay">
             @forelse($tours as $tour)
                 <article
                     class="bg-base-100/80 shadow-md rounded-xl duration-500 rj-card-inset hover:scale-105 hover:shadow-xl ">

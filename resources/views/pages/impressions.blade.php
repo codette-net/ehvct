@@ -4,11 +4,14 @@
 @section('canonical', route('impressions'))
 
 @section('content')
-    <section class="relative">
+    <section class="hero min-h-[80vh] "
+             style="background-image: url(/images/EHVCT-bike-sunset.jpg);background-position: 15% 49%;
+    background-repeat: no-repeat;
+">
+        <div class="hero-overlay bg-neutral/60"></div>
 
-        <div class="w-full max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-20">
-
-            {{-- Header --}}
+        <div class="hero-content text-neutral-content w-full ">
+                   {{-- Header --}}
             <div class="text-center max-w-2xl mx-auto p-4 my-4">
                 <h1 class="text-4xl md:text-5xl font-bold">Impressions</h1>
                 <p class="mt-4 text-base md:text-lg opacity-80">
@@ -18,12 +21,103 @@
 
                 <div class="mt-6 flex flex-wrap justify-center gap-3">
                     <a href="{{ route('tours.index') }}" class="btn btn-accent">Book a tour</a>
-                    <a href="{{ route('tours.index') }}" class="btn btn-outline">See all tours</a>
-                    <a href="https://wa.link/uk5101" target="_blank" class="btn btn-ghost">Ask on WhatsApp</a>
+                    <a href="{{ route('tours.index') }}" class="btn btn-accent">See all tours</a>
                 </div>
             </div>
+        </div>
+    </section>
 
-            {{-- Quick highlights --}}
+    <section class="relative">
+
+        <div class="w-full max-w-6xl mx-auto px-4 md:px-6 ">
+            {{-- Masonry grid (with optional lightbox) --}}
+            <div class="mt-12">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+
+                    {{-- Column 1 --}}
+                    <div class="grid auto-rows-max gap-4">
+                        @foreach ([
+                            ['/images/EHVCT_8.jpg', 'Group ride near Eindhoven'],
+                            ['/images/EHVCT_86.jpeg', 'Veldhoven roundabout'],
+                            ['/images/EHVCT-heide-path.jpg', 'Heide path'],
+                            ['/images/EHVCT_77.jpeg', 'Watermill'],
+
+                        ] as [$src, $alt])
+                            <button type="button"
+                                    class="cursor-pointer"
+                                    onclick="openImageModal('{{ $src }}', '{{ addslashes($alt) }}')">
+                                <img class="w-full rounded-xl shadow hover:shadow-md transition"
+                                     src="{{ $src }}" alt="{{ $alt }}" />
+                            </button>
+
+                        @endforeach
+                    </div>
+
+                    {{-- Column 2 --}}
+                    <div class="grid auto-rows-max gap-4">
+                        @foreach ([
+                            ['/images/EHVCT_23.jpg', 'Mill'],
+                            ['/images/EHVCT-shroom-wheel.jpg', 'Small details on the ride'],
+                            ['/images/EHVCT_18.jpg', 'Tour moment'],
+                            ['/images/EHVCT_72.jpeg', 'lake'],
+
+
+                        ] as [$src, $alt])
+                            <button type="button"
+                                    class="cursor-pointer"
+                                    onclick="openImageModal('{{ $src }}', '{{ addslashes($alt) }}')">
+                                <img class="w-full rounded-xl shadow hover:shadow-md transition"
+                                     src="{{ $src }}" alt="{{ $alt }}" />
+                            </button>
+
+                        @endforeach
+                    </div>
+
+                    {{-- Column 3 --}}
+                    <div class="grid auto-rows-max gap-4">
+                        @foreach ([
+                            ['/images/EHVCT_2.jpg', 'Nature stop'],
+                            ['/images/EHVCT_0.JPG', 'Cycling path'],
+                            ['/images/EHVCT_9.jpg', 'Brabant scenery'],
+                            ['/images/EHVCT_12.jpg', 'Eindhoven airport at night'],
+
+
+                        ] as [$src, $alt])
+                            <button type="button"
+                                    class="cursor-pointer"
+                                    onclick="openImageModal('{{ $src }}', '{{ addslashes($alt) }}')">
+                                <img class="w-full rounded-xl shadow hover:shadow-md transition"
+                                     src="{{ $src }}" alt="{{ $alt }}" />
+                            </button>
+
+                        @endforeach
+                    </div>
+
+                    {{-- Column 4 (replace external images with local ones) --}}
+                    <div class="grid auto-rows-max gap-4">
+                        @foreach ([
+                            ['/images/EHVCT-van-gogh-path.jpg', 'Van Gogh bike path'],
+                            ['/images/EHVCT-cover-img.jpg', 'EHVCT ride impression'],
+                            ['/images/EHVCT_52.jpeg', 'Lake'],
+                            ['/images/EHVCT_28.jpeg', 'Flowers'],
+                            ['/images/EHVCT_46.jpeg', 'Having a beer at hut van mie pils'],
+                            ['/images/EHVCT_33.jpeg', 'Castle'],
+
+
+
+                        ] as [$src, $alt])
+                            <button type="button"
+                                    class="cursor-pointer"
+                                    onclick="openImageModal('{{ $src }}', '{{ addslashes($alt) }}')">
+                                <img class="w-full rounded-xl shadow hover:shadow-md transition"
+                                     src="{{ $src }}" alt="{{ $alt }}" />
+                            </button>
+
+                        @endforeach
+                    </div>
+
+                </div>
+            </div>
             <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
                 <div class="card bg-base-100/80 rj-shadow-inset">
                     <div class="card-body p-4">
@@ -51,83 +145,8 @@
                 </div>
             </div>
 
-            {{-- Masonry grid (with optional lightbox) --}}
-            <div class="mt-12">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-
-                    {{-- Column 1 --}}
-                    <div class="grid auto-rows-max gap-4">
-                        @foreach ([
-                            ['/images/EHVCT_8.jpg', 'Group ride near Eindhoven'],
-                            ['/images/EHVCT_21.jpg', 'Brabant countryside'],
-                            ['/images/EHVCT-heide-path.jpg', 'Heide path']
-                        ] as [$src, $alt])
-                            <button type="button"
-                                    class="cursor-pointer"
-                                    onclick="openImageModal('{{ $src }}', '{{ addslashes($alt) }}')">
-                                <img class="w-full rounded-xl shadow hover:shadow-md transition"
-                                     src="{{ $src }}" alt="{{ $alt }}" />
-                            </button>
-
-                        @endforeach
-                    </div>
-
-                    {{-- Column 2 --}}
-                    <div class="grid auto-rows-max gap-4">
-                        @foreach ([
-                            ['/images/EHVCT_16.jpg', 'Cycling together'],
-                            ['/images/EHVCT-shroom-wheel.jpg', 'Small details on the ride'],
-                            ['/images/EHVCT_18.jpg', 'Tour moment']
-                        ] as [$src, $alt])
-                            <button type="button"
-                                    class="cursor-pointer"
-                                    onclick="openImageModal('{{ $src }}', '{{ addslashes($alt) }}')">
-                                <img class="w-full rounded-xl shadow hover:shadow-md transition"
-                                     src="{{ $src }}" alt="{{ $alt }}" />
-                            </button>
-
-                        @endforeach
-                    </div>
-
-                    {{-- Column 3 --}}
-                    <div class="grid auto-rows-max gap-4">
-                        @foreach ([
-                            ['/images/EHVCT_2.jpg', 'Nature stop'],
-                            ['/images/EHVCT_0.JPG', 'Cycling path'],
-                            ['/images/EHVCT_9.jpg', 'Brabant scenery']
-                        ] as [$src, $alt])
-                            <button type="button"
-                                    class="cursor-pointer"
-                                    onclick="openImageModal('{{ $src }}', '{{ addslashes($alt) }}')">
-                                <img class="w-full rounded-xl shadow hover:shadow-md transition"
-                                     src="{{ $src }}" alt="{{ $alt }}" />
-                            </button>
-
-                        @endforeach
-                    </div>
-
-                    {{-- Column 4 (replace external images with local ones) --}}
-                    <div class="grid auto-rows-max gap-4">
-                        @foreach ([
-                            ['/images/EHVCT-van-gogh-path.jpg', 'Van Gogh bike path'],
-                            ['/images/EHVCT-cover-img.jpg', 'EHVCT ride impression'],
-                            ['/images/EHVCT_5.jpg', 'Tour moment']
-                        ] as [$src, $alt])
-                            <button type="button"
-                                    class="cursor-pointer"
-                                    onclick="openImageModal('{{ $src }}', '{{ addslashes($alt) }}')">
-                                <img class="w-full rounded-xl shadow hover:shadow-md transition"
-                                     src="{{ $src }}" alt="{{ $alt }}" />
-                            </button>
-
-                        @endforeach
-                    </div>
-
-                </div>
-            </div>
-
             {{-- Bottom CTA --}}
-            <div class="mt-14 text-center">
+            <div class="my-8 text-center">
                 <h2 class="text-2xl md:text-3xl font-bold">Want to be in the next photo?</h2>
                 <p class="mt-3 opacity-80">Pick a tour, choose a date, and join the ride.</p>
                 <div class="mt-6 flex justify-center gap-3">
@@ -141,10 +160,10 @@
         {{-- DaisyUI Modal (lightbox) --}}
         {{-- DaisyUI Modal (modern dialog) --}}
         <dialog id="img_modal" class="modal">
-            <div class="modal-box w-11/12  p-3">
+            <div class="modal-box w-11/12 p-3 rj-card-inset">
                 {{-- Close X --}}
                 <form method="dialog">
-                    <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" aria-label="Close">✕</button>
+                    <button class="btn btn-sm btn-circle btn-warning absolute right-2 top-2" aria-label="Close">✕</button>
                 </form>
 
                 {{-- Image area --}}

@@ -46,3 +46,26 @@ import './bootstrap';
         });
     });
 })();
+
+
+const fadeUpObserver = new IntersectionObserver(
+    (elsToWatch) => {
+        elsToWatch.forEach((el) => {
+            if (el.isIntersecting) {
+                el.target.classList.add("faded");
+                fadeUpObserver.unobserve(el.target);
+            }
+        });
+    },
+    { threshold: 0.05 }
+);
+
+document.querySelectorAll(".fade-up").forEach((item) => {
+    console.log(item);
+    fadeUpObserver.observe(item);
+});
+
+document.querySelectorAll(".fade-up-delay").forEach((item) => {
+    console.log(item);
+    fadeUpObserver.observe(item);
+});

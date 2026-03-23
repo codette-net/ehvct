@@ -35,7 +35,7 @@
             <div class="landscape:max-w-[66vw] max-w-[800px] flex flex-col gap-4 justify-items-center items-center">
                 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                      viewBox="0 0 1484.000000 877.000000"
-                     preserveAspectRatio="xMidYMid meet" class="drop-shadow-2xl px-4 max-w-[50vw] md:max-w-[60vw]">
+                     preserveAspectRatio="xMidYMid meet" class="drop-shadow-2xl px-4 max-w-[50vw] md:max-w-[60vw] fade-up">
 
                     <g transform="translate(0.000000,877.000000) scale(0.100000,-0.100000)"
                        fill="#ffffff" stroke="#ffffff">
@@ -231,7 +231,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                     </g>
                 </svg>
 
-                <header class="px-4 flex flex-col gap-4 justify-items-center items-center">
+                <header class="px-4 flex flex-col gap-4 justify-items-center items-center fade-up-delay">
                     <h1 class="landscape:text-4xl text-3xl md:text-4xl font-bold leading-tight text-balance text-pretty">
                         Easy rides. Great stories. Better views
                     </h1>
@@ -325,7 +325,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
         <div class="relative max-w-6xl mx-auto px-4 py-6  z-20">
             <h2 class="text-3xl font-bold mb-8">Booking is simple</h2>
             <div class="flex flex-col justify-center items-center">
-                <ul class="steps steps-vertical md:steps-horizontal">
+                <ul class="steps steps-vertical md:steps-horizontal fade-up">
                     <li class="step step-primary">
                         <div class="card bg-base-100/80 shadow-md max-w-[12rem] min-h-[13rem] m-2 border-[6px] border-neutral-200/90 rj-card-inset drop-shadow">
                             <div class="card-body">
@@ -358,7 +358,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
             </div>
         </div>
 
-        <div class="max-w-6xl grid grid-cols-[repeat(auto-fit,minmax(min(100%,10rem),1fr))] gap-4 place-items-center mx-auto" >
+        <div class="max-w-6xl grid grid-cols-[repeat(auto-fit,minmax(min(100%,10rem),1fr))] gap-4 place-items-center mx-auto fade-up-delay" >
             <div class="card bg-base-100/80 rj-shadow-inset">
                 <div class="card-body">
                     <h2 class="card-title">Local guide</h2>
@@ -515,12 +515,12 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
         <div class="grid lg:grid-cols-2 gap-10 place-items-center">
             <div>
                 <h2 class="text-3xl font-bold mb-4">Meet your guide</h2>
-                <div class="avatar mb-2" style="float: left; margin-right: 1.5rem; shape-outside: circle();">
+                <div class="avatar mb-2 fade-up" style="float: left; margin-right: 1.5rem; shape-outside: circle();">
                     <div class="ring-accent ring-offset-base-100 w-24 rounded-full ring-2 ring-offset-2">
                         <img src="/images/EHVCT_Maurice_avatar.jpg"/>
                     </div>
                 </div>
-                <p class="mt-4 py-2 opacity-85">
+                <p class="mt-4 py-2 opacity-85 fade-up-delay">
                     Eindhoven Cycling Tours was founded by Maurice Meijer, born and raised in Eindhoven.
                     Today ECT brings people together on easy-going rides through nature, villages, and hidden
                     highlights.
@@ -530,8 +530,8 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                     <a class="btn btn-accent" href="{{ route('tours.index') }}">Book a tour</a>
                 </div>
             </div>
-            <div class="card bg-base-100/80 shadow-lg border-[6px] border-neutral-200/90 rj-card-inset drop-shadow-lg">
-                <div class="card-body rounded bg-base-100/60">
+            <div class="card bg-base-100/80 shadow-lg border-[6px] border-neutral-200/90 rj-card-inset drop-shadow-lg fade-up-delay"">
+                <div class="card-body rounded bg-base-100/60 >
                     <h3 class="font-semibold">Also available</h3>
                     <p class="text-sm opacity-80">Private tours, company outings, and teambuilding rides.</p>
                     <a class="btn btn-outline" href="{{ route('contact.show') }}">Request a private tour</a>

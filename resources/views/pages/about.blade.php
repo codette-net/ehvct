@@ -13,18 +13,18 @@
 
         <div class="hero-content text-neutral-content w-full ">
             <div class="max-w-3xl text-center px-4">
-                <h1 class="text-4xl md:text-5xl font-bold leading-tight">
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight fade-up">
                     Meet Maurice
                 </h1>
-                <p class="mt-5 text-lg md:text-xl opacity-90">
+                <p class="mt-5 text-lg md:text-xl opacity-90 fade-up-delay">
                     Born and raised in Eindhoven, guiding relaxed cycling tours that connect people with the city,
                     its countryside, and each other.
                 </p>
 
-                <div class="mt-8 flex flex-wrap justify-center gap-3">
+                <div class="mt-8 flex flex-wrap justify-center gap-3 fade-up-delay">
                     <a href="{{ route('tours.index') }}" class="btn btn-accent">Book a tour</a>
                     <a href="{{ route('impressions') }}"
-                       class="btn btn-outline text-neutral-content border-neutral-content">
+                       class="btn btn-accent text-neutral-content border-neutral-content">
                         See impressions
                     </a>
                     <a href="https://wa.link/uk5101" target="_blank" class="btn btn-ghost text-neutral-content">
@@ -32,19 +32,19 @@
                     </a>
                 </div>
 
-                <div class="mt-6 flex flex-wrap justify-center gap-2 text-sm opacity-90">
-                    <span class="badge badge-outline">English + Dutch</span>
-                    <span class="badge badge-outline">Beginner-friendly</span>
-                    <span class="badge badge-outline">Small groups</span>
-                    <span class="badge badge-outline">Nature + culture</span>
-                </div>
+{{--                <div class="mt-6 flex flex-wrap justify-center gap-2 text-sm opacity-90">--}}
+{{--                    <span class="badge badge-outline">English + Dutch</span>--}}
+{{--                    <span class="badge badge-outline">Beginner-friendly</span>--}}
+{{--                    <span class="badge badge-outline">Small groups</span>--}}
+{{--                    <span class="badge badge-outline">Nature + culture</span>--}}
+{{--                </div>--}}
             </div>
         </div>
     </section>
 
     {{-- INTRO --}}
     <section class="max-w-5xl mx-auto px-4 md:px-6 py-14">
-        <div class="prose max-w-none">
+        <div class="prose max-w-none fade-up">
             <h2 class="text-3xl mb-4">What Eindhoven Cycling Tours is about</h2>
             <p class="text-lg">
                 Eindhoven Cycling Tours is a relaxed, community-focused way to discover Eindhoven and its surroundings
@@ -55,7 +55,7 @@
         </div>
 
         <div class="grid md:grid-cols-3 gap-6 mt-8">
-            <div class="card bg-base-100/80 rj-shadow-inset">
+            <div class="card bg-base-100/80 rj-shadow-inset fade-up-delay">
                 <div class="card-body">
                     <h3 class="font-semibold">Ride with a local</h3>
                     <p class="text-sm opacity-80">
@@ -63,7 +63,7 @@
                     </p>
                 </div>
             </div>
-            <div class="card bg-base-100/80 rj-shadow-inset">
+            <div class="card bg-base-100/80 rj-shadow-inset fade-up-delay">
                 <div class="card-body">
                     <h3 class="font-semibold">No stress navigation</h3>
                     <p class="text-sm opacity-80">
@@ -71,7 +71,7 @@
                     </p>
                 </div>
             </div>
-            <div class="card bg-base-100/80 rj-shadow-inset">
+            <div class="card bg-base-100/80 rj-shadow-inset fade-up-delay">
                 <div class="card-body">
                     <h3 class="font-semibold">Connection</h3>
                     <p class="text-sm opacity-80">
@@ -86,7 +86,7 @@
     <section class="bg-neutral-100/60">
         <div class="max-w-5xl mx-auto px-4 md:px-6 py-14 z-10">
             <div class="grid lg:grid-cols-2 gap-10 items-start">
-                <div class="prose max-w-[768px]">
+                <div class="prose max-w-[768px] fade-up">
                     <h2 class="text-3xl mb-4">The story</h2>
                     <p class="text-lg">
                         Maurice Meijer was born and raised in Eindhoven. After a knee injury, cycling started as a way
@@ -101,7 +101,7 @@
                 </div>
 
                 <div
-                    class="relative mx-auto max-w-fit rounded-xl overflow-hidden rj-shadow-inset bg-cover bg-center p-4  "
+                    class="relative mx-auto max-w-fit rounded-xl overflow-hidden rj-shadow-inset bg-cover bg-center p-4 fade-up-delay"
                     style="background-image: url('{{ asset('images/bike_on_the_Wall.png') }}');"
                 >
                     <!-- soft glow -->
@@ -127,7 +127,7 @@
 
     {{-- FOR WHO --}}
     <section class="max-w-5xl mx-auto px-4 md:px-6 py-14">
-        <div class="prose max-w-none">
+        <div class="prose max-w-none fade-up">
             <h2 class="text-3xl mb-4">Who is it for?</h2>
             <p class="text-lg">
                 Eindhoven Cycling Tours is for anyone who likes being outside and wants to explore beyond the city
@@ -138,7 +138,7 @@
         </div>
 
         <div class="grid md:grid-cols-2 gap-6 mt-8">
-            <div class="card bg-base-100/80 rj-shadow-inset">
+            <div class="card bg-base-100/80 rj-shadow-inset fade-up-delay">
                 <div class="card-body">
                     <h3 class="font-semibold">Expats</h3>
                     <p class="text-sm opacity-80">
@@ -147,7 +147,7 @@
                     </p>
                 </div>
             </div>
-            <div class="card bg-base-100/80 rj-shadow-inset">
+            <div class="card bg-base-100/80 rj-shadow-inset fade-up-delay">
                 <div class="card-body">
                     <h3 class="font-semibold">Locals & visitors</h3>
                     <p class="text-sm opacity-80">
@@ -180,7 +180,7 @@
     <section class="bg-neutral-100/60">
         <div class="max-w-5xl mx-auto px-4 md:px-6 py-14">
             <div class="grid lg:grid-cols-2 gap-10 items-center">
-                <div class="prose max-w-none">
+                <div class="prose max-w-none fade-up">
                     <h2 class="text-3xl mb-4">Private tours & team rides</h2>
                     <p class="text-lg">
                         It is also possible to book a private tour, a company outing, or a teambuilding ride.
@@ -188,7 +188,7 @@
                     </p>
                 </div>
 
-                <div class="card bg-base-100/80 shadow-lg border-[6px] border-neutral-200/90 rj-card-inset drop-shadow-lg">
+                <div class="card bg-base-100/80 shadow-lg border-[6px] border-neutral-200/90 rj-card-inset drop-shadow-lg fade-up-delay">
                     <div class="card-body rounded bg-transparent">
                         <h3 class="card-title">Interested?</h3>
                         <p class="text-sm opacity-80">
@@ -208,7 +208,7 @@
 
     {{-- PRESS / LINKS --}}
     <section class="max-w-5xl mx-auto px-4 md:px-6 py-14">
-        <div class="prose max-w-none">
+        <div class="prose max-w-none fade-up">
             <h2 class="text-3xl mb-4">Press</h2>
             <p class="text-xl">
                 Want to read more about Eindhoven Cycling Tours?
