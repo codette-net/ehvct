@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="max-w-6xl mx-auto px-4 py-14 min-h-[66dvh]">
+    <section class="max-w-6xl mx-auto px-4 py-24 min-h-[90dvh] ">
         <h1 class="text-3xl font-bold">Cancellation request</h1>
 
         @php

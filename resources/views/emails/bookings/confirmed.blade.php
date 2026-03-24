@@ -15,7 +15,7 @@
             <table role="presentation" width="600" cellspacing="0" cellpadding="0" style="max-width:600px;background:#ffffff;border:1px solid #e6eaf2;border-radius:10px;overflow:hidden;">
                 <tr>
                     <td style="padding:18px 22px;background:#eef2ff;border-bottom:1px solid #e6eaf2;">
-                        <div style="font-weight:700;letter-spacing:0.06em;">EHVCT</div>
+                        <div style="font-weight:700;letter-spacing:0.06em;">Eindhoven Cycling Tours - EHVCT.nl </div>
                     </td>
                 </tr>
 

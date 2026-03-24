@@ -30,7 +30,7 @@
 - [x] Payment success page
 - [x] Payment cancel/fail page (nice UX)
 - [x] Contact page + contact form
-- [ ] Impressions page (site gallery)
+- [x] Impressions page (site gallery)
 
 ### Booking rules
 

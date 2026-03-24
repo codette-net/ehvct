@@ -10,7 +10,7 @@
         $stepPayment = in_array($booking->status, ['pending','confirmed']) ? 'step-primary' : '';
         $stepConfirm = $booking->status === 'confirmed' ? 'step-primary' : '';
     @endphp
-    <section class="max-w-6xl mx-auto px-4 py-20">
+    <section class="max-w-6xl mx-auto px-4 py-24 min-h-[90dvh]">
 
         <div class="breadcrumbs text-sm mb-4">
             <ul>

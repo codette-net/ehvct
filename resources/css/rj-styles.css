@@ -37,6 +37,11 @@
         180deg,
         var(--color-bg),
         var(--color-honey)
+    ),
+    radial-gradient(
+        ellipse at bottom,
+        rgb(196,106,47,0.85),
+        transparent
     );
 
     /* Autumn Warm CTA */
@@ -45,6 +50,29 @@
         var(--color-accent),
         var(--color-brick)
     );
+}
+
+body {
+    background-color: var(--color-offwhite);
+}
+
+main {
+    /*background-image: radial-gradient(*/
+    /*    ellipse at top,*/
+    /*    rgb(25,25,25,0.2),*/
+    /*    rgb(75,75,75,0.2)*/
+    /*),*/
+    /*radial-gradient(*/
+    /*    ellipse at bottom,*/
+    /*    rgb(196,106,47,0.85),*/
+    /*    transparent*/
+    /*),*/
+    /*url(/images/ehvct_logo_est_2015_alpha.png);*/
+    background-attachment: fixed;
+    background-size: cover, cover;
+    background-position: center, center;
+    /*background-repeat: repeat, repeat, no-repeat;*/
+    /*background-position: center, center, 60% 75%;*/
 }
 
 .rj-gradient-autumn {
@@ -229,3 +257,5 @@ nav .btn:focus-visible{
     opacity: 1;
     transform: translateY(0);
 }
+
+

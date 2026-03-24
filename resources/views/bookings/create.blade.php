@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="max-w-6xl mx-auto px-4 py-20">
+    <section class="max-w-6xl mx-auto px-4 py-24">
 
         <div class="breadcrumbs text-sm mb-4">
             <ul>
