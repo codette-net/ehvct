@@ -120,7 +120,7 @@
 
                             @if($lowestPrice)
                                 <div class="badge badge-lg badge-outline">
-                                    From €{{ number_format($lowestPrice / 100, 2) }} p.p.
+                                    €{{ number_format($lowestPrice / 100, 2) }} p.p.
                                 </div>
                             @endif
 

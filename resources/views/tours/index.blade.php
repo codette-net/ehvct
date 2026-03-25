@@ -91,7 +91,7 @@
                                 {{--                            <p class="text-lg font-semibold text-black cursor-auto my-3">&euro;20</p>--}}
                                 @if($tour->starting_from_cents !== null)
                                     <div class="cursor-auto my-3 ml-2 flex flex-col">
-                                        <div class="text-sm opacity-70">Starting from</div>
+{{--                                        <div class="text-sm opacity-70">Starting from</div>--}}
                                         <div
                                             class="text-lg font-semibold">{{ $tour->starting_from_formatted }}</div>
                                     </div>
