@@ -424,9 +424,10 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
 
 <footer class="footer sm:footer-horizontal bg-accent text-accent-content p-10">
     <nav>
-        <h6 class="footer-title">Eindhoven Cycling Tours</h6>
+        <h6 class="footer-title">Explore</h6>
         <a href="{{ route('tours.index') }}" class="link link-hover">All tours</a>
         <a href="{{ route('impressions') }}" class="link link-hover">Impressions</a>
+        <a href="{{ route('about') }}" class="link link-hover">About Maurice</a>
         <a href="{{ route('contact.show') }}" class="link link-hover">Contact</a>
     </nav>
     <nav>
