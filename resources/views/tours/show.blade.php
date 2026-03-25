@@ -298,10 +298,10 @@
                     <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset">
                         <input type="radio" name="faq-accordion" />
                         <div class="collapse-title font-semibold">
-                            Can I bring my child on the bike?
+                            Can I bring my children?
                         </div>
                         <div class="collapse-content text-sm opacity-80">
-                            Yes. You pay per person on a bicycle. If your child rides with you in a child seat or on your bicycle, your child can join for free.
+                            Yes. Kids on your bicycle come for free, kids only pay if they ride their own bikes.
                         </div>
                     </div>
 
