@@ -241,12 +241,12 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                 </header>
 
                 <div class="flex flex-wrap gap-3">
-                    <a class="btn btn-accent" href="{{ route('tours.index') }}">Book a tour</a>
                     <a class="btn btn-accent" href="{{ route('tours.index') }}">See all tours</a>
+                    <a class="btn btn-neutral" href="{{ route('about') }}">About EHVCT</a>
                 </div>
 
             </div>
-        </div>
+        </div>np
     </section>
 
 
