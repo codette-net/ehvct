@@ -154,7 +154,8 @@
                                     $slots = $variant->slots->filter(fn($s) => $s->isBookableNow());
                                 @endphp
 
-                                <div class="rounded-xl bg-base-200/40 p-4 shadow-lg border-[6px] border-neutral-200/90 rj-card-inset">
+                                <div
+                                    class="rounded-xl bg-base-200/40 p-4 shadow-lg border-[6px] border-neutral-200/90 rj-card-inset">
                                     <div class="flex items-start justify-between gap-3">
                                         <div>
                                             <h3 class="font-semibold text-lg">{{ $variant->label }}</h3>
@@ -221,7 +222,8 @@
             <div class="space-y-6">
 
                 @if($tour->highlights)
-                    <div class="card bg-base-100/90 shadow-lg border-[6px] border-neutral-200/90 rj-card-inset drop-shadow-lg">
+                    <div
+                        class="card bg-base-100/90 shadow-lg border-[6px] border-neutral-200/90 rj-card-inset drop-shadow-lg">
                         <div class="card-body">
                             <h3 class="card-title text-xl">Highlights</h3>
                             <div class="prose max-w-none">
@@ -280,73 +282,82 @@
             <div class="max-w-4xl mx-auto px-4 py-14">
                 <h2 class="text-3xl font-bold mb-3 text-center">Frequently asked questions</h2>
                 <p class="text-center opacity-75 max-w-2xl mx-auto mb-8">
-                    Practical questions about our guided cycling tours in Eindhoven, from bikes and children to weather and cancellations.
+                    Practical questions about our guided cycling tours in Eindhoven, from bikes and children to weather
+                    and cancellations.
                 </p>
 
                 <div class="space-y-4">
 
                     <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset">
-                        <input type="radio" name="faq-accordion" checked="checked" />
+                        <input type="radio" name="faq-accordion" checked="checked"/>
                         <div class="collapse-title font-semibold">
                             Do I need to bring my own bike?
                         </div>
                         <div class="collapse-content text-sm opacity-80">
-                            You can bring your own bike or rent one nearby in Eindhoven. We can recommend a local rental partner <a href="https://velorent.nl" target="_blank" title="velorent bike rentals"></a>.
+                            You can bring your own bike or rent one nearby in Eindhoven. We can recommend a local rental
+                            partner <a href="https://velorent.nl" target="_blank" title="velorent bike rentals"></a>.
                         </div>
                     </div>
 
                     <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset">
-                        <input type="radio" name="faq-accordion" />
+                        <input type="radio" name="faq-accordion"/>
                         <div class="collapse-title font-semibold">
-                            Can I bring my children?
+                            Can I bring my children on the tour? And is my dog allowed in a bike basket?
                         </div>
                         <div class="collapse-content text-sm opacity-80">
-                            Yes. Kids on your bicycle come for free, kids only pay if they ride their own bikes.
+                            Of course! Children are very welcome to join our tours. They only need a ticket if they ride
+                            their own bike. If your child sits in a child seat on your bike, they can join for free. And
+                            your dog is welcome too!
                         </div>
                     </div>
 
                     <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset">
-                        <input type="radio" name="faq-accordion" />
+                        <input type="radio" name="faq-accordion"/>
                         <div class="collapse-title font-semibold">
                             How difficult are the tours?
                         </div>
                         <div class="collapse-content text-sm opacity-80">
-                            The tours are relaxed and beginner-friendly. We keep a comfortable pace and take regular breaks. You do not need to be sporty to join.
+                            The tours are relaxed and beginner-friendly. We keep a comfortable pace and take regular
+                            breaks. You do not need to be sporty to join.
                         </div>
                     </div>
 
                     <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset">
-                        <input type="radio" name="faq-accordion" />
+                        <input type="radio" name="faq-accordion"/>
                         <div class="collapse-title font-semibold">
                             What happens if the weather is bad?
                         </div>
                         <div class="collapse-content text-sm opacity-80">
-                            Light rain is usually not a problem. If conditions are unsafe, the tour may be rescheduled or refunded.
+                            Light rain is usually not a problem. If conditions are unsafe, the tour may be rescheduled
+                            or refunded.
                         </div>
                     </div>
 
                     <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset">
-                        <input type="radio" name="faq-accordion" />
+                        <input type="radio" name="faq-accordion"/>
                         <div class="collapse-title font-semibold">
                             Can I cancel my booking?
                         </div>
                         <div class="collapse-content text-sm opacity-80">
-                            Yes. You can cancel up to the allowed cutoff time before the tour starts. Please check the <a href="{{ route('terms-of-service') }}">booking and cancellation policy</a> for the exact rules.
+                            Yes. You can cancel up to the allowed cutoff time before the tour starts. Please check the
+                            <a href="{{ route('terms-of-service') }}">booking and cancellation policy</a> for the exact
+                            rules.
                         </div>
                     </div>
 
                     <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset">
-                        <input type="radio" name="faq-accordion" />
+                        <input type="radio" name="faq-accordion"/>
                         <div class="collapse-title font-semibold">
                             Is the tour in English or Dutch?
                         </div>
                         <div class="collapse-content text-sm opacity-80">
-                            Both. Maurice speaks English and Dutch, so expats, internationals, and locals can all join comfortably.
+                            Both. Maurice speaks English and Dutch, so expats, internationals, and locals can all join
+                            comfortably.
                         </div>
                     </div>
 
                     <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset">
-                        <input type="radio" name="faq-accordion" />
+                        <input type="radio" name="faq-accordion"/>
                         <div class="collapse-title font-semibold">
                             Where do the tours start?
                         </div>
