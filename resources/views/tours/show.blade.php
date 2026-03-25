@@ -276,44 +276,89 @@
 
             </div>
         </section>
-        <section class="mt-12 max-w-4xl">
-            <h2 class="text-2xl font-bold mb-6">Frequently asked questions</h2>
+        <section class="bg-base-100/80">
+            <div class="max-w-4xl mx-auto px-4 py-14">
+                <h2 class="text-3xl font-bold mb-3 text-center">Frequently asked questions</h2>
+                <p class="text-center opacity-75 max-w-2xl mx-auto mb-8">
+                    Practical questions about our guided cycling tours in Eindhoven, from bikes and children to weather and cancellations.
+                </p>
 
-            <div class="space-y-3">
-                <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset mb-4">
-                    <input type="radio" name="tour-faq" checked="checked"/>
-                    <div class="collapse-title font-semibold">Do I need to bring my own bike?</div>
-                    <div class="collapse-content text-sm opacity-80">
-                        You can bring your own bike or rent one nearby. Ask us if you need help finding a rental option.
-                    </div>
-                </div>
+                <div class="space-y-4">
 
-                <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset mb-4">
-                    <input type="radio" name="tour-faq"/>
-                    <div class="collapse-title font-semibold">What if the weather is bad?</div>
-                    <div class="collapse-content text-sm opacity-80">
-                        Light rain is usually fine. If conditions are unsafe, we may reschedule or cancel the tour.
+                    <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset">
+                        <input type="radio" name="faq-accordion" checked="checked" />
+                        <div class="collapse-title font-semibold">
+                            Do I need to bring my own bike?
+                        </div>
+                        <div class="collapse-content text-sm opacity-80">
+                            You can bring your own bike or rent one nearby in Eindhoven. We can recommend a local rental partner <a href="https://velorent.nl" target="_blank" title="velorent bike rentals"></a>.
+                        </div>
                     </div>
-                </div>
 
-                <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset mb-4">
-                    <input type="radio" name="tour-faq"/>
-                    <div class="collapse-title font-semibold">Can I cancel my booking?</div>
-                    <div class="collapse-content text-sm opacity-80">
-                        Yes, depending on the cancellation timing. Please see the booking and cancellation policy for
-                        the exact refund rules.
+                    <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset">
+                        <input type="radio" name="faq-accordion" />
+                        <div class="collapse-title font-semibold">
+                            Can I bring my child on the bike?
+                        </div>
+                        <div class="collapse-content text-sm opacity-80">
+                            Yes. You pay per person on a bicycle. If your child rides with you in a child seat or on your bicycle, your child can join for free.
+                        </div>
                     </div>
-                </div>
 
-                <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset mb-4">
-                    <input type="radio" name="tour-faq"/>
-                    <div class="collapse-title font-semibold">Is the tour in English or Dutch?</div>
-                    <div class="collapse-content text-sm opacity-80">
-                        Both. Tours can be guided in English and Dutch.
+                    <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset">
+                        <input type="radio" name="faq-accordion" />
+                        <div class="collapse-title font-semibold">
+                            How difficult are the tours?
+                        </div>
+                        <div class="collapse-content text-sm opacity-80">
+                            The tours are relaxed and beginner-friendly. We keep a comfortable pace and take regular breaks. You do not need to be sporty to join.
+                        </div>
                     </div>
+
+                    <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset">
+                        <input type="radio" name="faq-accordion" />
+                        <div class="collapse-title font-semibold">
+                            What happens if the weather is bad?
+                        </div>
+                        <div class="collapse-content text-sm opacity-80">
+                            Light rain is usually not a problem. If conditions are unsafe, the tour may be rescheduled or refunded.
+                        </div>
+                    </div>
+
+                    <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset">
+                        <input type="radio" name="faq-accordion" />
+                        <div class="collapse-title font-semibold">
+                            Can I cancel my booking?
+                        </div>
+                        <div class="collapse-content text-sm opacity-80">
+                            Yes. You can cancel up to the allowed cutoff time before the tour starts. Please check the <a href="{{ route('terms-of-service') }}">booking and cancellation policy</a> for the exact rules.
+                        </div>
+                    </div>
+
+                    <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset">
+                        <input type="radio" name="faq-accordion" />
+                        <div class="collapse-title font-semibold">
+                            Is the tour in English or Dutch?
+                        </div>
+                        <div class="collapse-content text-sm opacity-80">
+                            Both. Maurice speaks English and Dutch, so expats, internationals, and locals can all join comfortably.
+                        </div>
+                    </div>
+
+                    <div class="collapse collapse-arrow bg-base-100 border border-base-300 rj-shadow-inset">
+                        <input type="radio" name="faq-accordion" />
+                        <div class="collapse-title font-semibold">
+                            Where do the tours start?
+                        </div>
+                        <div class="collapse-content text-sm opacity-80">
+                            The exact meeting point is shown on each tour page and in your booking confirmation.
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
+
     </section>
 
 @endsection

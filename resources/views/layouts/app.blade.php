@@ -373,7 +373,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
     </div>
 
     <div class="navbar-end">
-        <a href="{{ route('tours.index') }}" class="btn btn-accent">Book a tour</a>
+        {{--        <a href="{{ route('tours.index') }}" class="btn btn-accent">Book a tour</a>--}}
     </div>
 </nav>
 
@@ -422,7 +422,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
     @yield('content')
 </main>
 
-<footer class="footer sm:footer-horizontal bg-accent text-accent-content p-10">
+<footer class="footer sm:footer-horizontal bg-accent/80 text-accent-content p-10">
     <nav>
         <h6 class="footer-title">Explore</h6>
         <a href="{{ route('tours.index') }}" class="link link-hover">All tours</a>
@@ -477,7 +477,12 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
             </a>
         </div>
     </nav>
+
 </footer>
+<div class="bg-neutral text-neutral-content flex justify-center items-center p-4">
+    <small>Designed & Developed by <a href="mailto:info@codette.net" class="link">Codette web & media
+            services</a></small>
+</div>
 
 <script>
     let scrollTop = document.querySelector("#scroll-to-top");
