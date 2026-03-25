@@ -42,7 +42,7 @@
                         <td>
                             @if($upTour->starting_from_cents !== null)
                                 <p
-                                    class="font-semibold">from<br> {{ $upTour->starting_from_formatted }}
+                                    class="font-semibold"> {{ $upTour->starting_from_formatted }}
                                 </p>
                             @endif
                         </td>
