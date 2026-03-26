@@ -159,6 +159,7 @@
 
 ## 11) Nice-to-haves (post-MVP)
 - [ ] Proper calendar month UI
+- [] reviews integration
 - [ ] Self-service cancel link (before cutoff) + automated refund
 - [ ] Reschedule booking
 - [ ] Discount codes

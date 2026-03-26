@@ -8,6 +8,21 @@
             Eindhoven Cycling Tours
         @endif
     </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{--    <meta name="csrf-token" content="{{ csrf_token() }}">--}}
+    {{--    <link rel="icon" href="{{ asset('/images/ehvct_logo.png') }}" type="image/png">--}}
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+
+    <meta name="theme-color" content="#79c89a">
+    <meta name="format-detection" content="telephone=no">
+    <meta property="og:locale" content="en_US">
+    <meta name="author" content="Eindhoven Cycling Tours">
+    <link rel="manifest" href="/site.webmanifest">
 
     <meta name="description"
           content="@yield('meta_description', 'Guided cycling tours around Eindhoven with nature, local highlights and relaxed group rides.')">
@@ -19,20 +34,22 @@
     <link rel="canonical" href="@yield('canonical', url()->current())">
 
     <meta property="og:site_name" content="Eindhoven Cycling Tours">
+    <meta property="og:locale" content="en_US">
     <meta property="og:title"
           content="@yield('og_title', trim($__env->yieldContent('title', 'Eindhoven Cycling Tours')) . ' | Eindhoven Cycling Tours')">
     <meta property="og:description"
           content="@yield('og_description', $__env->yieldContent('meta_description', 'Guided cycling tours around Eindhoven with nature, local highlights and relaxed group rides.'))">
     <meta property="og:type" content="@yield('og_type', 'website')">
     <meta property="og:url" content="@yield('og_url', url()->current())">
-    <meta property="og:image" content="@yield('meta_image', asset('/images/EHVCT-cover-img.jpg'))">
+    <meta property="og:image" content="@yield('meta_image', url('/images/EHVCT-cover-img.jpg'))">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title"
           content="@yield('twitter_title', trim($__env->yieldContent('title', 'Eindhoven Cycling Tours')) . ' | Eindhoven Cycling Tours')">
     <meta name="twitter:description"
           content="@yield('twitter_description', $__env->yieldContent('meta_description', 'Guided cycling tours around Eindhoven with nature, local highlights and relaxed group rides.'))">
-    <meta name="twitter:image" content="@yield('meta_image', asset('/images/EHVCT-cover-img.jpg'))">
+    <meta name="twitter:image" content="@yield('meta_image', url('/images/EHVCT-cover-img.jpg'))">
+
     @sectionMissing('schema')
         <script type="application/ld+json">
             {
@@ -473,6 +490,20 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
                     <path
                         d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
+                </svg>
+            </a>
+            <a href="https://www.tripadvisor.com/Attraction_Review-g188582-d11959789-Reviews-Eindhoven_Cycling_Tours-Eindhoven_North_Brabant_Province.html?m=19905"
+               target="_blank" aria-label="Tripadvisor">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="icon icon-tabler icons-tabler-outline icon-tabler-brand-tripadvisor">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M5 13.5a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0 -3 0"/>
+                    <path d="M16 13.5a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0 -3 0"/>
+                    <path d="M17.5 9a4.5 4.5 0 1 0 3.5 1.671l1 -1.671h-4.5"/>
+                    <path d="M6.5 9a4.5 4.5 0 1 1 -3.5 1.671l-1 -1.671h4.5"/>
+                    <path d="M10.5 15.5l1.5 2l1.5 -2"/>
+                    <path d="M9 6.75c2 -.667 4 -.667 6 0"/>
                 </svg>
             </a>
         </div>
