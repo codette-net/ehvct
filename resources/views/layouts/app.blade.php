@@ -101,7 +101,7 @@
 
             <div
                 id="mobile-nav-menu"
-                class="absolute left-0 top-full mt-2 w-64 rounded-md border bg-base-100 shadow-lg z-[60] hidden px-4"
+                class="absolute left-0 top-full mt-2 w-48 rounded-md border bg-base-100 shadow-lg z-[60] hidden px-4 flex justify-center"
             >
                 <ul class="menu p-2 w-40">
                     <li class="mb-2">
