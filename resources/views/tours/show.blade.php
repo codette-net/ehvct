@@ -138,7 +138,7 @@
             </section>
 
             {{-- Booking card --}}
-            <aside id="booking-card" class="order-3 w-full">
+            <aside id="booking-card" class="z-10 order-3 w-full">
                 <div class="card bg-base-100/90 rounded-2xl overflow-hidden rj-card-inset">
                     <div class="card-body p-0">
                         <div class="bg-accent/80 text-accent-content px-6 py-5">

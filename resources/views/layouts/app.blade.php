@@ -83,7 +83,7 @@
 
 <nav class="navbar shadow-sm fixed top-0 z-40 bg-base-100/90 backdrop-blur-sm">
     <div class="navbar-start">
-        <div class="dropdown lg:hidden">
+        <div class="relative lg:hidden">
             <button
                 id="nav-menu-button"
                 type="button"
@@ -94,52 +94,48 @@
             >
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M4 6h16M4 12h8m-8 6h16"/>
                 </svg>
             </button>
 
-            <ul
+            <div
                 id="mobile-nav-menu"
-                class="menu dropdown-content bg-base-100 rounded-md w-60 min-h-70 z-50 p-2 shadow hidden border"
+                class="absolute left-0 top-full mt-2 w-64 rounded-md border bg-base-100 shadow-lg z-[60] hidden px-4"
             >
-                <li class="mb-2">
-                    {{--                home --}}
-                    <a href="{{ route('home') }}"
-                       class="btn btn-sm {{ request()->routeIs('home') ? $mobileNavActiveClass : $mobileNavLinkClass }}">Home</a>
-                </li>
-                <li class="mb-2">
-                    <a
-                        href="{{ route('tours.index') }}"
-                        class="btn btn-sm {{ request()->routeIs('tours.*') ? $mobileNavActiveClass : $mobileNavLinkClass }}"
-                    >
-                        Tours
-                    </a>
-                </li>
-                <li class="mb-2">
-                    <a
-                        href="{{ route('about') }}"
-                        class="btn btn-sm {{ request()->routeIs('about') ? $mobileNavActiveClass : $mobileNavLinkClass }}"
-                    >
-                        About
-                    </a>
-                </li>
-                <li class="mb-2">
-                    <a
-                        href="{{ route('impressions') }}"
-                        class="btn btn-sm {{ request()->routeIs('impressions') ? $mobileNavActiveClass : $mobileNavLinkClass }}"
-                    >
-                        Impressions
-                    </a>
-                </li>
-                <li class="mb-2">
-                    <a
-                        href="{{ route('contact.show') }}"
-                        class="btn btn-sm {{ request()->routeIs('contact.*') ? $mobileNavActiveClass : $mobileNavLinkClass }}"
-                    >
-                        Contact
-                    </a>
-                </li>
-            </ul>
+                <ul class="menu p-2 w-40">
+                    <li class="mb-2">
+                        <a href="{{ route('home') }}"
+                           class="btn btn-sm {{ request()->routeIs('home') ? $mobileNavActiveClass : $mobileNavLinkClass }}">
+                            Home
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{{ route('tours.index') }}"
+                           class="btn btn-sm {{ request()->routeIs('tours.*') ? $mobileNavActiveClass : $mobileNavLinkClass }}">
+                            Tours
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{{ route('about') }}"
+                           class="btn btn-sm {{ request()->routeIs('about') ? $mobileNavActiveClass : $mobileNavLinkClass }}">
+                            About
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{{ route('impressions') }}"
+                           class="btn btn-sm {{ request()->routeIs('impressions') ? $mobileNavActiveClass : $mobileNavLinkClass }}">
+                            Impressions
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{{ route('contact.show') }}"
+                           class="btn btn-sm {{ request()->routeIs('contact.*') ? $mobileNavActiveClass : $mobileNavLinkClass }}">
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <a href="{{ route('home') }}" class="font-semibold">
@@ -347,42 +343,32 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
     <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1 gap-2">
             <li>
-                <a
-                    href="{{ route('home') }}"
-                    class="btn btn-sm  {{ request()->routeIs('home') ? $navActiveClass : $navLinkClass }}"
-                >
+                <a href="{{ route('home') }}"
+                   class="btn btn-sm {{ request()->routeIs('home') ? $navActiveClass : $navLinkClass }}">
                     Home
                 </a>
             </li>
             <li>
-                <a
-                    href="{{ route('tours.index') }}"
-                    class="btn btn-sm  {{ request()->routeIs('tours.*') ? $navActiveClass : $navLinkClass }}"
-                >
+                <a href="{{ route('tours.index') }}"
+                   class="btn btn-sm {{ request()->routeIs('tours.*') ? $navActiveClass : $navLinkClass }}">
                     Tours
                 </a>
             </li>
             <li>
-                <a
-                    href="{{ route('about') }}"
-                    class="btn btn-sm  {{ request()->routeIs('about') ? $navActiveClass : $navLinkClass }}"
-                >
+                <a href="{{ route('about') }}"
+                   class="btn btn-sm {{ request()->routeIs('about') ? $navActiveClass : $navLinkClass }}">
                     About
                 </a>
             </li>
             <li>
-                <a
-                    href="{{ route('impressions') }}"
-                    class="btn btn-sm  {{ request()->routeIs('impressions') ? $navActiveClass : $navLinkClass }}"
-                >
+                <a href="{{ route('impressions') }}"
+                   class="btn btn-sm {{ request()->routeIs('impressions') ? $navActiveClass : $navLinkClass }}">
                     Impressions
                 </a>
             </li>
             <li>
-                <a
-                    href="{{ route('contact.show') }}"
-                    class="btn btn-sm  {{ request()->routeIs('contact.*') ? $navActiveClass : $navLinkClass }}"
-                >
+                <a href="{{ route('contact.show') }}"
+                   class="btn btn-sm {{ request()->routeIs('contact.*') ? $navActiveClass : $navLinkClass }}">
                     Contact
                 </a>
             </li>
@@ -390,9 +376,9 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
     </div>
 
     <div class="navbar-end">
-        {{--        <a href="{{ route('tours.index') }}" class="btn btn-accent">Book a tour</a>--}}
     </div>
 </nav>
+
 
 @if(session('success'))
     <div class="toast toast-start z-50 flash-toast">

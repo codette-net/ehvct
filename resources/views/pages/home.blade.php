@@ -26,16 +26,17 @@
 @endsection
 @section('content')
     {{-- HERO --}}
-    <section class="hero min-h-[90vh] landscape:min-h-[80vw] max-w-[1280px] mx-auto pt-16"
-             style="background-image: url(/images/EHVCT-cover-img.jpg); background-position: 33% 50%;">
+    <section class="hero h-[min(80vh,900px)] landscape:h-[80vw] max-w-[1280px] mx-auto pt-16 "
+             style="background-image: url(/images/EHVCT-cover-img.jpg); background-position: 33% 50%;
+             ">
         <div class="hero-overlay bg-neutral/60"></div>
-        <div class="hero-content flex-col gap-10 text-neutral-content p-0 z-30">
+        <div class="hero-content flex-col gap-10 text-neutral-content py-8 z-30 rj-hero-txt-shadow">
 
 
-            <div class="landscape:max-w-[66vw] max-w-[800px] flex flex-col gap-4 justify-items-center items-center">
+            <div class="landscape:max-w-[66vw] max-w-[600px] flex flex-col gap-4 justify-items-center items-center">
                 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                      viewBox="0 0 1484.000000 877.000000"
-                     preserveAspectRatio="xMidYMid meet" class="drop-shadow-2xl px-4 max-w-[50vw] md:max-w-[60vw] fade-up">
+                     preserveAspectRatio="xMidYMid meet" class="drop-shadow-2xl px-4 max-w-[66vw] fade-up">
 
                     <g transform="translate(0.000000,877.000000) scale(0.100000,-0.100000)"
                        fill="#ffffff" stroke="#ffffff">
@@ -246,7 +247,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                 </div>
 
             </div>
-        </div>np
+        </div>
     </section>
 
 
@@ -256,7 +257,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
     <div class="mask-box">
 
         {{-- FEATURED TOURS --}}
-        <section class="max-w-5xl mx-auto px-4 pb-14 above-mask-box">
+        <section class="max-w-5xl mx-auto px-4 py-14 above-mask-box">
             <div class="flex items-end justify-between gap-4 mb-6">
                 <div>
                     <h2 class="text-3xl font-bold">Upcoming tours</h2>
@@ -531,7 +532,7 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                 </div>
             </div>
             <div class="card bg-base-100/80 shadow-lg border-[6px] border-neutral-200/90 rj-card-inset drop-shadow-lg fade-up-delay"">
-                <div class="card-body rounded bg-base-100/60 >
+                <div class="card-body rounded>
                     <h3 class="font-semibold">Also available</h3>
                     <p class="text-sm opacity-80">Private tours, company outings, and teambuilding rides.</p>
                     <a class="btn btn-outline" href="{{ route('contact.show') }}">Request a private tour</a>

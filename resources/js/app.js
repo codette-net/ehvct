@@ -1,10 +1,12 @@
 import './bootstrap';
 
-(() => {
+document.addEventListener('DOMContentLoaded', () => {
     const button = document.getElementById('nav-menu-button');
     const menu = document.getElementById('mobile-nav-menu');
 
     if (!button || !menu) return;
+
+    const isOpen = () => !menu.classList.contains('hidden');
 
     const openMenu = () => {
         menu.classList.remove('hidden');
@@ -17,12 +19,13 @@ import './bootstrap';
     };
 
     const toggleMenu = (event) => {
+        event.preventDefault();
         event.stopPropagation();
 
-        if (menu.classList.contains('hidden')) {
-            openMenu();
-        } else {
+        if (isOpen()) {
             closeMenu();
+        } else {
+            openMenu();
         }
     };
 
@@ -45,8 +48,7 @@ import './bootstrap';
             closeMenu();
         });
     });
-})();
-
+});
 
 const fadeUpObserver = new IntersectionObserver(
     (elsToWatch) => {
@@ -57,7 +59,7 @@ const fadeUpObserver = new IntersectionObserver(
             }
         });
     },
-    { threshold: 0.05 }
+    {threshold: 0.05}
 );
 
 document.querySelectorAll(".fade-up").forEach((item) => {
@@ -69,3 +71,4 @@ document.querySelectorAll(".fade-up-delay").forEach((item) => {
     console.log(item);
     fadeUpObserver.observe(item);
 });
+

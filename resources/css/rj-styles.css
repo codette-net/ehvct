@@ -179,7 +179,7 @@ tr {
 
 .steps .step:after {
 
-    box-shadow: 0px 4px 12px 2px #2225;
+    box-shadow: 0`px 4px 12px 2px #2225;
 }
 
 .steps .step-primary + .step-primary:before, .steps .step-primary:after {
@@ -256,6 +256,11 @@ nav .btn:focus-visible{
 .fade-up-delay.faded {
     opacity: 1;
     transform: translateY(0);
+}
+
+.rj-hero-txt-shadow {
+
+    text-shadow: 1px 1px 1px #0008;
 }
 
 
