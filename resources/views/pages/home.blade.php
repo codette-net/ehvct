@@ -26,7 +26,7 @@
 @endsection
 @section('content')
     {{-- HERO --}}
-    <section class="hero h-[min(80vh,900px)] landscape:h-[80vw] max-w-[1280px] mx-auto pt-16 "
+    <section class="hero h-[min(90vh,900px)] landscape:h-[80vw] max-w-[1280px] mx-auto pt-16 "
              style="background-image: url(/images/EHVCT-cover-img.jpg); background-position: 33% 50%;
              ">
         <div class="hero-overlay bg-neutral/60"></div>
