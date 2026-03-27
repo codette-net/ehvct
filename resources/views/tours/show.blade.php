@@ -278,8 +278,8 @@
 
             </div>
         </section>
-        <section class="bg-base-100/80">
-            <div class="max-w-4xl mx-auto px-4 py-14">
+        <section class="bg-base-100/80 rounded-2xl mt-4">
+            <div class="max-w-4xl mx-auto px-4 py-8">
                 <h2 class="text-3xl font-bold mb-3 text-center">Frequently asked questions</h2>
                 <p class="text-center opacity-75 max-w-2xl mx-auto mb-8">
                     Practical questions about our guided cycling tours in Eindhoven, from bikes and children to weather

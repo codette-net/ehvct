@@ -4,7 +4,8 @@
 @section('canonical', route('impressions'))
 
 @section('content')
-    <section class="hero min-h-[80vh] "
+    <section class="hero h-[min(90vh,900px)] landscape:h-[min(80vw,768px)]
+     "
              style="background-image: url(/images/EHVCT-bike-sunset.jpg);background-position: 15% 49%;
     background-repeat: no-repeat;
 ">

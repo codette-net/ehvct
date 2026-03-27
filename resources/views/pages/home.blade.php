@@ -26,11 +26,11 @@
 @endsection
 @section('content')
     {{-- HERO --}}
-    <section class="hero h-[min(90vh,900px)] landscape:h-[80vw] max-w-[1280px] mx-auto pt-16 "
+    <section class="hero h-[min(90vh,900px)] landscape:h-[min(80vw,768px)] max-w-[1280px] mx-auto pt-16 "
              style="background-image: url(/images/EHVCT-cover-img.jpg); background-position: 33% 50%;
              ">
         <div class="hero-overlay bg-neutral/60"></div>
-        <div class="hero-content flex-col gap-10 text-neutral-content py-8 z-30 rj-hero-txt-shadow">
+        <div class="hero-content flex-col gap-10 text-neutral-content py-8 z-30">
 
 
             <div class="landscape:max-w-[66vw] max-w-[600px] flex flex-col gap-4 justify-items-center items-center">
@@ -232,11 +232,11 @@ l-69 0 -74 -121 c-85 -140 -69 -142 -164 20 l-59 101 -72 0 c-40 0 -73 -3 -73
                     </g>
                 </svg>
 
-                <header class="px-4 flex flex-col gap-4 justify-items-center items-center fade-up-delay">
+                <header class="px-4 flex flex-col gap-4 justify-items-center items-center fade-up-delay rj-hero-txt-shadow text-center">
                     <h1 class="landscape:text-4xl text-3xl md:text-4xl font-bold leading-tight text-balance text-pretty">
                         Easy rides. Great stories. Better views
                     </h1>
-                    <p class="text-lg opacity-95 text-balance">
+                    <p class="text-lg opacity-95 text-pretty">
                         Relaxed group rides through Brabant countryside. Perfect for expats and locals.
                     </p>
                 </header>

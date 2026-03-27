@@ -5,7 +5,7 @@
 
 @section('content')
     {{-- HERO --}}
-    <section class="hero min-h-[80vh] "
+    <section class="hero h-[min(90vh,900px)] landscape:h-[min(80vw,768px)] "
              style="background-image: url(/images/EHVCT_Maurice_cover_cropped.jpg);background-position: 15% 49%;
     background-repeat: no-repeat;
 ">
