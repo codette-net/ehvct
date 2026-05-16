@@ -44,7 +44,7 @@
 
             <fieldset class="fieldset mb-4">
                 <legend class="fieldset-legend mb-2">Phone</legend>
-                <input name="phone" class="input validator w-full" placeholder="06-12345678" value="{{ old('phone') }}"/>
+                <input name="phone" class="input validator w-full" placeholder="+31 (0)612345678" value="{{ old('phone') }}"/>
                 <p class="label text-sm opacity-70">Optional</p>
                 @error('phone')<p class="validator-hint">{{ $message }}</p>@enderror
             </fieldset>

@@ -198,18 +198,23 @@
                                    <div class="mt-3 flex gap-2">
                                        <a
                                            href="{{ route('contact.show', ['tour' => $tour->id, 'slot' => $slot->id]) }}"
-                                           class="btn btn-outline btn-xs flex-1"
+                                           class="btn btn-square btn-outline"
                                        >
-                                           Ask by email
+                                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" /><path d="M3 7l9 6l9 -6" /></svg>
                                        </a>
 
                                        <a
                                            href="https://wa.me/{{ config('services.whatsapp.booking_number') }}?text={{ urlencode($questionText) }}"
                                            target="_blank"
                                            rel="noopener"
-                                           class="btn btn-success btn-xs flex-1"
+                                           class="btn btn-square btn-success"
                                        >
-                                           WhatsApp
+                                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-whatsapp">
+                                               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                               <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"></path>
+                                               <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"></path>
+                                           </svg>
+
                                        </a>
                                    </div>
                                </div>
