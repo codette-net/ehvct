@@ -23,7 +23,13 @@
 
         <form method="POST" action="{{ route('contact.submit') }}" class="mt-4 bg-neutral-content/60 p-4 rounded-lg shadow-lg max-w-2xl">
             @csrf
+            @if(isset($tour) && $tour)
+                <input type="hidden" name="tour_id" value="{{ $tour->id }}">
+            @endif
 
+            @if(isset($slot) && $slot)
+                <input type="hidden" name="slot_id" value="{{ $slot->id }}">
+            @endif
             <fieldset class="fieldset mb-4">
                 <legend class="fieldset-legend mb-2">Name</legend>
                 <input type="text" class="input validator w-full" placeholder="Jane Doe" name="name" value="{{ old('name') }}"/>
@@ -46,7 +52,15 @@
             <fieldset class="fieldset mb-4">
                 <legend class="fieldset-legend mb-2">Subject</legend>
                 <select class="select" name="subject">
-                    <option disabled selected>Pick a subject</option>
+                    @if(isset($slot) && $slot)
+                        <option disabled >Pick a subject</option>
+                     <option selected>{{ $slot->variant->tour->title}}, {{ $slot->starts_at->format('D d M Y, H:i') }}</option>
+                        @elseif(isset($tour) && $tour)
+                        <option disabled >Pick a subject</option>
+                        <option selected>{{ $tour->title }}</option>
+                    @else
+                        <option selected disabled >Pick a subject</option>
+                    @endif
                     <option>Booking question</option>
                     <option>Private Tour</option>
                     <option>Other</option>

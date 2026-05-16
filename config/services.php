@@ -35,5 +35,7 @@ return [
         'key' => env('MOLLIE_API_KEY'),
         'webhook_url' => env('MOLLIE_WEBHOOK_URL'),
     ],
-
+    'whatsapp' => [
+        'booking_number' => env('WHATSAPP_BOOKING_NUMBER'),
+    ],
 ];

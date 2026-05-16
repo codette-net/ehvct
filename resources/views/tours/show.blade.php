@@ -184,7 +184,35 @@
                                                    class="btn btn-accent btn-sm w-full">
                                                     Book this date
                                                 </a>
-                                            </div>
+                                              </div>
+                                            @php
+                                                $questionText = 'I have a question about the tour ' .
+                                                    $tour->title .
+                                                    ' on ' .
+                                                    $slot->starts_at->format('D d M Y, H:i');
+                                            @endphp
+
+                               <div>
+                                   <small class="opacity-70">Questions before booking?</small>
+
+                                   <div class="mt-3 flex gap-2">
+                                       <a
+                                           href="{{ route('contact.show', ['tour' => $tour->id, 'slot' => $slot->id]) }}"
+                                           class="btn btn-outline btn-xs flex-1"
+                                       >
+                                           Ask by email
+                                       </a>
+
+                                       <a
+                                           href="https://wa.me/{{ config('services.whatsapp.booking_number') }}?text={{ urlencode($questionText) }}"
+                                           target="_blank"
+                                           rel="noopener"
+                                           class="btn btn-success btn-xs flex-1"
+                                       >
+                                           WhatsApp
+                                       </a>
+                                   </div>
+                               </div>
                                         @empty
                                             <p class="text-sm opacity-70">
                                                 No bookable slots right now.
@@ -194,10 +222,7 @@
                                 </div>
                             @endforeach
 
-                            <div class="text-xs opacity-90">
-                                Questions before booking?
-                                <a href="{{ route('contact.show') }}" class="link">Contact us</a>.
-                            </div>
+
                         </div>
                     </div>
                 </div>
